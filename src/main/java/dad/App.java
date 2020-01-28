@@ -1,19 +1,20 @@
 package dad;
 
-import javafx.application.Application;
-import javafx.stage.Stage;
+import com.almasb.fxgl.app.GameApplication;
+import com.almasb.fxgl.app.GameSettings;
 
-public class App extends Application {
+public class App extends GameApplication  {
 
 	@Override
-	public void start(Stage primaryStage) throws Exception {
-		// TODO Auto-generated method stub
-
+	protected void initSettings(GameSettings settings) {
+        settings.setWidth(1000);
+        settings.setHeight(600);
+        settings.setTitle("Dad Is You");
+        //settings.setFullScreenFromStart(true);
+        //settings.setFullScreenAllowed(true);
 	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		launch(args);
 	}
-
 }
