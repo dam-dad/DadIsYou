@@ -44,4 +44,9 @@ public class Elemento extends Objeto {
 	public void limpiarEstados() {
 		this.estados.clear();
 	}
+
+	@Override
+	public String toString() {
+		return ("" + nombre.toString().charAt(0)).toUpperCase();
+	}
 }
