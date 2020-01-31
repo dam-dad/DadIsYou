@@ -1,31 +1,35 @@
 package dad.game.model;
 
-import javafx.scene.image.Image;
+import java.util.ArrayList;
+
+import dad.App;
 
 public class Objeto {
 
-	private String nombreTipoObjeto;
-	private Image imagen;
+	private SujetoEnum nombre;
+	private String imagen;
 	private Posicion posicion;
-	private String estado;
+	private ArrayList<AccionEnum> estados;
 	
-	public Objeto() {
+	public Objeto() {}
+
+	public Objeto(SujetoEnum nombre, Posicion posicion) {
+		this.nombre = nombre;
+		this.imagen = App.getRuta() + this.nombre.toString().toLowerCase() + ".png";
+		this.posicion = posicion;
 	}
 
-	public String getNombreTipoObjeto() {
-		return nombreTipoObjeto;
+	public SujetoEnum getNombre() {
+		return nombre;
 	}
 
-	public void setNombreTipoObjeto(String nombreTipoObjeto) {
-		this.nombreTipoObjeto = nombreTipoObjeto;
+	public void setNombre(SujetoEnum nombre) {
+		this.nombre = nombre;
+		this.imagen = App.getRuta() + this.nombre.toString().toLowerCase() + ".png";
 	}
 
-	public Image getImagen() {
+	public String getImagen() {
 		return imagen;
-	}
-
-	public void setImagen(Image imagen) {
-		this.imagen = imagen;
 	}
 
 	public Posicion getPosicion() {
@@ -36,13 +40,20 @@ public class Objeto {
 		this.posicion = posicion;
 	}
 
-	public String getEstado() {
-		return estado;
+	public ArrayList<AccionEnum> getEstado() {
+		return estados;
 	}
 
-	public void setEstado(String estado) {
-		this.estado = estado;
+	public void setEstados(ArrayList<AccionEnum> estados) {
+		this.estados = estados;
+	}
+
+	public void setEstado(AccionEnum estado) {
+		this.estados.add(estado);
 	}
 	
+	public void limpiarEstados() {
+		this.estados.clear();
+	}
 	
 }
