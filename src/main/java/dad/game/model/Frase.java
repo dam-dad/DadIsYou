@@ -4,24 +4,24 @@ import java.util.HashMap;
 
 public class Frase {
 	
-	private HashMap<Palabra, Palabra> contenido = new HashMap<Palabra, Palabra>();
+	private HashMap<Objeto, Objeto> contenido = new HashMap<Objeto, Objeto>();
 	
 	public Frase() {}
 
-	public Frase(HashMap<Palabra, Palabra> contenido) {
+	public Frase(HashMap<Objeto, Objeto> contenido) {
 		super();
 		this.contenido = contenido;
 	}
 
-	public HashMap<Palabra, Palabra> getContenido() {
+	public HashMap<Objeto, Objeto> getContenido() {
 		return contenido;
 	}
 
-	public void setContenido(HashMap<Palabra, Palabra> contenido) {
+	public void setContenido(HashMap<Objeto, Objeto> contenido) {
 		this.contenido = contenido;
 	}
 	
-	public void setContenidoFrase(Palabra clave, Palabra valor) {
+	public void setContenidoFrase(Objeto clave, Objeto valor) {
 		this.contenido.put(clave, valor);
 	}
 	

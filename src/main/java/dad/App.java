@@ -6,6 +6,7 @@ import javafx.stage.Stage;
 public class App extends Application {
 	
 	private static String ruta;
+	private static String imagenExtension = ".png";
 	private static int cantidadColumnas = 0;
 	private static int cantidadFilas = 0;
 
@@ -20,6 +21,10 @@ public class App extends Application {
 	
 	public static String getRuta() {
 		return ruta;
+	}
+	
+	public static String getImagenExtension() {
+		return imagenExtension;
 	}
 
 	public static int getCantidadColumnas() {

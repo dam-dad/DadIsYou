@@ -1,8 +1,6 @@
 package dad.game.model;
 
-import dad.App;
-
-public class Sujeto extends Palabra {
+public class Sujeto extends Objeto {
 	
 	private SujetoEnum nombre;
 
@@ -13,7 +11,7 @@ public class Sujeto extends Palabra {
 	public Sujeto(SujetoEnum nombre, String imagen, Posicion posicion) {
 		super(posicion);
 		this.nombre = nombre;
-		this.setImagen(App.getRuta() + nombre.toString().toLowerCase() + ".png");
+		this.setImagen(nombre.toString().toLowerCase());
 	}
 
 	public SujetoEnum getNombre() {
@@ -22,7 +20,7 @@ public class Sujeto extends Palabra {
 
 	public void setNombre(SujetoEnum nombre) {
 		this.nombre = nombre;
-		this.setImagen(App.getRuta() + nombre.toString().toLowerCase() + ".png");
+		this.setImagen(nombre.toString().toLowerCase());
 	}
 	
 }

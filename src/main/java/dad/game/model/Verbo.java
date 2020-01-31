@@ -1,8 +1,6 @@
 package dad.game.model;
 
-import dad.App;
-
-public class Verbo extends Palabra {
+public class Verbo extends Objeto {
 	
 	private VerboEnum nombre;
 
@@ -13,7 +11,7 @@ public class Verbo extends Palabra {
 	public Verbo(VerboEnum nombre, String imagen, Posicion posicion) {
 		super(posicion);
 		this.nombre = nombre;
-		this.setImagen(App.getRuta() + nombre.toString().toLowerCase() + ".png");
+		this.setImagen(nombre.toString().toLowerCase());
 	}
 
 	public VerboEnum getNombre() {
@@ -22,6 +20,6 @@ public class Verbo extends Palabra {
 
 	public void setNombre(VerboEnum nombre) {
 		this.nombre = nombre;
-		this.setImagen(App.getRuta() + nombre.toString().toLowerCase() + ".png");
+		this.setImagen(nombre.toString().toLowerCase());
 	}
 }

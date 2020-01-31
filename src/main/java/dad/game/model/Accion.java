@@ -1,8 +1,6 @@
 package dad.game.model;
 
-import dad.App;
-
-public class Accion extends Palabra {
+public class Accion extends Objeto {
 	
 	private AccionEnum nombre;
 
@@ -13,7 +11,7 @@ public class Accion extends Palabra {
 	public Accion(AccionEnum nombre, String imagen, Posicion posicion) {
 		super(posicion);
 		this.nombre = nombre;
-		this.setImagen(App.getRuta() + nombre.toString().toLowerCase() + ".png");
+		this.setImagen(nombre.toString().toLowerCase());
 	}
 
 	public AccionEnum getNombre() {
@@ -22,6 +20,6 @@ public class Accion extends Palabra {
 
 	public void setNombre(AccionEnum nombre) {
 		this.nombre = nombre;
-		this.setImagen(App.getRuta() + nombre.toString().toLowerCase() + ".png");
+		this.setImagen(nombre.toString().toLowerCase());
 	}
 }
