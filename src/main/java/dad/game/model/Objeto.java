@@ -13,9 +13,13 @@ public class Objeto {
 	
 	public Objeto() {}
 
-	public Objeto(SujetoEnum nombre, Posicion posicion) {
+	public Objeto(SujetoEnum nombre) {
 		this.nombre = nombre;
 		this.imagen = App.getRuta() + this.nombre.toString().toLowerCase() + ".png";
+	}
+
+	public Objeto(SujetoEnum nombre, Posicion posicion) {
+		this(nombre);
 		this.posicion = posicion;
 	}
 
