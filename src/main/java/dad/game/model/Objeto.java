@@ -10,7 +10,6 @@ public class Objeto {
 	private String estado;
 	
 	public Objeto() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public String getNombreTipoObjeto() {
