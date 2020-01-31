@@ -1,7 +1,5 @@
 package dad.game.model;
 
-import javafx.scene.image.Image;
-
 public class Palabra {
 	
 	private String imagen;
