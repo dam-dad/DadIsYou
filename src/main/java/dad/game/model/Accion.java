@@ -8,7 +8,11 @@ public class Accion extends Objeto {
 		super();
 	}
 	
-	public Accion(AccionEnum nombre, String imagen, Posicion posicion) {
+	public Accion(AccionEnum nombre) {
+		this(nombre, null);
+	}
+
+	public Accion(AccionEnum nombre, Posicion posicion) {
 		super(posicion);
 		this.nombre = nombre;
 		this.setImagen(nombre.toString().toLowerCase());

@@ -8,7 +8,11 @@ public class Verbo extends Objeto {
 		super();
 	}
 	
-	public Verbo(VerboEnum nombre, String imagen, Posicion posicion) {
+	public Verbo(VerboEnum nombre) {
+		this(nombre, null);
+	}
+
+	public Verbo(VerboEnum nombre, Posicion posicion) {
 		super(posicion);
 		this.nombre = nombre;
 		this.setImagen(nombre.toString().toLowerCase());

@@ -8,7 +8,11 @@ public class Sujeto extends Objeto {
 		super();
 	}
 	
-	public Sujeto(SujetoEnum nombre, String imagen, Posicion posicion) {
+	public Sujeto(SujetoEnum nombre) {
+		this(nombre, null);
+	}
+
+	public Sujeto(SujetoEnum nombre, Posicion posicion) {
 		super(posicion);
 		this.nombre = nombre;
 		this.setImagen(nombre.toString().toLowerCase());

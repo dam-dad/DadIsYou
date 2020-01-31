@@ -14,6 +14,12 @@ public class Elemento extends Objeto {
 		this.setImagen(nombre.toString().toLowerCase());
 	}
 
+	public Elemento(SujetoEnum nombre, Posicion posicion) {
+		super(posicion);
+		this.nombre = nombre;
+		this.setImagen(nombre.toString().toLowerCase());
+	}
+
 	public SujetoEnum getNombre() {
 		return nombre;
 	}
