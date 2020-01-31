@@ -24,10 +24,5 @@
 			<artifactId>javafx-fxml</artifactId>
 			<version>11.0.1</version>
 		</dependency>
-		<dependency>
-			<groupId>com.github.almasb</groupId>
-			<artifactId>fxgl</artifactId>
-			<version>11.7</version>
-		</dependency>
 	</dependencies>
 </project>
