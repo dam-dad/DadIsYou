@@ -34,9 +34,7 @@ public class Tablero {
 	}
 	
 	public void cargarNivel(Objeto[][] nivel) {
-		
+		this.posicionObjetos = nivel;
 	}
-	
-	
 	
 }
