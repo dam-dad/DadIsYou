@@ -1,10 +1,32 @@
 package dad.game.model;
 
-public class Frase {
-<<<<<<< HEAD
+import java.util.HashMap;
 
-	private String adios = "adios";
-=======
-	private String hola = "hola";
->>>>>>> 66abde604d77cfe86106fba94ac1ba447e2296b3
+public class Frase {
+	
+	private HashMap<Palabra, Palabra> contenido = new HashMap<Palabra, Palabra>();
+	
+	public Frase() {}
+
+	public Frase(HashMap<Palabra, Palabra> contenido) {
+		super();
+		this.contenido = contenido;
+	}
+
+	public HashMap<Palabra, Palabra> getContenido() {
+		return contenido;
+	}
+
+	public void setContenido(HashMap<Palabra, Palabra> contenido) {
+		this.contenido = contenido;
+	}
+	
+	public void setContenidoFrase(Palabra clave, Palabra valor) {
+		this.contenido.put(clave, valor);
+	}
+	
+	public void limpiarContenido() {
+		this.contenido.clear();
+	}
+	
 }
