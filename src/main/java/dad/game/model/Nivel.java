@@ -37,21 +37,21 @@ public class Nivel {
 				if(letra == '0') { // Aire
 					mapa[i][j] = null;
 				} else if (letra == 'W') {
-					mapa[i][j] = new Objeto<SujetoEnum>(SujetoEnum.WALL, letra); 
+					mapa[i][j] = new Objeto<SujetoEnum>(SujetoEnum.WALL, TipoEnum.ELEMENTO, letra); 
 				} else if (letra == 'F') {
-					mapa[i][j] = new Elemento(SujetoEnum.FLAG, letra);
+					mapa[i][j] = new Objeto<SujetoEnum>(SujetoEnum.FLAG, TipoEnum.ELEMENTO, letra); 
 				} else if (letra == 'D') {
-					mapa[i][j] = new Elemento(SujetoEnum.DAD, letra);
+					mapa[i][j] = new Objeto<SujetoEnum>(SujetoEnum.DAD, TipoEnum.ELEMENTO, letra); 
 				} else if (letra == 'd') {
-					mapa[i][j] = new Sujeto(SujetoEnum.DAD, letra);
+					mapa[i][j] = new Objeto<SujetoEnum>(SujetoEnum.DAD, TipoEnum.SUJETO, letra); 
 				} else if (letra == 'i') {
-					mapa[i][j] = new Verbo(VerboEnum.IS, letra);
+					mapa[i][j] = new Objeto<VerboEnum>(VerboEnum.IS, TipoEnum.VERBO, letra); 
 				} else if (letra == 'y') {
-					mapa[i][j] = new Accion(AccionEnum.YOU, letra);
+					mapa[i][j] = new Objeto<AccionEnum>(AccionEnum.YOU, TipoEnum.ACCION, letra); 
 				} else if (letra == 'f') {
-					mapa[i][j] = new Sujeto(SujetoEnum.FLAG, letra);
+					mapa[i][j] = new Objeto<SujetoEnum>(SujetoEnum.FLAG, TipoEnum.SUJETO, letra); 
 				} else if (letra == 'w') {
-					mapa[i][j] = new Accion(AccionEnum.WIN, letra);
+					mapa[i][j] = new Objeto<AccionEnum>(AccionEnum.WIN, TipoEnum.ACCION, letra); 
 				}
 				
 				//Añadir posición cuando no sea aire

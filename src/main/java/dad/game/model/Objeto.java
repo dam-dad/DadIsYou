@@ -1,5 +1,7 @@
 package dad.game.model;
 
+import java.util.ArrayList;
+
 import dad.App;
 
 public class Objeto<T> {
@@ -8,24 +10,26 @@ public class Objeto<T> {
 	private String imagen;
 	private Posicion posicion;
 	private char codigo;
+	private ArrayList<AccionEnum> estados;
+	private TipoEnum tipo;
 
 	public Objeto() {}
 	
-	public Objeto(T nombre) {
-		this(nombre, ' ', null);
+	public Objeto(T nombre, TipoEnum tipo) {
+		this(nombre, tipo, ' ', null);
+	}
+
+	public Objeto(T nombre, TipoEnum tipo, char codigo) {
+		this(nombre, tipo, codigo, null);
+	}
+
+	public Objeto(T nombre, TipoEnum tipo, Posicion posicion) {
+		this(nombre, tipo, ' ', posicion);
+	}
+
+	public Objeto(T nombre, TipoEnum tipo, char codigo, Posicion posicion) {
 		setNombre(nombre);
-	}
-
-	public Objeto(T nombre, char codigo) {
-		this(nombre, codigo, null);
-	}
-
-	public Objeto(T nombre, Posicion posicion) {
-		this(nombre, ' ', posicion);
-	}
-
-	public Objeto(T nombre, char codigo, Posicion posicion) {
-		setNombre(nombre);
+		this.tipo = tipo;
 		this.codigo = codigo;
 		this.posicion = posicion;
 	}
@@ -53,6 +57,30 @@ public class Objeto<T> {
 
 	public void setPosicion(Posicion posicion) {
 		this.posicion = posicion;
+	}
+	
+	public ArrayList<AccionEnum> getEstado() {
+		return estados;
+	}
+
+	public void setEstados(ArrayList<AccionEnum> estados) {
+		this.estados = estados;
+	}
+
+	public void setEstado(AccionEnum estado) {
+		this.estados.add(estado);
+	}
+	
+	public void limpiarEstados() {
+		this.estados.clear();
+	}
+
+	public TipoEnum getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(TipoEnum tipo) {
+		this.tipo = tipo;
 	}
 	
 	@Override
