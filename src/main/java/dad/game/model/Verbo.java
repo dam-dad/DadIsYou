@@ -9,13 +9,22 @@ public class Verbo extends Objeto {
 	}
 	
 	public Verbo(VerboEnum nombre) {
-		this(nombre, null);
+		setNombre(nombre);
+	}
+
+	public Verbo(VerboEnum nombre, char codigo) {
+		super(codigo);
+		setNombre(nombre);
 	}
 
 	public Verbo(VerboEnum nombre, Posicion posicion) {
 		super(posicion);
-		this.nombre = nombre;
-		this.setImagen(nombre.toString().toLowerCase());
+		setNombre(nombre);
+	}
+
+	public Verbo(VerboEnum nombre, char codigo, Posicion posicion) {
+		super(codigo, posicion);
+		setNombre(nombre);
 	}
 
 	public VerboEnum getNombre() {

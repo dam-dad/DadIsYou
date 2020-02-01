@@ -9,13 +9,22 @@ public class Sujeto extends Objeto {
 	}
 	
 	public Sujeto(SujetoEnum nombre) {
-		this(nombre, null);
+		setNombre(nombre);
+	}
+
+	public Sujeto(SujetoEnum nombre, char codigo) {
+		super(codigo);
+		setNombre(nombre);
 	}
 
 	public Sujeto(SujetoEnum nombre, Posicion posicion) {
 		super(posicion);
-		this.nombre = nombre;
-		this.setImagen(nombre.toString().toLowerCase());
+		setNombre(nombre);
+	}
+
+	public Sujeto(SujetoEnum nombre, char codigo, Posicion posicion) {
+		super(codigo, posicion);
+		setNombre(nombre);
 	}
 
 	public SujetoEnum getNombre() {

@@ -9,13 +9,22 @@ public class Accion extends Objeto {
 	}
 	
 	public Accion(AccionEnum nombre) {
-		this(nombre, null);
+		setNombre(nombre);
+	}
+
+	public Accion(AccionEnum nombre, char codigo) {
+		super(codigo);
+		setNombre(nombre);
 	}
 
 	public Accion(AccionEnum nombre, Posicion posicion) {
 		super(posicion);
-		this.nombre = nombre;
-		this.setImagen(nombre.toString().toLowerCase());
+		setNombre(nombre);
+	}
+
+	public Accion(AccionEnum nombre, char codigo, Posicion posicion) {
+		super(codigo, posicion);
+		setNombre(nombre);
 	}
 
 	public AccionEnum getNombre() {

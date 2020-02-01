@@ -1,14 +1,13 @@
 package dad.game.model;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class Tablero {
 	private int cantidadColumnas;
 	private int cantidadFilas;
 	private Objeto[][] posicionObjetos;
 	private ArrayList<Objeto[][]> historial;
-	private HashMap<Objeto, Objeto> frases = new HashMap<Objeto, Objeto>();
+	private ArrayList<Objeto[]> frases;
 
 	public Tablero() {
 	}
@@ -18,6 +17,7 @@ public class Tablero {
 		this.cantidadFilas = cantidadFilas;
 		this.posicionObjetos = new Objeto[cantidadColumnas][cantidadFilas];
 		this.historial = new ArrayList<Objeto[][]>();
+		this.frases = new ArrayList<Objeto[]>();
 	}
 
 	public int getCantidadColumnas() {
@@ -45,7 +45,7 @@ public class Tablero {
 		if (direccion == DireccionEnum.ARRIBA) {
 			// this.posicionObjetos;
 		}
-		//mostrarTablero()
+		mostrarTablero();
 	}
 
 	private void comprobarPalabras() {
@@ -58,7 +58,8 @@ public class Tablero {
 						if (posicionObjetos[i][j + 1] instanceof Verbo) {
 							if (posicionObjetos[i][j + 2] instanceof Accion
 									|| posicionObjetos[i][j + 2] instanceof Sujeto) {
-								frases.put(posicionObjetos[i][j], posicionObjetos[i][j + 2]);
+								Objeto[] frase = {posicionObjetos[i][j], posicionObjetos[i][j + 2]};
+								frases.add(frase);
 							}
 						}
 					}
@@ -67,27 +68,28 @@ public class Tablero {
 						if (posicionObjetos[i + 1][j] instanceof Verbo) {
 							if (posicionObjetos[i + 2][j] instanceof Accion
 									|| posicionObjetos[i + 2][j] instanceof Sujeto) {
-								frases.put(posicionObjetos[i][j], posicionObjetos[i + 2][j]);
+								Objeto[] frase = {posicionObjetos[i][j], posicionObjetos[i + 2][j]};
+								frases.add(frase);
 							}
 						}
 					}
 				}
 			}
 		}
+		System.out.println("Frases: ");
 		for (int i = 0; i < frases.size(); i++) {
-			//System.out.println(frases.);
-			
-			// CAMBIAR FRACES A ARRAY BIDIMENCIONAL
+			System.out.println(frases.get(i)[0] + " => " + frases.get(i)[1]);
 		}
 	}
 	
 	private void mostrarTablero() {
+		System.out.println("Tablero: ");
 		for (int i = 0; i < posicionObjetos.length; i++) {
 			for (int j = 0; j < posicionObjetos[i].length; j++) {
 				if (posicionObjetos[i][j] != null) {
 					System.out.print(posicionObjetos[i][j].toString());
 				} else {
-					System.out.print(" ");
+					System.out.print("·");
 				}
 			}
 			System.out.println();

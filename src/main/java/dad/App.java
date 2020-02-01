@@ -7,10 +7,10 @@ import javafx.stage.Stage;
 
 public class App extends Application {
 	
-	private static String ruta;
+	private static String ruta = "images/";
 	private static String imagenExtension = ".png";
-	private static int cantidadColumnas = 0;
-	private static int cantidadFilas = 0;
+	private static int cantidadColumnas = 24;
+	private static int cantidadFilas = 15;
 	
 	GameController controller;
 

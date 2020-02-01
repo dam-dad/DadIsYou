@@ -12,7 +12,7 @@ public class Nivel {
 				"000000000000000000000000",
 				"00000D000000000000F00000",
 				"000000000000000000000000",
-				"00000WWWWWWWWWWWWWWW0000",
+				"0000WWWWWWWWWWWWWWW0000",
 				"000000000000000000000000",
 				"0000000000fiw00000000000",
 				"000000000000000000000000",
@@ -37,21 +37,21 @@ public class Nivel {
 				if(letra == '0') { // Aire
 					mapa[i][j] = null;
 				} else if (letra == 'W') {
-					mapa[i][j] = new Elemento(SujetoEnum.WALL); 
+					mapa[i][j] = new Elemento(SujetoEnum.WALL, letra); 
 				} else if (letra == 'F') {
-					mapa[i][j] = new Elemento(SujetoEnum.FLAG);
+					mapa[i][j] = new Elemento(SujetoEnum.FLAG, letra);
 				} else if (letra == 'D') {
-					mapa[i][j] = new Elemento(SujetoEnum.DAD);
+					mapa[i][j] = new Elemento(SujetoEnum.DAD, letra);
 				} else if (letra == 'd') {
-					mapa[i][j] = new Sujeto(SujetoEnum.DAD);
+					mapa[i][j] = new Sujeto(SujetoEnum.DAD, letra);
 				} else if (letra == 'i') {
-					mapa[i][j] = new Verbo(VerboEnum.IS);
+					mapa[i][j] = new Verbo(VerboEnum.IS, letra);
 				} else if (letra == 'y') {
-					mapa[i][j] = new Accion(AccionEnum.YOU);
+					mapa[i][j] = new Accion(AccionEnum.YOU, letra);
 				} else if (letra == 'f') {
-					mapa[i][j] = new Sujeto(SujetoEnum.FLAG);
+					mapa[i][j] = new Sujeto(SujetoEnum.FLAG, letra);
 				} else if (letra == 'w') {
-					mapa[i][j] = new Accion(AccionEnum.WIN);
+					mapa[i][j] = new Accion(AccionEnum.WIN, letra);
 				}
 				
 				//Añadir posición cuando no sea aire

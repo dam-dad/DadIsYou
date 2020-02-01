@@ -10,14 +10,22 @@ public class Elemento extends Objeto {
 	public Elemento() {}
 
 	public Elemento(SujetoEnum nombre) {
-		this.nombre = nombre;
-		this.setImagen(nombre.toString().toLowerCase());
+		setNombre(nombre);
+	}
+
+	public Elemento(SujetoEnum nombre, char codigo) {
+		super(codigo);
+		setNombre(nombre);
 	}
 
 	public Elemento(SujetoEnum nombre, Posicion posicion) {
 		super(posicion);
-		this.nombre = nombre;
-		this.setImagen(nombre.toString().toLowerCase());
+		setNombre(nombre);
+	}
+
+	public Elemento(SujetoEnum nombre, char codigo, Posicion posicion) {
+		super(codigo, posicion);
+		setNombre(nombre);
 	}
 
 	public SujetoEnum getNombre() {
@@ -44,9 +52,5 @@ public class Elemento extends Objeto {
 	public void limpiarEstados() {
 		this.estados.clear();
 	}
-
-	@Override
-	public String toString() {
-		return ("" + nombre.toString().charAt(0)).toUpperCase();
-	}
+	
 }
