@@ -52,23 +52,27 @@ public class Tablero {
 		frases.clear();
 		for (int i = 0; i < posicionObjetos.length; i++) {
 			for (int j = 0; j < posicionObjetos[i].length; j++) {
-				if (posicionObjetos[i][j] instanceof Sujeto) {
+				if (posicionObjetos[i][j] != null && posicionObjetos[i][j].getTipo() == TipoEnum.SUJETO) {
 					// Comprobar hacia la derecha si se forma una frase
 					if (j + 2 <= cantidadColumnas) { // Comprobar si la posible frase está dentro del escenario
-						if (posicionObjetos[i][j + 1] instanceof Verbo) {
-							if (posicionObjetos[i][j + 2] instanceof Accion
-									|| posicionObjetos[i][j + 2] instanceof Sujeto) {
-								Objeto[] frase = {posicionObjetos[i][j], posicionObjetos[i][j + 2]};
+						if (posicionObjetos[i][j + 1] != null
+								&& posicionObjetos[i][j + 1].getTipo() == TipoEnum.VERBO) {
+							if (posicionObjetos[i][j + 2] != null
+									&& (posicionObjetos[i][j + 2].getTipo() == TipoEnum.ACCION
+											|| posicionObjetos[i][j + 2].getTipo() == TipoEnum.SUJETO)) {
+								Objeto[] frase = { posicionObjetos[i][j], posicionObjetos[i][j + 2] };
 								frases.add(frase);
 							}
 						}
 					}
 					// Comprobar hacia abajo si se forma una frase
 					if (i + 2 <= cantidadFilas) { // Comprobar si la posible frase está dentro del escenario
-						if (posicionObjetos[i + 1][j] instanceof Verbo) {
-							if (posicionObjetos[i + 2][j] instanceof Accion
-									|| posicionObjetos[i + 2][j] instanceof Sujeto) {
-								Objeto[] frase = {posicionObjetos[i][j], posicionObjetos[i + 2][j]};
+						if (posicionObjetos[i + 1][j] != null
+								&& posicionObjetos[i + 1][j].getTipo() == TipoEnum.VERBO) {
+							if (posicionObjetos[i + 2][j] != null
+									&& (posicionObjetos[i + 2][j].getTipo() == TipoEnum.ACCION
+											|| posicionObjetos[i + 2][j].getTipo() == TipoEnum.SUJETO)) {
+								Objeto[] frase = { posicionObjetos[i][j], posicionObjetos[i + 2][j] };
 								frases.add(frase);
 							}
 						}
@@ -78,10 +82,10 @@ public class Tablero {
 		}
 		System.out.println("Frases: ");
 		for (int i = 0; i < frases.size(); i++) {
-			System.out.println(frases.get(i)[0].getNombre() + " => " + frases.get(i)[1]);
+			System.out.println(frases.get(i)[0].getNombre() + " => " + frases.get(i)[1].getNombre());
 		}
 	}
-	
+
 	private void mostrarTablero() {
 		System.out.println("Tablero: ");
 		for (int i = 0; i < posicionObjetos.length; i++) {
