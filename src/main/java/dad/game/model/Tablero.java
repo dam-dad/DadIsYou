@@ -42,6 +42,9 @@ public class Tablero {
 
 	public void mover(DireccionEnum direccion) {
 		comprobarPalabras();
+		mostrarFrases();
+		asignarEstados();
+		mostrarEstados();
 		if (direccion == DireccionEnum.ARRIBA) {
 			// this.posicionObjetos;
 		}
@@ -60,7 +63,8 @@ public class Tablero {
 							if (posicionObjetos[i][j + 2] != null
 									&& (posicionObjetos[i][j + 2].getTipo() == TipoEnum.ACCION
 											|| posicionObjetos[i][j + 2].getTipo() == TipoEnum.SUJETO)) {
-								Objeto[] frase = { posicionObjetos[i][j], posicionObjetos[i][j + 1], posicionObjetos[i][j + 2] };
+								Objeto[] frase = { posicionObjetos[i][j], posicionObjetos[i][j + 1],
+										posicionObjetos[i][j + 2] };
 								frases.add(frase);
 							}
 						}
@@ -72,7 +76,8 @@ public class Tablero {
 							if (posicionObjetos[i + 2][j] != null
 									&& (posicionObjetos[i + 2][j].getTipo() == TipoEnum.ACCION
 											|| posicionObjetos[i + 2][j].getTipo() == TipoEnum.SUJETO)) {
-								Objeto[] frase = { posicionObjetos[i][j], posicionObjetos[i + 1][j], posicionObjetos[i + 2][j] };
+								Objeto[] frase = { posicionObjetos[i][j], posicionObjetos[i + 1][j],
+										posicionObjetos[i + 2][j] };
 								frases.add(frase);
 							}
 						}
@@ -80,9 +85,45 @@ public class Tablero {
 				}
 			}
 		}
+	}
+
+	private void asignarEstados() {
+		ArrayList<Objeto> elementos = new ArrayList<Objeto>();
+		for (int i = 0; i < posicionObjetos.length; i++) {
+			for (int j = 0; j < posicionObjetos[i].length; j++) {
+				Objeto elemento = posicionObjetos[i][j];
+				if (elemento != null && elemento.getTipo() == TipoEnum.ELEMENTO) {
+					elemento.limpiarEstados();
+					elementos.add(elemento);
+				}
+			}
+		}
+		for (Objeto[] frase : frases) {
+			for (Objeto elemento : elementos) {
+				if (elemento.getNombre() == frase[0].getNombre()) {
+					elemento.setEstado((AccionEnum) frase[2].getNombre());
+				}
+			}
+		}
+	}
+
+	private void mostrarFrases() {
 		System.out.println("Frases: ");
 		for (int i = 0; i < frases.size(); i++) {
-			System.out.println(frases.get(i)[0].getNombre() + " " + frases.get(i)[1].getNombre() + " " + frases.get(i)[2].getNombre());
+			System.out.println(frases.get(i)[0].getNombre() + " " + frases.get(i)[1].getNombre() + " "
+					+ frases.get(i)[2].getNombre());
+		}
+	}
+	
+	private void mostrarEstados() {
+		System.out.println("Estados: ");
+		for (int i = 0; i < posicionObjetos.length; i++) {
+			for (int j = 0; j < posicionObjetos[i].length; j++) {
+				Objeto elemento = posicionObjetos[i][j];
+				if (elemento != null && elemento.getTipo() == TipoEnum.ELEMENTO) {
+					System.out.println(elemento.getNombre() + " => " + elemento.getEstados());
+				}
+			}
 		}
 	}
 

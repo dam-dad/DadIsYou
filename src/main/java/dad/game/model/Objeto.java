@@ -32,6 +32,7 @@ public class Objeto<T> {
 		this.tipo = tipo;
 		this.codigo = codigo;
 		this.posicion = posicion;
+		this.estados = new ArrayList<AccionEnum>();
 	}
 
 	public T getNombre() {
@@ -59,7 +60,7 @@ public class Objeto<T> {
 		this.posicion = posicion;
 	}
 	
-	public ArrayList<AccionEnum> getEstado() {
+	public ArrayList<AccionEnum> getEstados() {
 		return estados;
 	}
 
