@@ -36,6 +36,14 @@ public class Tablero {
 		this.historial = historial;
 	}
 
+	public Objeto[][] getPosicionObjetos() {
+		return posicionObjetos;
+	}
+
+	public void setPosicionObjetos(Objeto[][] posicionObjetos) {
+		this.posicionObjetos = posicionObjetos;
+	}
+
 	public void cargarNivel(Objeto[][] nivel) {
 		this.posicionObjetos = nivel;
 	}

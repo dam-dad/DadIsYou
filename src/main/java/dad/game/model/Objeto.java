@@ -28,8 +28,8 @@ public class Objeto<T> {
 	}
 
 	public Objeto(T nombre, TipoEnum tipo, char codigo, Posicion posicion) {
-		setNombre(nombre);
 		this.tipo = tipo;
+		setNombre(nombre);
 		this.codigo = codigo;
 		this.posicion = posicion;
 		this.estados = new ArrayList<AccionEnum>();
@@ -49,7 +49,7 @@ public class Objeto<T> {
 	}
 
 	public void setImagen(String nombre) {
-		this.imagen = App.getRuta() + nombre + App.getImagenExtension();
+		this.imagen = App.getRuta() + tipo.toString().toLowerCase() + "_" + nombre + App.getImagenExtension();
 	}
 
 	public Posicion getPosicion() {

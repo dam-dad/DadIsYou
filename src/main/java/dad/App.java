@@ -7,8 +7,8 @@ import javafx.stage.Stage;
 
 public class App extends Application {
 	
-	private static String ruta = "images/";
-	private static String imagenExtension = ".png";
+	private static String ruta = "/imagenes/objetos/";
+	private static String imagenExtension = ".gif";
 	private static int cantidadColumnas = 24;
 	private static int cantidadFilas = 15;
 	
