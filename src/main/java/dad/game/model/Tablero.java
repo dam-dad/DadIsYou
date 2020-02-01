@@ -60,7 +60,7 @@ public class Tablero {
 							if (posicionObjetos[i][j + 2] != null
 									&& (posicionObjetos[i][j + 2].getTipo() == TipoEnum.ACCION
 											|| posicionObjetos[i][j + 2].getTipo() == TipoEnum.SUJETO)) {
-								Objeto[] frase = { posicionObjetos[i][j], posicionObjetos[i][j + 2] };
+								Objeto[] frase = { posicionObjetos[i][j], posicionObjetos[i][j + 1], posicionObjetos[i][j + 2] };
 								frases.add(frase);
 							}
 						}
@@ -72,7 +72,7 @@ public class Tablero {
 							if (posicionObjetos[i + 2][j] != null
 									&& (posicionObjetos[i + 2][j].getTipo() == TipoEnum.ACCION
 											|| posicionObjetos[i + 2][j].getTipo() == TipoEnum.SUJETO)) {
-								Objeto[] frase = { posicionObjetos[i][j], posicionObjetos[i + 2][j] };
+								Objeto[] frase = { posicionObjetos[i][j], posicionObjetos[i + 1][j], posicionObjetos[i + 2][j] };
 								frases.add(frase);
 							}
 						}
@@ -82,7 +82,7 @@ public class Tablero {
 		}
 		System.out.println("Frases: ");
 		for (int i = 0; i < frases.size(); i++) {
-			System.out.println(frases.get(i)[0].getNombre() + " => " + frases.get(i)[1].getNombre());
+			System.out.println(frases.get(i)[0].getNombre() + " " + frases.get(i)[1].getNombre() + " " + frases.get(i)[2].getNombre());
 		}
 	}
 
