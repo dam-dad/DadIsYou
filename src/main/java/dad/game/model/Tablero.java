@@ -78,7 +78,7 @@ public class Tablero {
 		}
 		System.out.println("Frases: ");
 		for (int i = 0; i < frases.size(); i++) {
-			System.out.println(frases.get(i)[0] + " => " + frases.get(i)[1]);
+			System.out.println(frases.get(i)[0].getNombre() + " => " + frases.get(i)[1]);
 		}
 	}
 	

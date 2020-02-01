@@ -12,7 +12,7 @@ public class Nivel {
 				"000000000000000000000000",
 				"00000D000000000000F00000",
 				"000000000000000000000000",
-				"0000WWWWWWWWWWWWWWW0000",
+				"0000WWWWWWWWWWWWWWWW0000",
 				"000000000000000000000000",
 				"0000000000fiw00000000000",
 				"000000000000000000000000",
@@ -37,7 +37,7 @@ public class Nivel {
 				if(letra == '0') { // Aire
 					mapa[i][j] = null;
 				} else if (letra == 'W') {
-					mapa[i][j] = new Elemento(SujetoEnum.WALL, letra); 
+					mapa[i][j] = new Objeto<SujetoEnum>(SujetoEnum.WALL, letra); 
 				} else if (letra == 'F') {
 					mapa[i][j] = new Elemento(SujetoEnum.FLAG, letra);
 				} else if (letra == 'D') {

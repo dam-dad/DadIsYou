@@ -2,25 +2,41 @@ package dad.game.model;
 
 import dad.App;
 
-public class Objeto {
+public class Objeto<T> {
 
+	private T nombre;
 	private String imagen;
 	private Posicion posicion;
 	private char codigo;
-	
+
 	public Objeto() {}
-
-	public Objeto(char codigo) {
-		this.codigo = codigo;
+	
+	public Objeto(T nombre) {
+		this(nombre, ' ', null);
+		setNombre(nombre);
 	}
 
-	public Objeto(Posicion posicion) {
+	public Objeto(T nombre, char codigo) {
+		this(nombre, codigo, null);
+	}
+
+	public Objeto(T nombre, Posicion posicion) {
+		this(nombre, ' ', posicion);
+	}
+
+	public Objeto(T nombre, char codigo, Posicion posicion) {
+		setNombre(nombre);
+		this.codigo = codigo;
 		this.posicion = posicion;
 	}
 
-	public Objeto(char codigo, Posicion posicion) {
-		this.codigo = codigo;
-		this.posicion = posicion;
+	public T getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(T nombre) {
+		this.nombre = nombre;
+		this.setImagen(nombre.toString().toLowerCase());
 	}
 
 	public String getImagen() {
