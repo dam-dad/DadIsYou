@@ -82,6 +82,16 @@ public class GameController implements Initializable {
 		} else if(key.equals("LEFT")) {
 			tablero.mover(DireccionEnum.IZQUIERDA);
 		}
+		
+		Objeto[][] posicionObjetos = tablero.getPosicionObjetos();
+		gameGrid.getChildren().clear();
+		for (int i = 0; i < posicionObjetos.length; i++) {
+			for (int j = 0; j < posicionObjetos[i].length; j++) {
+				if (posicionObjetos[i][j] != null) {
+					gameGrid.add(new ImageView(posicionObjetos[i][j].getImagen()), j, i);
+				}
+			}
+		}
 	}
 
 	public VBox getView() {

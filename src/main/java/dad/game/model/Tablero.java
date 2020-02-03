@@ -70,27 +70,28 @@ public class Tablero {
 			
 		if (direccion == DireccionEnum.ARRIBA) {
 			for(Objeto you : elementosYOU) {
-				posicionObjetos[you.getPosicion().getX()][you.getPosicion().getY()-1] = posicionObjetos[you.getPosicion().getX()][you.getPosicion().getY()];
-				posicionObjetos[you.getPosicion().getX()][you.getPosicion().getY()] = null;
+				posicionObjetos[you.getPosicion().getY()-1][you.getPosicion().getX()] = posicionObjetos[you.getPosicion().getY()][you.getPosicion().getX()];
+				posicionObjetos[you.getPosicion().getY()][you.getPosicion().getX()] = null;
 				you.getPosicion().mover(DireccionEnum.ARRIBA, 1);
 			}
 		} else if(direccion == DireccionEnum.ABAJO) {
 			for(Objeto you : elementosYOU) {
-				posicionObjetos[you.getPosicion().getX()][you.getPosicion().getY()+1] = posicionObjetos[you.getPosicion().getX()][you.getPosicion().getY()];
-				posicionObjetos[you.getPosicion().getX()][you.getPosicion().getY()] = null;
-				you.getPosicion().mover(DireccionEnum.ARRIBA, 1);
+				posicionObjetos[you.getPosicion().getY()+1][you.getPosicion().getX()] = posicionObjetos[you.getPosicion().getY()][you.getPosicion().getX()];
+				posicionObjetos[you.getPosicion().getY()][you.getPosicion().getX()] = null;
+				you.getPosicion().mover(DireccionEnum.ABAJO, 1);
 			}
 		} else if(direccion == DireccionEnum.DERECHA) {
 			for(Objeto you : elementosYOU) {
-				posicionObjetos[you.getPosicion().getX()+1][you.getPosicion().getY()] = posicionObjetos[you.getPosicion().getX()][you.getPosicion().getY()];
-				posicionObjetos[you.getPosicion().getX()][you.getPosicion().getY()] = null;
-				you.getPosicion().mover(DireccionEnum.ARRIBA, 1);
+				System.out.println("X: "+you.getPosicion().getX()+" Y: "+you.getPosicion().getY());
+				posicionObjetos[you.getPosicion().getY()][you.getPosicion().getX()+1] = posicionObjetos[you.getPosicion().getY()][you.getPosicion().getX()];
+				posicionObjetos[you.getPosicion().getY()][you.getPosicion().getX()] = null;
+				you.getPosicion().mover(DireccionEnum.DERECHA, 1);
 			}
 		} else if(direccion == DireccionEnum.IZQUIERDA) {
 			for(Objeto you : elementosYOU) {
-				posicionObjetos[you.getPosicion().getX()-1][you.getPosicion().getY()] = posicionObjetos[you.getPosicion().getX()][you.getPosicion().getY()];
-				posicionObjetos[you.getPosicion().getX()][you.getPosicion().getY()] = null;
-				you.getPosicion().mover(DireccionEnum.ARRIBA, 1);
+				posicionObjetos[you.getPosicion().getY()][you.getPosicion().getX()-1] = posicionObjetos[you.getPosicion().getY()][you.getPosicion().getX()];
+				posicionObjetos[you.getPosicion().getY()][you.getPosicion().getX()] = null;
+				you.getPosicion().mover(DireccionEnum.IZQUIERDA, 1);
 			}
 		}
 		
