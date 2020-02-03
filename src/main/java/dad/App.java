@@ -24,8 +24,10 @@ public class App extends Application {
 		primaryStage.setFullScreen(true);
 		primaryStage.setScene(scene);
 		primaryStage.show();
+		
+		controller.setScene(scene);
 	}
-
+	
 	public static void main(String[] args) {
 		launch(args);
 	}

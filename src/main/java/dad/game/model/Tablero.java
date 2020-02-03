@@ -55,6 +55,12 @@ public class Tablero {
 		mostrarEstados();
 		if (direccion == DireccionEnum.ARRIBA) {
 			// this.posicionObjetos;
+		} else if(direccion == DireccionEnum.ABAJO) {
+			
+		} else if(direccion == DireccionEnum.DERECHA) {
+			
+		} else if(direccion == DireccionEnum.IZQUIERDA) {
+			
 		}
 		mostrarTablero();
 	}
