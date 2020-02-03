@@ -51,19 +51,10 @@ public class GameController implements Initializable {
 						BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT)));
 		tablero = new Tablero(App.getCantidadColumnas(), App.getCantidadFilas());
 		tablero.cargarNivel(Nivel.uno());
-		Objeto[][] posicionObjetos = tablero.getPosicionObjetos();
-		for (int i = 0; i < posicionObjetos.length; i++) {
-			for (int j = 0; j < posicionObjetos[i].length; j++) {
-				if (posicionObjetos[i][j] != null) {
-					gameGrid.add(new ImageView(posicionObjetos[i][j].getImagen()), j, i);
-				}
-			}
-		}
+		refrescarTablero();
 	}
 
-	public void setScene(Scene e) {
-		scene = e;
-
+	public void setScene(Scene scene) {
 		scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
 			public void handle(KeyEvent e) {
 				String code = e.getCode().toString();
@@ -82,7 +73,10 @@ public class GameController implements Initializable {
 		} else if(key.equals("LEFT")) {
 			tablero.mover(DireccionEnum.IZQUIERDA);
 		}
-		
+		refrescarTablero();
+	}
+	
+	private void refrescarTablero() {
 		Objeto[][] posicionObjetos = tablero.getPosicionObjetos();
 		gameGrid.getChildren().clear();
 		for (int i = 0; i < posicionObjetos.length; i++) {

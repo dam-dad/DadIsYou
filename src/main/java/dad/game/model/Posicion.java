@@ -1,17 +1,12 @@
 package dad.game.model;
 
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-
 public class Posicion {
 	private int x;
 	private int y;
 
-	public Posicion() {
-	}
+	public Posicion() {}
 
 	public Posicion(int x, int y) {
-		super();
 		this.x = x;
 		this.y = y;
 	}

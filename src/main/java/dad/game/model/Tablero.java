@@ -54,46 +54,49 @@ public class Tablero {
 		asignarEstados();
 		mostrarEstados();
 		
-		ArrayList<Objeto> elementosYOU = new ArrayList<Objeto>();
+		ArrayList<Objeto> elementosYou = new ArrayList<Objeto>();
 		for (int i = 0; i < posicionObjetos.length; i++) {
 			for (int j = 0; j < posicionObjetos[i].length; j++) {
 				if(posicionObjetos[i][j] != null && 
 						posicionObjetos[i][j].getTipo() == TipoEnum.ELEMENTO) {
 					for(int x = 0; x < posicionObjetos[i][j].getEstados().size(); x++ ) {
 						if( posicionObjetos[i][j].getEstados().get(x) == AccionEnum.YOU ) {
-							elementosYOU.add(posicionObjetos[i][j]);
+							elementosYou.add(posicionObjetos[i][j]);
 						}
 					}
 				}
 			}
 		}
-			
+		
 		if (direccion == DireccionEnum.ARRIBA) {
-			for(Objeto you : elementosYOU) {
+			for(Objeto you : elementosYou) {
 				posicionObjetos[you.getPosicion().getY()-1][you.getPosicion().getX()] = posicionObjetos[you.getPosicion().getY()][you.getPosicion().getX()];
 				posicionObjetos[you.getPosicion().getY()][you.getPosicion().getX()] = null;
 				you.getPosicion().mover(DireccionEnum.ARRIBA, 1);
 			}
 		} else if(direccion == DireccionEnum.ABAJO) {
-			for(Objeto you : elementosYOU) {
+			for(Objeto you : elementosYou) {
 				posicionObjetos[you.getPosicion().getY()+1][you.getPosicion().getX()] = posicionObjetos[you.getPosicion().getY()][you.getPosicion().getX()];
 				posicionObjetos[you.getPosicion().getY()][you.getPosicion().getX()] = null;
 				you.getPosicion().mover(DireccionEnum.ABAJO, 1);
 			}
 		} else if(direccion == DireccionEnum.DERECHA) {
-			for(Objeto you : elementosYOU) {
+			for(Objeto you : elementosYou) {
 				System.out.println("X: "+you.getPosicion().getX()+" Y: "+you.getPosicion().getY());
 				posicionObjetos[you.getPosicion().getY()][you.getPosicion().getX()+1] = posicionObjetos[you.getPosicion().getY()][you.getPosicion().getX()];
 				posicionObjetos[you.getPosicion().getY()][you.getPosicion().getX()] = null;
+				System.out.println("Nuevo: " + posicionObjetos[you.getPosicion().getY()][you.getPosicion().getX()+1]);
+				System.out.println("Antiguo: " + posicionObjetos[you.getPosicion().getY()][you.getPosicion().getX()]);
 				you.getPosicion().mover(DireccionEnum.DERECHA, 1);
 			}
 		} else if(direccion == DireccionEnum.IZQUIERDA) {
-			for(Objeto you : elementosYOU) {
+			for(Objeto you : elementosYou) {
 				posicionObjetos[you.getPosicion().getY()][you.getPosicion().getX()-1] = posicionObjetos[you.getPosicion().getY()][you.getPosicion().getX()];
 				posicionObjetos[you.getPosicion().getY()][you.getPosicion().getX()] = null;
 				you.getPosicion().mover(DireccionEnum.IZQUIERDA, 1);
 			}
 		}
+		// COMPROBAR SALIR DEL MAPA
 		
 		mostrarTablero();
 	}
