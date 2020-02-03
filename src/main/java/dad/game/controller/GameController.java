@@ -67,8 +67,7 @@ public class GameController implements Initializable {
 		scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
 			public void handle(KeyEvent e) {
 				String code = e.getCode().toString();
-
-				System.out.println(code);
+				pulsarTecla(code);
 			}
 		});
 	}

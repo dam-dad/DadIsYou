@@ -4,52 +4,43 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 
 public class Posicion {
-	private IntegerProperty x = new SimpleIntegerProperty();
-	private IntegerProperty y = new SimpleIntegerProperty();
-	
-	public Posicion() {}
+	private int x;
+	private int y;
+
+	public Posicion() {
+	}
 
 	public Posicion(int x, int y) {
 		super();
-		this.x.set(x);
-		this.y.set(y);
+		this.x = x;
+		this.y = y;
 	}
-
-	public IntegerProperty xProperty() {
-		return this.x;
-	}
-	
 
 	public int getX() {
-		return this.xProperty().get();
+		return x;
 	}
-	
 
-	public void setX(final int x) {
-		this.xProperty().set(x);
+	public void setX(int x) {
+		this.x = x;
 	}
-	
-
-	public IntegerProperty yProperty() {
-		return this.y;
-	}
-	
 
 	public int getY() {
-		return this.yProperty().get();
+		return y;
 	}
-	
 
-	public void setY(final int y) {
-		this.yProperty().set(y);
+	public void setY(int y) {
+		this.y = y;
 	}
-	
 
-
-
-	
-
-	
-	
-	
+	public void mover(DireccionEnum direccion, int paso) {
+		if (direccion == DireccionEnum.ARRIBA) {
+			y -= paso;
+		} else if (direccion == DireccionEnum.ABAJO) {
+			y += paso;
+		} else if (direccion == DireccionEnum.DERECHA) {
+			x += paso;
+		} else if (direccion == DireccionEnum.IZQUIERDA) {
+			x -= paso;
+		}
+	}
 }
