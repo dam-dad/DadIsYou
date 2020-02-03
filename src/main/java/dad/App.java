@@ -21,6 +21,7 @@ public class App extends Application {
 		Scene scene = new Scene(controller.getView());
 
 		primaryStage.setTitle("DAD IS YOU");
+		primaryStage.setFullScreen(true);
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}

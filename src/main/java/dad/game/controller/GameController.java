@@ -44,7 +44,6 @@ public class GameController implements Initializable {
 		gameGrid.setBackground(
 				new Background(new BackgroundImage(new Image("/imagenes/niveles/uno.png"), BackgroundRepeat.NO_REPEAT,
 						BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT)));
-
 		tablero = new Tablero(App.getCantidadColumnas(), App.getCantidadFilas());
 		tablero.cargarNivel(Nivel.uno());
 		tablero.mover(DireccionEnum.ABAJO);
