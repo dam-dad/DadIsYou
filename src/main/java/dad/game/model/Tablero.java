@@ -49,7 +49,7 @@ public class Tablero {
 	}
 
 	public void mover(DireccionEnum direccion) {
-		comprobarPalabras();
+		comprobarFrases();
 		mostrarFrases();
 		asignarEstados();
 		mostrarEstados();
@@ -101,7 +101,7 @@ public class Tablero {
 		mostrarTablero();
 	}
 
-	private void comprobarPalabras() {
+	private void comprobarFrases() {
 		frases.clear();
 		for (int i = 0; i < posicionObjetos.length; i++) {
 			for (int j = 0; j < posicionObjetos[i].length; j++) {
