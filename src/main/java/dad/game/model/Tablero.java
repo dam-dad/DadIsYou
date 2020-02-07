@@ -107,7 +107,7 @@ public class Tablero {
 		for (Objeto<?> elemento : objetosSegundoPlano) {
 			for (int i = 0; i < elemento.getEstados().size(); i++) {
 				if (elemento.getEstados().get(i) == AccionEnum.WIN) {
-					System.out.println("¡¡¡¡¡ HAS GANADO !!!!!");
+					System.out.println("¡¡¡¡ HAS GANADO !!!!");
 				}
 			}
 		}
