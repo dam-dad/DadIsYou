@@ -77,7 +77,7 @@ public class GameController implements Initializable {
 	}
 	
 	private void refrescarTablero() {
-		Objeto[][] posicionObjetos = tablero.getPosicionObjetos();
+		Objeto<?>[][] posicionObjetos = tablero.getPosicionObjetos();
 		gameGrid.getChildren().clear();
 		for (int i = 0; i < posicionObjetos.length; i++) {
 			for (int j = 0; j < posicionObjetos[i].length; j++) {

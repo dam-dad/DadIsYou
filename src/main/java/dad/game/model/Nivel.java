@@ -2,7 +2,7 @@ package dad.game.model;
 
 public class Nivel {
 	
-	public static Objeto[][] uno() {
+	public static Objeto<?>[][] uno() {
 		String[] nivel= {
 				"························",
 				"························",
@@ -28,8 +28,8 @@ public class Nivel {
 	 * @param nivel
 	 * @return
 	 */
-	private static Objeto[][] parsear(String[] nivel) {
-		Objeto[][] mapa = new Objeto[nivel.length][nivel[0].length()];
+	private static Objeto<?>[][] parsear(String[] nivel) {
+		Objeto<?>[][] mapa = new Objeto[nivel.length][nivel[0].length()];
 		for (int i = 0; i < nivel.length; i++) {
 			for (int j = 0; j < nivel[i].length(); j++) {
 				char letra = nivel[i].charAt(j);
