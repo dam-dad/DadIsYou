@@ -5,9 +5,9 @@ import java.util.ArrayList;
 public class Tablero {
 	private int cantidadColumnas;
 	private int cantidadFilas;
-	private Objeto[][] posicionObjetos;
-	private ArrayList<Objeto[][]> historial;
-	private ArrayList<Objeto[]> frases;
+	private Objeto<?>[][] posicionObjetos;
+	private ArrayList<Objeto<?>[][]> historial;
+	private ArrayList<Objeto<?>[]> frases;
 
 	public Tablero() {
 	}
@@ -16,8 +16,8 @@ public class Tablero {
 		this.cantidadColumnas = cantidadColumnas;
 		this.cantidadFilas = cantidadFilas;
 		this.posicionObjetos = new Objeto[cantidadColumnas][cantidadFilas];
-		this.historial = new ArrayList<Objeto[][]>();
-		this.frases = new ArrayList<Objeto[]>();
+		this.historial = new ArrayList<Objeto<?>[][]>();
+		this.frases = new ArrayList<Objeto<?>[]>();
 	}
 
 	public int getCantidadColumnas() {
@@ -28,39 +28,35 @@ public class Tablero {
 		return cantidadFilas;
 	}
 
-	public ArrayList<Objeto[][]> getHistorial() {
+	public ArrayList<Objeto<?>[][]> getHistorial() {
 		return historial;
 	}
 
-	public void setHistorial(ArrayList<Objeto[][]> historial) {
+	public void setHistorial(ArrayList<Objeto<?>[][]> historial) {
 		this.historial = historial;
 	}
 
-	public Objeto[][] getPosicionObjetos() {
+	public Objeto<?>[][] getPosicionObjetos() {
 		return posicionObjetos;
 	}
 
-	public void setPosicionObjetos(Objeto[][] posicionObjetos) {
+	public void setPosicionObjetos(Objeto<?>[][] posicionObjetos) {
 		this.posicionObjetos = posicionObjetos;
 	}
 
-	public void cargarNivel(Objeto[][] nivel) {
+	public void cargarNivel(Objeto<?>[][] nivel) {
 		this.posicionObjetos = nivel;
 		comprobarFrases();
 		asignarEstados();
 	}
 
 	public void mover(DireccionEnum direccion) {
-		//comprobarFrases();
-		//mostrarFrases();
-		//mostrarEstados();
-		ArrayList<Objeto> elementosYou = buscarElemento(AccionEnum.YOU);
-		ArrayList<Objeto> elementosWin = buscarElemento(AccionEnum.WIN);
+		ArrayList<Objeto<?>> elementosYou = buscarElemento(AccionEnum.YOU);
 
 		if(elementosYou.size() > 0) {
-			ArrayList<Objeto> elementoAnterior = new ArrayList<Objeto>();
+			ArrayList<Objeto<?>> elementoAnterior = new ArrayList<Objeto<?>>();
 			if (direccion == DireccionEnum.ARRIBA) {
-				for(Objeto you : elementosYou) {
+				for(Objeto<?> you : elementosYou) {
 					if(you.getPosicion().getY() - 1 >= 0) {
 						elementoAnterior.add(posicionObjetos[you.getPosicion().getY()-1][you.getPosicion().getX()]);
 						posicionObjetos[you.getPosicion().getY()-1][you.getPosicion().getX()] = posicionObjetos[you.getPosicion().getY()][you.getPosicion().getX()];
@@ -69,7 +65,7 @@ public class Tablero {
 					}
 				}
 			} else if(direccion == DireccionEnum.ABAJO) {
-				for(Objeto you : elementosYou) {
+				for(Objeto<?> you : elementosYou) {
 					if(you.getPosicion().getY() + 1 <= cantidadFilas - 1) {
 						elementoAnterior.add(posicionObjetos[you.getPosicion().getY()+1][you.getPosicion().getX()]);
 						posicionObjetos[you.getPosicion().getY()+1][you.getPosicion().getX()] = posicionObjetos[you.getPosicion().getY()][you.getPosicion().getX()];
@@ -78,7 +74,7 @@ public class Tablero {
 					}
 				}
 			} else if(direccion == DireccionEnum.DERECHA) {
-				for(Objeto you : elementosYou) {
+				for(Objeto<?> you : elementosYou) {
 					if(you.getPosicion().getX() + 1 <= cantidadColumnas - 1) {
 						elementoAnterior.add(posicionObjetos[you.getPosicion().getY()][you.getPosicion().getX()+1]);
 						posicionObjetos[you.getPosicion().getY()][you.getPosicion().getX()+1] = posicionObjetos[you.getPosicion().getY()][you.getPosicion().getX()];
@@ -88,7 +84,7 @@ public class Tablero {
 					
 				}
 			} else if(direccion == DireccionEnum.IZQUIERDA) {
-				for(Objeto you : elementosYou) {
+				for(Objeto<?> you : elementosYou) {
 					if(you.getPosicion().getX() - 1 >= 0) {
 						elementoAnterior.add(posicionObjetos[you.getPosicion().getY()][you.getPosicion().getX()-1]);
 						posicionObjetos[you.getPosicion().getY()][you.getPosicion().getX()-1] = posicionObjetos[you.getPosicion().getY()][you.getPosicion().getX()];
@@ -101,22 +97,22 @@ public class Tablero {
 			//mostrarTablero();
 			comprobarWin(elementoAnterior);
 			comprobarFrases();
+			//mostrarFrases();
 			asignarEstados();
+			//mostrarEstados();
 			comprobarDefeat();
 		}
-		
-		
 	}
 	
 	private void comprobarDefeat() {
-		ArrayList<Objeto> elementosYou = buscarElemento(AccionEnum.YOU);
+		ArrayList<Objeto<?>> elementosYou = buscarElemento(AccionEnum.YOU);
 		if (elementosYou.size() == 0) {
 			System.out.println("¡¡¡¡ HAS PERDIDO !!!! :( ");
 		}
 	}
 
-	private void comprobarWin(ArrayList<Objeto> elementoAnterior ) {
-		for (Objeto elemento : elementoAnterior) {
+	private void comprobarWin(ArrayList<Objeto<?>> elementoAnterior ) {
+		for (Objeto<?> elemento : elementoAnterior) {
 			if (elemento != null) {
 				for (int i = 0; i < elemento.getEstados().size(); i++) {
 					if(elemento.getEstados().get(i) == AccionEnum.WIN) {
@@ -127,8 +123,8 @@ public class Tablero {
 		}
 	}
 
-	private ArrayList<Objeto> buscarElemento(Object tipo){
-		ArrayList<Objeto> elementos = new ArrayList<Objeto>();
+	private ArrayList<Objeto<?>> buscarElemento(Object tipo){
+		ArrayList<Objeto<?>> elementos = new ArrayList<Objeto<?>>();
 		for (int i = 0; i < posicionObjetos.length; i++) {
 			for (int j = 0; j < posicionObjetos[i].length; j++) {
 				if(posicionObjetos[i][j] != null && 
@@ -156,7 +152,7 @@ public class Tablero {
 							if (posicionObjetos[i][j + 2] != null
 									&& (posicionObjetos[i][j + 2].getTipo() == TipoEnum.ACCION
 											|| posicionObjetos[i][j + 2].getTipo() == TipoEnum.SUJETO)) {
-								Objeto[] frase = { posicionObjetos[i][j], posicionObjetos[i][j + 1],
+								Objeto<?>[] frase = { posicionObjetos[i][j], posicionObjetos[i][j + 1],
 										posicionObjetos[i][j + 2] };
 								frases.add(frase);
 							}
@@ -169,7 +165,7 @@ public class Tablero {
 							if (posicionObjetos[i + 2][j] != null
 									&& (posicionObjetos[i + 2][j].getTipo() == TipoEnum.ACCION
 											|| posicionObjetos[i + 2][j].getTipo() == TipoEnum.SUJETO)) {
-								Objeto[] frase = { posicionObjetos[i][j], posicionObjetos[i + 1][j],
+								Objeto<?>[] frase = { posicionObjetos[i][j], posicionObjetos[i + 1][j],
 										posicionObjetos[i + 2][j] };
 								frases.add(frase);
 							}
@@ -181,18 +177,18 @@ public class Tablero {
 	}
 
 	private void asignarEstados() {
-		ArrayList<Objeto> elementos = new ArrayList<Objeto>();
+		ArrayList<Objeto<?>> elementos = new ArrayList<Objeto<?>>();
 		for (int i = 0; i < posicionObjetos.length; i++) {
 			for (int j = 0; j < posicionObjetos[i].length; j++) {
-				Objeto elemento = posicionObjetos[i][j];
+				Objeto<?> elemento = posicionObjetos[i][j];
 				if (elemento != null && elemento.getTipo() == TipoEnum.ELEMENTO) {
 					elemento.limpiarEstados();
 					elementos.add(elemento);
 				}
 			}
 		}
-		for (Objeto[] frase : frases) {
-			for (Objeto elemento : elementos) {
+		for (Objeto<?>[] frase : frases) {
+			for (Objeto<?> elemento : elementos) {
 				if (elemento.getNombre() == frase[0].getNombre()) {
 					elemento.setEstado((AccionEnum) frase[2].getNombre());
 				}
