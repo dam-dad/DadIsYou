@@ -46,64 +46,94 @@ public class Tablero {
 
 	public void cargarNivel(Objeto[][] nivel) {
 		this.posicionObjetos = nivel;
+		comprobarFrases();
+		asignarEstados();
 	}
 
 	public void mover(DireccionEnum direccion) {
-		comprobarFrases();
-		mostrarFrases();
-		asignarEstados();
-		mostrarEstados();
+		//comprobarFrases();
+		//mostrarFrases();
+		//mostrarEstados();
+		ArrayList<Objeto> elementosYou = buscarElemento(AccionEnum.YOU);
+		ArrayList<Objeto> elementosWin = buscarElemento(AccionEnum.WIN);
+
+		if(elementosYou.size() > 0) {
+			ArrayList<Objeto> elementoAnterior = new ArrayList<Objeto>();
+			if (direccion == DireccionEnum.ARRIBA) {
+				for(Objeto you : elementosYou) {
+					if(you.getPosicion().getY() - 1 >= 0) {
+						elementoAnterior.add(posicionObjetos[you.getPosicion().getY()-1][you.getPosicion().getX()]);
+						posicionObjetos[you.getPosicion().getY()-1][you.getPosicion().getX()] = posicionObjetos[you.getPosicion().getY()][you.getPosicion().getX()];
+						posicionObjetos[you.getPosicion().getY()][you.getPosicion().getX()] = null;
+						you.getPosicion().mover(DireccionEnum.ARRIBA, 1);
+					}
+				}
+			} else if(direccion == DireccionEnum.ABAJO) {
+				for(Objeto you : elementosYou) {
+					if(you.getPosicion().getY() + 1 <= cantidadFilas - 1) {
+						elementoAnterior.add(posicionObjetos[you.getPosicion().getY()+1][you.getPosicion().getX()]);
+						posicionObjetos[you.getPosicion().getY()+1][you.getPosicion().getX()] = posicionObjetos[you.getPosicion().getY()][you.getPosicion().getX()];
+						posicionObjetos[you.getPosicion().getY()][you.getPosicion().getX()] = null;
+						you.getPosicion().mover(DireccionEnum.ABAJO, 1);
+					}
+				}
+			} else if(direccion == DireccionEnum.DERECHA) {
+				for(Objeto you : elementosYou) {
+					if(you.getPosicion().getX() + 1 <= cantidadColumnas - 1) {
+						elementoAnterior.add(posicionObjetos[you.getPosicion().getY()][you.getPosicion().getX()+1]);
+						posicionObjetos[you.getPosicion().getY()][you.getPosicion().getX()+1] = posicionObjetos[you.getPosicion().getY()][you.getPosicion().getX()];
+						posicionObjetos[you.getPosicion().getY()][you.getPosicion().getX()] = null;
+						you.getPosicion().mover(DireccionEnum.DERECHA, 1);
+					}
+					
+				}
+			} else if(direccion == DireccionEnum.IZQUIERDA) {
+				for(Objeto you : elementosYou) {
+					if(you.getPosicion().getX() - 1 >= 0) {
+						elementoAnterior.add(posicionObjetos[you.getPosicion().getY()][you.getPosicion().getX()-1]);
+						posicionObjetos[you.getPosicion().getY()][you.getPosicion().getX()-1] = posicionObjetos[you.getPosicion().getY()][you.getPosicion().getX()];
+						posicionObjetos[you.getPosicion().getY()][you.getPosicion().getX()] = null;
+						you.getPosicion().mover(DireccionEnum.IZQUIERDA, 1);
+					}
+				}
+			}
+			
+			for (Objeto elemento : elementoAnterior) {
+				if (elemento != null) {
+					for (int i = 0; i < elemento.getEstados().size(); i++) {
+						if(elemento.getEstados().get(i) == AccionEnum.WIN) {
+							System.out.println("¡¡¡¡¡ HAS GANADO !!!!!");
+						}
+					}
+				}
+			}
+			comprobarFrases();
+			asignarEstados();
+			
+			elementosYou = buscarElemento(AccionEnum.YOU);
+			if (elementosYou.size() == 0) {
+				System.out.println("¡¡¡¡ HAS PERDIDO !!!! :( ");
+			}
+		}
 		
-		ArrayList<Objeto> elementosYou = new ArrayList<Objeto>();
+		//mostrarTablero();
+	}
+	
+	private ArrayList<Objeto> buscarElemento(Object tipo){
+		ArrayList<Objeto> elementos = new ArrayList<Objeto>();
 		for (int i = 0; i < posicionObjetos.length; i++) {
 			for (int j = 0; j < posicionObjetos[i].length; j++) {
 				if(posicionObjetos[i][j] != null && 
 						posicionObjetos[i][j].getTipo() == TipoEnum.ELEMENTO) {
 					for(int x = 0; x < posicionObjetos[i][j].getEstados().size(); x++ ) {
-						if( posicionObjetos[i][j].getEstados().get(x) == AccionEnum.YOU ) {
-							elementosYou.add(posicionObjetos[i][j]);
+						if( posicionObjetos[i][j].getEstados().get(x) == tipo) {
+							elementos.add(posicionObjetos[i][j]);
 						}
 					}
 				}
 			}
 		}
-		
-		if (direccion == DireccionEnum.ARRIBA) {
-			for(Objeto you : elementosYou) {
-				if(you.getPosicion().getY() - 1 >= 0) {
-					posicionObjetos[you.getPosicion().getY()-1][you.getPosicion().getX()] = posicionObjetos[you.getPosicion().getY()][you.getPosicion().getX()];
-					posicionObjetos[you.getPosicion().getY()][you.getPosicion().getX()] = null;
-					you.getPosicion().mover(DireccionEnum.ARRIBA, 1);
-				}
-			}
-		} else if(direccion == DireccionEnum.ABAJO) {
-			for(Objeto you : elementosYou) {
-				if(you.getPosicion().getY() + 1 <= cantidadFilas - 1) {
-					posicionObjetos[you.getPosicion().getY()+1][you.getPosicion().getX()] = posicionObjetos[you.getPosicion().getY()][you.getPosicion().getX()];
-					posicionObjetos[you.getPosicion().getY()][you.getPosicion().getX()] = null;
-					you.getPosicion().mover(DireccionEnum.ABAJO, 1);
-				}
-			}
-		} else if(direccion == DireccionEnum.DERECHA) {
-			for(Objeto you : elementosYou) {
-				if(you.getPosicion().getX() + 1 <= cantidadColumnas - 1) {
-					posicionObjetos[you.getPosicion().getY()][you.getPosicion().getX()+1] = posicionObjetos[you.getPosicion().getY()][you.getPosicion().getX()];
-					posicionObjetos[you.getPosicion().getY()][you.getPosicion().getX()] = null;
-					you.getPosicion().mover(DireccionEnum.DERECHA, 1);
-				}
-				
-			}
-		} else if(direccion == DireccionEnum.IZQUIERDA) {
-			for(Objeto you : elementosYou) {
-				if(you.getPosicion().getX() - 1 >= 0) {
-					posicionObjetos[you.getPosicion().getY()][you.getPosicion().getX()-1] = posicionObjetos[you.getPosicion().getY()][you.getPosicion().getX()];
-					posicionObjetos[you.getPosicion().getY()][you.getPosicion().getX()] = null;
-					you.getPosicion().mover(DireccionEnum.IZQUIERDA, 1);
-				}
-			}
-		}
-		
-		mostrarTablero();
+		return elementos;
 	}
 
 	private void comprobarFrases() {
