@@ -83,30 +83,50 @@ public class Tablero {
 					}
 					objetosSegundoPlano.remove(objetos[you.getPosicion().getY()][you.getPosicion().getX()]);
 					you.getPosicion().mover(direccion, 1);
+					comprobarDefeat(you);
+					comprobarWin(you);
 				}
 			}
 
 			// mostrarTablero();
-			comprobarWin();
+			//comprobarWin();
 			comprobarFrases();
 			// mostrarFrases();
 			asignarEstados();
 			// mostrarEstados();
-			comprobarDefeat();
+			//comprobarDefeat();
 		}
 	}
 
-	private void comprobarDefeat() {
+	private void comprobarDefeat(Objeto<?> you) {
 		ArrayList<Objeto<?>> elementosYou = buscarElemento(AccionEnum.YOU);
-		if (elementosYou.size() == 0) {
-			System.out.println("¡¡¡¡ HAS PERDIDO !!!! :( ");
-		}
-	}
-
-	private void comprobarWin() {
+		boolean defeat = false;
+		
 		for (Objeto<?> elemento : objetosSegundoPlano) {
 			for (int i = 0; i < elemento.getEstados().size(); i++) {
-				if (elemento.getEstados().get(i) == AccionEnum.WIN) {
+				if (elemento.getEstados().get(i) == AccionEnum.DEFEAT && 
+						elemento.getPosicion().getX() == you.getPosicion().getX()
+						&& elemento.getPosicion().getY() == you.getPosicion().getY()) {
+					defeat = true;
+				}
+			}
+		}
+		
+		if (elementosYou.size() == 0) {
+			defeat = true;
+		}
+		if(defeat) {
+			System.out.println("¡¡¡¡ HAS PERDIDO !!!!");
+		}
+		
+	}
+
+	private void comprobarWin(Objeto<?> you) {
+		for (Objeto<?> elemento : objetosSegundoPlano) {
+			for (int i = 0; i < elemento.getEstados().size(); i++) {
+				if (elemento.getEstados().get(i) == AccionEnum.WIN && 
+						elemento.getPosicion().getX() == you.getPosicion().getX()
+						&& elemento.getPosicion().getY() == you.getPosicion().getY()) {
 					System.out.println("¡¡¡¡ HAS GANADO !!!!");
 				}
 			}
