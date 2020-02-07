@@ -98,27 +98,35 @@ public class Tablero {
 				}
 			}
 			
-			for (Objeto elemento : elementoAnterior) {
-				if (elemento != null) {
-					for (int i = 0; i < elemento.getEstados().size(); i++) {
-						if(elemento.getEstados().get(i) == AccionEnum.WIN) {
-							System.out.println("¡¡¡¡¡ HAS GANADO !!!!!");
-						}
+			//mostrarTablero();
+			comprobarWin(elementoAnterior);
+			comprobarFrases();
+			asignarEstados();
+			comprobarDefeat();
+		}
+		
+		
+	}
+	
+	private void comprobarDefeat() {
+		ArrayList<Objeto> elementosYou = buscarElemento(AccionEnum.YOU);
+		if (elementosYou.size() == 0) {
+			System.out.println("¡¡¡¡ HAS PERDIDO !!!! :( ");
+		}
+	}
+
+	private void comprobarWin(ArrayList<Objeto> elementoAnterior ) {
+		for (Objeto elemento : elementoAnterior) {
+			if (elemento != null) {
+				for (int i = 0; i < elemento.getEstados().size(); i++) {
+					if(elemento.getEstados().get(i) == AccionEnum.WIN) {
+						System.out.println("¡¡¡¡¡ HAS GANADO !!!!!");
 					}
 				}
 			}
-			comprobarFrases();
-			asignarEstados();
-			
-			elementosYou = buscarElemento(AccionEnum.YOU);
-			if (elementosYou.size() == 0) {
-				System.out.println("¡¡¡¡ HAS PERDIDO !!!! :( ");
-			}
 		}
-		
-		//mostrarTablero();
 	}
-	
+
 	private ArrayList<Objeto> buscarElemento(Object tipo){
 		ArrayList<Objeto> elementos = new ArrayList<Objeto>();
 		for (int i = 0; i < posicionObjetos.length; i++) {
