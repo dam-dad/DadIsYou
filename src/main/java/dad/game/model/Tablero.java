@@ -69,63 +69,83 @@ public class Tablero {
 			for (Objeto<?> you : elementosYou) {
 				if (you.getPosicion().getY() + y >= 0 && you.getPosicion().getY() + y < cantidadFilas
 						&& you.getPosicion().getX() + x >= 0 && you.getPosicion().getX() + x < cantidadColumnas) {
-					if (objetos[you.getPosicion().getY() + y][you.getPosicion().getX() + x] != null) {
-						objetosSegundoPlano.add(objetos[you.getPosicion().getY() + y][you.getPosicion().getX() + x]);
-					}
-					objetos[you.getPosicion().getY() + y][you.getPosicion().getX()
-							+ x] = objetos[you.getPosicion().getY()][you.getPosicion().getX()];
-					objetos[you.getPosicion().getY()][you.getPosicion().getX()] = null;
-					for (Objeto<?> objetoSegundoPlano : objetosSegundoPlano) {
-						if (objetoSegundoPlano.getPosicion().getX() == you.getPosicion().getX()
-								&& objetoSegundoPlano.getPosicion().getY() == you.getPosicion().getY()) {
-							objetos[you.getPosicion().getY()][you.getPosicion().getX()] = objetoSegundoPlano;
+					if (comprobarStop(you, x, y)) { // TRUE SI NO PUEDO PASAR
+						if (objetos[you.getPosicion().getY() + y][you.getPosicion().getX() + x] != null) {
+
+							objetosSegundoPlano
+									.add(objetos[you.getPosicion().getY() + y][you.getPosicion().getX() + x]);
 						}
+						objetos[you.getPosicion().getY() + y][you.getPosicion().getX()
+								+ x] = objetos[you.getPosicion().getY()][you.getPosicion().getX()];
+						objetos[you.getPosicion().getY()][you.getPosicion().getX()] = null;
+						for (Objeto<?> objetoSegundoPlano : objetosSegundoPlano) {
+							if (objetoSegundoPlano.getPosicion().getX() == you.getPosicion().getX()
+									&& objetoSegundoPlano.getPosicion().getY() == you.getPosicion().getY()) {
+								objetos[you.getPosicion().getY()][you.getPosicion().getX()] = objetoSegundoPlano;
+							}
+						}
+						objetosSegundoPlano.remove(objetos[you.getPosicion().getY()][you.getPosicion().getX()]);
+						you.getPosicion().mover(direccion, 1);
+						comprobarDefeat(you);
+						comprobarWin(you);
 					}
-					objetosSegundoPlano.remove(objetos[you.getPosicion().getY()][you.getPosicion().getX()]);
-					you.getPosicion().mover(direccion, 1);
-					comprobarDefeat(you);
-					comprobarWin(you);
 				}
 			}
 
 			// mostrarTablero();
-			//comprobarWin();
+			// comprobarWin();
 			comprobarFrases();
 			// mostrarFrases();
 			asignarEstados();
 			// mostrarEstados();
-			//comprobarDefeat();
+			// comprobarDefeat();
 		}
+	}
+
+	private boolean comprobarStop(Objeto<?> you, int direccionX, int direccionY) {
+		boolean stop = true;
+		Objeto<?> elemento = objetos[you.getPosicion().getY() + direccionY][you.getPosicion().getX()+ direccionX];
+		if(elemento != null) {
+			ArrayList<AccionEnum> estados = elemento.getEstados();
+
+			for (int i = 0; i < estados.size(); i++) {
+				if (estados.get(i) == AccionEnum.STOP) {
+					stop = false;
+				}
+			}
+		}
+		
+		return stop;
 	}
 
 	private void comprobarDefeat(Objeto<?> you) {
 		ArrayList<Objeto<?>> elementosYou = buscarElemento(AccionEnum.YOU);
 		boolean defeat = false;
-		
+
 		for (Objeto<?> elemento : objetosSegundoPlano) {
 			for (int i = 0; i < elemento.getEstados().size(); i++) {
-				if (elemento.getEstados().get(i) == AccionEnum.DEFEAT && 
-						elemento.getPosicion().getX() == you.getPosicion().getX()
+				if (elemento.getEstados().get(i) == AccionEnum.DEFEAT
+						&& elemento.getPosicion().getX() == you.getPosicion().getX()
 						&& elemento.getPosicion().getY() == you.getPosicion().getY()) {
 					defeat = true;
 				}
 			}
 		}
-		
+
 		if (elementosYou.size() == 0) {
 			defeat = true;
 		}
-		if(defeat) {
+		if (defeat) {
 			System.out.println("¡¡¡¡ HAS PERDIDO !!!!");
 		}
-		
+
 	}
 
 	private void comprobarWin(Objeto<?> you) {
 		for (Objeto<?> elemento : objetosSegundoPlano) {
 			for (int i = 0; i < elemento.getEstados().size(); i++) {
-				if (elemento.getEstados().get(i) == AccionEnum.WIN && 
-						elemento.getPosicion().getX() == you.getPosicion().getX()
+				if (elemento.getEstados().get(i) == AccionEnum.WIN
+						&& elemento.getPosicion().getX() == you.getPosicion().getX()
 						&& elemento.getPosicion().getY() == you.getPosicion().getY()) {
 					System.out.println("¡¡¡¡ HAS GANADO !!!!");
 				}
