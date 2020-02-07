@@ -70,33 +70,38 @@ public class Tablero {
 		
 		if (direccion == DireccionEnum.ARRIBA) {
 			for(Objeto you : elementosYou) {
-				posicionObjetos[you.getPosicion().getY()-1][you.getPosicion().getX()] = posicionObjetos[you.getPosicion().getY()][you.getPosicion().getX()];
-				posicionObjetos[you.getPosicion().getY()][you.getPosicion().getX()] = null;
-				you.getPosicion().mover(DireccionEnum.ARRIBA, 1);
+				if(you.getPosicion().getY() - 1 >= 0) {
+					posicionObjetos[you.getPosicion().getY()-1][you.getPosicion().getX()] = posicionObjetos[you.getPosicion().getY()][you.getPosicion().getX()];
+					posicionObjetos[you.getPosicion().getY()][you.getPosicion().getX()] = null;
+					you.getPosicion().mover(DireccionEnum.ARRIBA, 1);
+				}
 			}
 		} else if(direccion == DireccionEnum.ABAJO) {
 			for(Objeto you : elementosYou) {
-				posicionObjetos[you.getPosicion().getY()+1][you.getPosicion().getX()] = posicionObjetos[you.getPosicion().getY()][you.getPosicion().getX()];
-				posicionObjetos[you.getPosicion().getY()][you.getPosicion().getX()] = null;
-				you.getPosicion().mover(DireccionEnum.ABAJO, 1);
+				if(you.getPosicion().getY() + 1 <= cantidadFilas - 1) {
+					posicionObjetos[you.getPosicion().getY()+1][you.getPosicion().getX()] = posicionObjetos[you.getPosicion().getY()][you.getPosicion().getX()];
+					posicionObjetos[you.getPosicion().getY()][you.getPosicion().getX()] = null;
+					you.getPosicion().mover(DireccionEnum.ABAJO, 1);
+				}
 			}
 		} else if(direccion == DireccionEnum.DERECHA) {
 			for(Objeto you : elementosYou) {
-				System.out.println("X: "+you.getPosicion().getX()+" Y: "+you.getPosicion().getY());
-				posicionObjetos[you.getPosicion().getY()][you.getPosicion().getX()+1] = posicionObjetos[you.getPosicion().getY()][you.getPosicion().getX()];
-				posicionObjetos[you.getPosicion().getY()][you.getPosicion().getX()] = null;
-				System.out.println("Nuevo: " + posicionObjetos[you.getPosicion().getY()][you.getPosicion().getX()+1]);
-				System.out.println("Antiguo: " + posicionObjetos[you.getPosicion().getY()][you.getPosicion().getX()]);
-				you.getPosicion().mover(DireccionEnum.DERECHA, 1);
+				if(you.getPosicion().getX() + 1 <= cantidadColumnas - 1) {
+					posicionObjetos[you.getPosicion().getY()][you.getPosicion().getX()+1] = posicionObjetos[you.getPosicion().getY()][you.getPosicion().getX()];
+					posicionObjetos[you.getPosicion().getY()][you.getPosicion().getX()] = null;
+					you.getPosicion().mover(DireccionEnum.DERECHA, 1);
+				}
+				
 			}
 		} else if(direccion == DireccionEnum.IZQUIERDA) {
 			for(Objeto you : elementosYou) {
-				posicionObjetos[you.getPosicion().getY()][you.getPosicion().getX()-1] = posicionObjetos[you.getPosicion().getY()][you.getPosicion().getX()];
-				posicionObjetos[you.getPosicion().getY()][you.getPosicion().getX()] = null;
-				you.getPosicion().mover(DireccionEnum.IZQUIERDA, 1);
+				if(you.getPosicion().getX() - 1 >= 0) {
+					posicionObjetos[you.getPosicion().getY()][you.getPosicion().getX()-1] = posicionObjetos[you.getPosicion().getY()][you.getPosicion().getX()];
+					posicionObjetos[you.getPosicion().getY()][you.getPosicion().getX()] = null;
+					you.getPosicion().mover(DireccionEnum.IZQUIERDA, 1);
+				}
 			}
 		}
-		// COMPROBAR SALIR DEL MAPA
 		
 		mostrarTablero();
 	}
