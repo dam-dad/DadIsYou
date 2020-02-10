@@ -69,9 +69,8 @@ public class Tablero {
 			for (Objeto<?> you : elementosYou) {
 				if (you.getPosicion().getY() + y >= 0 && you.getPosicion().getY() + y < cantidadFilas
 						&& you.getPosicion().getX() + x >= 0 && you.getPosicion().getX() + x < cantidadColumnas) {
-					if (comprobarStop(you, x, y)) { // TRUE SI NO PUEDO PASAR
+					if (comprobarStop(you, x, y)) { // true si no pude pasar
 						if (objetos[you.getPosicion().getY() + y][you.getPosicion().getX() + x] != null) {
-
 							objetosSegundoPlano
 									.add(objetos[you.getPosicion().getY() + y][you.getPosicion().getX() + x]);
 						}
@@ -91,21 +90,18 @@ public class Tablero {
 					}
 				}
 			}
-
 			// mostrarTablero();
-			// comprobarWin();
 			comprobarFrases();
 			// mostrarFrases();
 			asignarEstados();
 			// mostrarEstados();
-			// comprobarDefeat();
 		}
 	}
 
 	private boolean comprobarStop(Objeto<?> you, int direccionX, int direccionY) {
 		boolean stop = true;
-		Objeto<?> elemento = objetos[you.getPosicion().getY() + direccionY][you.getPosicion().getX()+ direccionX];
-		if(elemento != null) {
+		Objeto<?> elemento = objetos[you.getPosicion().getY() + direccionY][you.getPosicion().getX() + direccionX];
+		if (elemento != null) {
 			ArrayList<AccionEnum> estados = elemento.getEstados();
 
 			for (int i = 0; i < estados.size(); i++) {
@@ -114,7 +110,6 @@ public class Tablero {
 				}
 			}
 		}
-		
 		return stop;
 	}
 
