@@ -56,37 +56,38 @@ public class Tablero {
 		ArrayList<Objeto<?>> elementosYou = buscarElemento(AccionEnum.YOU);
 
 		if (elementosYou.size() > 0) {
-			int x = 0, y = 0;
-			if (direccion == DireccionEnum.ARRIBA) {
-				y = -1;
-			} else if (direccion == DireccionEnum.ABAJO) {
-				y = 1;
-			} else if (direccion == DireccionEnum.DERECHA) {
-				x = 1;
-			} else if (direccion == DireccionEnum.IZQUIERDA) {
-				x = -1;
-			}
+			int[] direccionXY = direccionXY(direccion);
 			for (Objeto<?> you : elementosYou) {
-				if (you.getPosicion().getY() + y >= 0 && you.getPosicion().getY() + y < cantidadFilas
-						&& you.getPosicion().getX() + x >= 0 && you.getPosicion().getX() + x < cantidadColumnas) {
-					if (comprobarStop(you, x, y)) { // true si no pude pasar
-						if (objetos[you.getPosicion().getY() + y][you.getPosicion().getX() + x] != null) {
-							objetosSegundoPlano
-									.add(objetos[you.getPosicion().getY() + y][you.getPosicion().getX() + x]);
+				int posObjetoYouX = you.getPosicion().getX();
+				int posObjetoYouY = you.getPosicion().getY();
+				int posNuevaPosicionX = posObjetoYouX + direccionXY[0];
+				int posNuevaPosicionY = posObjetoYouY + direccionXY[1];
+				// Comprobar limite del mapa
+				if (comprobarBordeMapa(posNuevaPosicionX, posNuevaPosicionY)) {
+					// Comprobar si la nueva posicion es STOP
+					if (comprobarStop(you, direccionXY[0], direccionXY[1])) { // true puede pasar
+						Objeto elementoAnterior = objetos[posObjetoYouY][posObjetoYouX];
+						Objeto nuevaPosicion = objetos[posNuevaPosicionY][posNuevaPosicionX];
+						if (nuevaPosicion != null) {
+							moverColindantes(direccion, you, false);
 						}
-						objetos[you.getPosicion().getY() + y][you.getPosicion().getX()
-								+ x] = objetos[you.getPosicion().getY()][you.getPosicion().getX()];
-						objetos[you.getPosicion().getY()][you.getPosicion().getX()] = null;
-						for (Objeto<?> objetoSegundoPlano : objetosSegundoPlano) {
-							if (objetoSegundoPlano.getPosicion().getX() == you.getPosicion().getX()
-									&& objetoSegundoPlano.getPosicion().getY() == you.getPosicion().getY()) {
-								objetos[you.getPosicion().getY()][you.getPosicion().getX()] = objetoSegundoPlano;
+						// Si puede moverse
+						if (objetos[posNuevaPosicionY][posNuevaPosicionX] == null) {
+							objetos[posNuevaPosicionY][posNuevaPosicionX] = elementoAnterior; // Movimiento
+							objetos[posObjetoYouY][posObjetoYouX] = null;
+							// Colocar el objeto que está en segundo plano (si lo hubiese)
+							for (Objeto<?> objetoSegundoPlano : objetosSegundoPlano) {
+								if (objetoSegundoPlano.getPosicion().getX() == you.getPosicion().getX()
+										&& objetoSegundoPlano.getPosicion().getY() == you.getPosicion().getY()) {
+									objetos[posObjetoYouY][posObjetoYouX] = objetoSegundoPlano;
+								}
 							}
+							objetosSegundoPlano.remove(elementoAnterior);
+							you.getPosicion().mover(direccion, 1);
+							System.out.println(objetosSegundoPlano);
+							comprobarDefeat(you);
+							comprobarWin(you);
 						}
-						objetosSegundoPlano.remove(objetos[you.getPosicion().getY()][you.getPosicion().getX()]);
-						you.getPosicion().mover(direccion, 1);
-						comprobarDefeat(you);
-						comprobarWin(you);
 					}
 				}
 			}
@@ -98,12 +99,57 @@ public class Tablero {
 		}
 	}
 
-	private boolean comprobarStop(Objeto<?> you, int direccionX, int direccionY) {
-		boolean stop = true;
-		Objeto<?> elemento = objetos[you.getPosicion().getY() + direccionY][you.getPosicion().getX() + direccionX];
-		if (elemento != null) {
-			ArrayList<AccionEnum> estados = elemento.getEstados();
+	private void moverColindantes(DireccionEnum direccion, Objeto<?> objetoEmpujado, boolean mover) {
+		int[] direccionXY = direccionXY(direccion);
+		int posObjetoEmpujadoX = objetoEmpujado.getPosicion().getX();
+		int posObjetoEmpujadoY = objetoEmpujado.getPosicion().getY();
+		int posNuevaPosicionX = posObjetoEmpujadoX + direccionXY[0];
+		int posNuevaPosicionY = posObjetoEmpujadoY + direccionXY[1];
+		if (comprobarBordeMapa(posNuevaPosicionX, posNuevaPosicionY)) {
+			Objeto<?> nuevaPosicion = objetos[posNuevaPosicionY][posNuevaPosicionX];
+			//System.out.println("seré " + nuevaPosicion);
+			if (nuevaPosicion == null) {
+				objetos[posNuevaPosicionY][posNuevaPosicionX] = objetoEmpujado; // Movimiento
+				objetos[posObjetoEmpujadoY][posObjetoEmpujadoX] = null;
+				objetoEmpujado.getPosicion().mover(direccion, 1);
+			} else {
+				if (comprobarStop(objetoEmpujado, direccionXY[0], direccionXY[1])) { // true pude pasar
+					boolean isPush = false;
+					for (int i = 0; i < nuevaPosicion.getEstados().size(); i++) {
+						if (nuevaPosicion.getEstados().get(i) == AccionEnum.PUSH) {
+							isPush = true;
+						}
+					}
+					// La nueva posicion es PUSH
+					if (nuevaPosicion.getTipo() == TipoEnum.SUJETO || nuevaPosicion.getTipo() == TipoEnum.VERBO
+							|| nuevaPosicion.getTipo() == TipoEnum.ACCION || isPush) {
+						if (mover) {
+							//System.out.println(objetos[posObjetoEmpujadoY][posObjetoEmpujadoX]);
+							//mostrarTablero();
+							moverColindantes(direccion, objetos[posObjetoEmpujadoY][posObjetoEmpujadoX], true);
+							objetos[posNuevaPosicionY][posNuevaPosicionX] = objetoEmpujado; // Movimiento
+							objetos[posObjetoEmpujadoY][posObjetoEmpujadoX] = null;
+							objetoEmpujado.getPosicion().mover(direccion, 1);
+						} else {
+							moverColindantes(direccion, objetos[posNuevaPosicionY][posNuevaPosicionX], true);
+						}
+					} else {
+						objetosSegundoPlano.add(nuevaPosicion);
+						objetos[posNuevaPosicionY][posNuevaPosicionX] = objetoEmpujado; // Movimiento
+						objetos[posObjetoEmpujadoY][posObjetoEmpujadoX] = null;
+						objetoEmpujado.getPosicion().mover(direccion, 1);
+					}
+				}
+			}
+		}
+	}
 
+	private boolean comprobarStop(Objeto<?> elementoAMover, int direccionX, int direccionY) {
+		boolean stop = true;
+		Objeto<?> elementoColision = objetos[elementoAMover.getPosicion().getY() + direccionY][elementoAMover
+				.getPosicion().getX() + direccionX];
+		if (elementoColision != null) {
+			ArrayList<AccionEnum> estados = elementoColision.getEstados();
 			for (int i = 0; i < estados.size(); i++) {
 				if (estados.get(i) == AccionEnum.STOP) {
 					stop = false;
@@ -116,7 +162,6 @@ public class Tablero {
 	private void comprobarDefeat(Objeto<?> you) {
 		ArrayList<Objeto<?>> elementosYou = buscarElemento(AccionEnum.YOU);
 		boolean defeat = false;
-
 		for (Objeto<?> elemento : objetosSegundoPlano) {
 			for (int i = 0; i < elemento.getEstados().size(); i++) {
 				if (elemento.getEstados().get(i) == AccionEnum.DEFEAT
@@ -126,14 +171,12 @@ public class Tablero {
 				}
 			}
 		}
-
 		if (elementosYou.size() == 0) {
 			defeat = true;
 		}
 		if (defeat) {
 			System.out.println("¡¡¡¡ HAS PERDIDO !!!!");
 		}
-
 	}
 
 	private void comprobarWin(Objeto<?> you) {
@@ -162,6 +205,24 @@ public class Tablero {
 			}
 		}
 		return elementos;
+	}
+
+	private int[] direccionXY(DireccionEnum direccion) {
+		int x = 0, y = 0;
+		if (direccion == DireccionEnum.ARRIBA) {
+			y = -1;
+		} else if (direccion == DireccionEnum.ABAJO) {
+			y = 1;
+		} else if (direccion == DireccionEnum.DERECHA) {
+			x = 1;
+		} else if (direccion == DireccionEnum.IZQUIERDA) {
+			x = -1;
+		}
+		return new int[] { x, y };
+	}
+
+	private boolean comprobarBordeMapa(int x, int y) {
+		return y >= 0 && y < cantidadFilas && x >= 0 && x < cantidadColumnas;
 	}
 
 	private void comprobarFrases() {

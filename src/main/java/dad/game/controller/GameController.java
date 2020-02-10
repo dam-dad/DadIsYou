@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import dad.App;
 import dad.game.model.DireccionEnum;
 import dad.game.model.Nivel;
 import dad.game.model.Objeto;
@@ -49,8 +48,9 @@ public class GameController implements Initializable {
 		gameGrid.setBackground(
 				new Background(new BackgroundImage(new Image("/imagenes/niveles/uno.png"), BackgroundRepeat.NO_REPEAT,
 						BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT)));
-		tablero = new Tablero(App.getCantidadColumnas(), App.getCantidadFilas());
-		tablero.cargarNivel(Nivel.uno());
+		Objeto<?>[][] nivel = Nivel.uno();
+		tablero = new Tablero(nivel[0].length, nivel.length);
+		tablero.cargarNivel(nivel);
 		refrescarTablero();
 	}
 

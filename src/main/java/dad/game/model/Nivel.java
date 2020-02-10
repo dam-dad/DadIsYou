@@ -6,18 +6,18 @@ public class Nivel {
 		String[] nivel= {
 				"························",
 				"························",
-				"··········diy···········",
-				"························",
+				"··········AAAA··········",
+				"··AAAA····AAAA····diy···",
+				"··········AAAA··········",
 				"····WWWWWWWWWWWWWWWW····",
-				"············A···········",
-				"·····D······A·····F·····",
-				"············A···········",
+				"············L···········",
+				"·····D······L·····F·····",
+				"············L···········",
 				"····WWWWWWWWWWWWWWWW····",
-				"························",
 				"··········fiw···········",
 				"····R···················",
 				"··········pis···········",
-				"··········aim···········",
+				"··········lim···········",
 				"··········rie··········"
 		};
 		return parsear(nivel);
@@ -48,6 +48,8 @@ public class Nivel {
 					mapa[i][j] = new Objeto<SujetoEnum>(SujetoEnum.WATER, TipoEnum.ELEMENTO, letra, posicion);
 				} else if (letra == 'R') {
 					mapa[i][j] = new Objeto<SujetoEnum>(SujetoEnum.ROCK, TipoEnum.ELEMENTO, letra, posicion);
+				} else if (letra == 'L') {
+					mapa[i][j] = new Objeto<SujetoEnum>(SujetoEnum.LAVA, TipoEnum.ELEMENTO, letra, posicion);
 				} else if (letra == 'd') {
 					mapa[i][j] = new Objeto<SujetoEnum>(SujetoEnum.DAD, TipoEnum.SUJETO, letra, posicion);
 				} else if (letra == 'f') {
@@ -58,6 +60,8 @@ public class Nivel {
 					mapa[i][j] = new Objeto<SujetoEnum>(SujetoEnum.ROCK, TipoEnum.SUJETO, letra, posicion);
 				} else if (letra == 'a') {
 					mapa[i][j] = new Objeto<SujetoEnum>(SujetoEnum.WATER, TipoEnum.SUJETO, letra, posicion);
+				} else if (letra == 'l') {
+					mapa[i][j] = new Objeto<SujetoEnum>(SujetoEnum.LAVA, TipoEnum.SUJETO, letra, posicion);
 				} else if (letra == 'y') {
 					mapa[i][j] = new Objeto<AccionEnum>(AccionEnum.YOU, TipoEnum.ACCION, letra, posicion);
 				} else if (letra == 'w') {

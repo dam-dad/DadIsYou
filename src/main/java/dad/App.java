@@ -9,8 +9,6 @@ public class App extends Application {
 	
 	private static String ruta = "/imagenes/objetos/";
 	private static String imagenExtension = ".gif";
-	private static int cantidadColumnas = 24;
-	private static int cantidadFilas = 15;
 	
 	GameController controller;
 
@@ -21,7 +19,7 @@ public class App extends Application {
 		Scene scene = new Scene(controller.getView());
 
 		primaryStage.setTitle("DAD IS YOU");
-		primaryStage.setFullScreen(true);
+		//primaryStage.setFullScreen(true);
 		primaryStage.setScene(scene);
 		primaryStage.show();
 		
@@ -38,14 +36,6 @@ public class App extends Application {
 	
 	public static String getImagenExtension() {
 		return imagenExtension;
-	}
-
-	public static int getCantidadColumnas() {
-		return cantidadColumnas;
-	}
-
-	public static int getCantidadFilas() {
-		return cantidadFilas;
 	}
 	
 }
