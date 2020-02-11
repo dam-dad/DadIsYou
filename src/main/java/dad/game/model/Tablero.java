@@ -11,15 +11,15 @@ public class Tablero {
 	private ArrayList<Objeto<?>> objetosSegundoPlano;
 
 	public Tablero() {
-	}
-
-	public Tablero(int cantidadColumnas, int cantidadFilas) {
-		this.cantidadColumnas = cantidadColumnas;
-		this.cantidadFilas = cantidadFilas;
 		this.objetos = new Objeto[cantidadColumnas][cantidadFilas];
 		this.historial = new ArrayList<Objeto<?>[][]>();
 		this.frases = new ArrayList<Objeto<?>[]>();
 		this.objetosSegundoPlano = new ArrayList<Objeto<?>>();
+	}
+
+	public Tablero(Objeto<?>[][] nivel) {
+		this();
+		this.cargarNivel(nivel);
 	}
 
 	public int getCantidadColumnas() {
@@ -47,9 +47,12 @@ public class Tablero {
 	}
 
 	public void cargarNivel(Objeto<?>[][] nivel) {
+		this.cantidadFilas = nivel.length;
+		this.cantidadColumnas = nivel[0].length;
 		this.objetos = nivel;
 		comprobarFrases();
 		asignarEstados();
+		System.out.println("TO DO : arreglar empujar varios objetos");
 	}
 
 	public void mover(DireccionEnum direccion) {
@@ -66,14 +69,12 @@ public class Tablero {
 				if (comprobarBordeMapa(posNuevaPosicionX, posNuevaPosicionY)) {
 					// Comprobar si la nueva posicion es STOP
 					if (comprobarStop(you, direccionXY[0], direccionXY[1])) { // true puede pasar
-						Objeto elementoAnterior = objetos[posObjetoYouY][posObjetoYouX];
-						Objeto nuevaPosicion = objetos[posNuevaPosicionY][posNuevaPosicionX];
-						if (nuevaPosicion != null) {
+						if (objetos[posNuevaPosicionY][posNuevaPosicionX] != null) {
 							moverColindantes(direccion, you, false);
 						}
 						// Si puede moverse
 						if (objetos[posNuevaPosicionY][posNuevaPosicionX] == null) {
-							objetos[posNuevaPosicionY][posNuevaPosicionX] = elementoAnterior; // Movimiento
+							objetos[posNuevaPosicionY][posNuevaPosicionX] = objetos[posObjetoYouY][posObjetoYouX]; // Movimiento
 							objetos[posObjetoYouY][posObjetoYouX] = null;
 							// Colocar el objeto que está en segundo plano (si lo hubiese)
 							for (Objeto<?> objetoSegundoPlano : objetosSegundoPlano) {
@@ -82,9 +83,8 @@ public class Tablero {
 									objetos[posObjetoYouY][posObjetoYouX] = objetoSegundoPlano;
 								}
 							}
-							objetosSegundoPlano.remove(elementoAnterior);
+							objetosSegundoPlano.remove(objetos[posObjetoYouY][posObjetoYouX]);
 							you.getPosicion().mover(direccion, 1);
-							System.out.println(objetosSegundoPlano);
 							comprobarDefeat(you);
 							comprobarWin(you);
 						}
@@ -107,7 +107,6 @@ public class Tablero {
 		int posNuevaPosicionY = posObjetoEmpujadoY + direccionXY[1];
 		if (comprobarBordeMapa(posNuevaPosicionX, posNuevaPosicionY)) {
 			Objeto<?> nuevaPosicion = objetos[posNuevaPosicionY][posNuevaPosicionX];
-			//System.out.println("seré " + nuevaPosicion);
 			if (nuevaPosicion == null) {
 				objetos[posNuevaPosicionY][posNuevaPosicionX] = objetoEmpujado; // Movimiento
 				objetos[posObjetoEmpujadoY][posObjetoEmpujadoX] = null;
@@ -124,9 +123,7 @@ public class Tablero {
 					if (nuevaPosicion.getTipo() == TipoEnum.SUJETO || nuevaPosicion.getTipo() == TipoEnum.VERBO
 							|| nuevaPosicion.getTipo() == TipoEnum.ACCION || isPush) {
 						if (mover) {
-							//System.out.println(objetos[posObjetoEmpujadoY][posObjetoEmpujadoX]);
-							//mostrarTablero();
-							moverColindantes(direccion, objetos[posObjetoEmpujadoY][posObjetoEmpujadoX], true);
+							moverColindantes(direccion, objetos[posNuevaPosicionY][posNuevaPosicionX], true);
 							objetos[posNuevaPosicionY][posNuevaPosicionX] = objetoEmpujado; // Movimiento
 							objetos[posObjetoEmpujadoY][posObjetoEmpujadoX] = null;
 							objetoEmpujado.getPosicion().mover(direccion, 1);
@@ -135,9 +132,12 @@ public class Tablero {
 						}
 					} else {
 						objetosSegundoPlano.add(nuevaPosicion);
-						objetos[posNuevaPosicionY][posNuevaPosicionX] = objetoEmpujado; // Movimiento
-						objetos[posObjetoEmpujadoY][posObjetoEmpujadoX] = null;
-						objetoEmpujado.getPosicion().mover(direccion, 1);
+						objetos[posNuevaPosicionY][posNuevaPosicionX] = null;
+						if (mover) {
+							objetos[posNuevaPosicionY][posNuevaPosicionX] = objetoEmpujado; // Movimiento
+							objetos[posObjetoEmpujadoY][posObjetoEmpujadoX] = null;
+							objetoEmpujado.getPosicion().mover(direccion, 1);
+						}
 					}
 				}
 			}

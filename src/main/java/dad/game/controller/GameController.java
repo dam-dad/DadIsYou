@@ -49,8 +49,7 @@ public class GameController implements Initializable {
 				new Background(new BackgroundImage(new Image("/imagenes/niveles/uno.png"), BackgroundRepeat.NO_REPEAT,
 						BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT)));
 		Objeto<?>[][] nivel = Nivel.uno();
-		tablero = new Tablero(nivel[0].length, nivel.length);
-		tablero.cargarNivel(nivel);
+		tablero = new Tablero(nivel);
 		refrescarTablero();
 	}
 
