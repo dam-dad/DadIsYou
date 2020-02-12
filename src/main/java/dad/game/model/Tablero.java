@@ -185,7 +185,7 @@ public class Tablero {
 		}
 		if (defeat) {
 			System.out.println("¡¡¡¡ HAS PERDIDO !!!!");
-			App.getController().perder();
+			App.getGameController().perder();
 		}
 	}
 
@@ -196,7 +196,7 @@ public class Tablero {
 						&& elemento.getPosicion().getX() == you.getPosicion().getX()
 						&& elemento.getPosicion().getY() == you.getPosicion().getY()) {
 					System.out.println("¡¡¡¡ HAS GANADO !!!!");
-					App.getController().ganar();
+					App.getGameController().ganar();
 				}
 			}
 		}

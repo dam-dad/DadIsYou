@@ -1,36 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 
-<VBox fx:id="root" alignment="CENTER" spacing="10.0" styleClass="menuPrincipal" stylesheets="@../estilos/estilos.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox fx:id="root" alignment="CENTER" prefHeight="500.0" prefWidth="880.0" spacing="10.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label alignment="CENTER" prefWidth="300.0" text="Iniciar partida" textFill="WHITE">
+      <Label text="DAD  IS  YOU" textFill="WHITE">
          <font>
-            <Font name="Monospaced Regular" size="24.0" />
+            <Font name="Comic Sans MS" size="59.0" />
          </font>
-         <padding>
-            <Insets bottom="5.0" top="5.0" />
-         </padding>
+         <VBox.margin>
+            <Insets bottom="50.0" />
+         </VBox.margin>
       </Label>
-      <Label alignment="CENTER" prefWidth="300.0" text="Ajustes" textFill="WHITE">
-         <font>
-            <Font name="Monospaced Regular" size="24.0" />
-         </font>
-         <padding>
-            <Insets bottom="5.0" top="5.0" />
-         </padding>
-      </Label>
-      <Label alignment="CENTER" prefWidth="300.0" text="Salir del juego" textFill="WHITE">
-         <font>
-            <Font name="Monospaced Regular" size="24.0" />
-         </font>
-         <padding>
-            <Insets bottom="5.0" top="5.0" />
-         </padding>
-      </Label>
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0" styleClass="menuPrincipal" stylesheets="@../estilos/estilos.css">
+         <children>
+            <Button mnemonicParsing="false" onAction="#onIniciarPartidaAction" prefWidth="300.0" text="Iniciar partida" textFill="WHITE">
+               <font>
+                  <Font name="Monospaced Regular" size="24.0" />
+               </font>
+               <padding>
+                  <Insets bottom="5.0" top="5.0" />
+               </padding>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#onAjustesAction" prefWidth="300.0" text="Ajustes" textFill="WHITE">
+               <font>
+                  <Font name="Monospaced Regular" size="24.0" />
+               </font>
+               <padding>
+                  <Insets bottom="5.0" top="5.0" />
+               </padding>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#onSalirJuegoAction" prefWidth="300.0" text="Salir del juego" textFill="WHITE">
+               <font>
+                  <Font name="Monospaced Regular" size="24.0" />
+               </font>
+               <padding>
+                  <Insets bottom="5.0" top="5.0" />
+               </padding>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+         </children>
+      </VBox>
    </children>
 </VBox>
