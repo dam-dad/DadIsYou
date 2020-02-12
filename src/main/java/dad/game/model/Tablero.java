@@ -91,6 +91,7 @@ public class Tablero {
 					}
 				}
 			}
+			
 			// mostrarTablero();
 			comprobarFrases();
 			// mostrarFrases();
