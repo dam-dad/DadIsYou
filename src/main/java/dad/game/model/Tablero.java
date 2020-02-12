@@ -92,13 +92,14 @@ public class Tablero {
 					}
 				}
 			}
-			
-			// mostrarTablero();
-			comprobarFrases();
-			// mostrarFrases();
-			asignarEstados();
-			// mostrarEstados();
 		}
+
+		// mostrarTablero();
+		comprobarFrases();
+		//mostrarFrases();
+		asignarEstados();
+		// mostrarEstados();
+		comprobarDefeat(null);
 	}
 
 	private void moverColindantes(DireccionEnum direccion, Objeto<?> objetoEmpujado, boolean mover) {
@@ -126,9 +127,12 @@ public class Tablero {
 							|| nuevaPosicion.getTipo() == TipoEnum.ACCION || isPush) {
 						if (mover) {
 							moverColindantes(direccion, objetos[posNuevaPosicionY][posNuevaPosicionX], true);
-							objetos[posNuevaPosicionY][posNuevaPosicionX] = objetoEmpujado; // Movimiento
-							objetos[posObjetoEmpujadoY][posObjetoEmpujadoX] = null;
-							objetoEmpujado.getPosicion().mover(direccion, 1);
+							if (objetos[posNuevaPosicionY][posNuevaPosicionX] == null) {
+								objetos[posNuevaPosicionY][posNuevaPosicionX] = objetoEmpujado; // Movimiento
+								objetos[posObjetoEmpujadoY][posObjetoEmpujadoX] = null;
+								objetoEmpujado.getPosicion().mover(direccion, 1);		
+							}
+							
 						} else {
 							moverColindantes(direccion, objetos[posNuevaPosicionY][posNuevaPosicionX], true);
 						}
@@ -164,15 +168,18 @@ public class Tablero {
 	private void comprobarDefeat(Objeto<?> you) {
 		ArrayList<Objeto<?>> elementosYou = buscarElemento(AccionEnum.YOU);
 		boolean defeat = false;
-		for (Objeto<?> elemento : objetosSegundoPlano) {
-			for (int i = 0; i < elemento.getEstados().size(); i++) {
-				if (elemento.getEstados().get(i) == AccionEnum.DEFEAT
-						&& elemento.getPosicion().getX() == you.getPosicion().getX()
-						&& elemento.getPosicion().getY() == you.getPosicion().getY()) {
-					defeat = true;
+		if (you != null) {
+			for (Objeto<?> elemento : objetosSegundoPlano) {
+				for (int i = 0; i < elemento.getEstados().size(); i++) {
+					if (elemento.getEstados().get(i) == AccionEnum.DEFEAT
+							&& elemento.getPosicion().getX() == you.getPosicion().getX()
+							&& elemento.getPosicion().getY() == you.getPosicion().getY()) {
+						defeat = true;
+					}
 				}
 			}
 		}
+
 		if (elementosYou.size() == 0) {
 			defeat = true;
 		}
@@ -235,7 +242,7 @@ public class Tablero {
 			for (int j = 0; j < objetos[i].length; j++) {
 				if (objetos[i][j] != null && objetos[i][j].getTipo() == TipoEnum.SUJETO) {
 					// Comprobar hacia la derecha si se forma una frase
-					if (j + 2 <= cantidadColumnas) { // Comprobar si la posible frase está dentro del escenario
+					if (j + 2 < cantidadColumnas) { // Comprobar si la posible frase está dentro del escenario
 						if (objetos[i][j + 1] != null && objetos[i][j + 1].getTipo() == TipoEnum.VERBO) {
 							if (objetos[i][j + 2] != null && (objetos[i][j + 2].getTipo() == TipoEnum.ACCION
 									|| objetos[i][j + 2].getTipo() == TipoEnum.SUJETO)) {
@@ -245,8 +252,9 @@ public class Tablero {
 						}
 					}
 					// Comprobar hacia abajo si se forma una frase
-					if (i + 2 <= cantidadFilas) { // Comprobar si la posible frase está dentro del escenario
+					if (i + 2 < cantidadFilas) { // Comprobar si la posible frase está dentro del escenario
 						if (objetos[i + 1][j] != null && objetos[i + 1][j].getTipo() == TipoEnum.VERBO) {
+
 							if (objetos[i + 2][j] != null && (objetos[i + 2][j].getTipo() == TipoEnum.ACCION
 									|| objetos[i + 2][j].getTipo() == TipoEnum.SUJETO)) {
 								Objeto<?>[] frase = { objetos[i][j], objetos[i + 1][j], objetos[i + 2][j] };
