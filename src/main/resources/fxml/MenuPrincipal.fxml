@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<VBox fx:id="root" alignment="CENTER" spacing="10.0" styleClass="menuPrincipal" stylesheets="@../estilos/estilos.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label alignment="CENTER" prefWidth="300.0" text="Iniciar partida" textFill="WHITE">
+         <font>
+            <Font name="Monospaced Regular" size="24.0" />
+         </font>
+         <padding>
+            <Insets bottom="5.0" top="5.0" />
+         </padding>
+      </Label>
+      <Label alignment="CENTER" prefWidth="300.0" text="Ajustes" textFill="WHITE">
+         <font>
+            <Font name="Monospaced Regular" size="24.0" />
+         </font>
+         <padding>
+            <Insets bottom="5.0" top="5.0" />
+         </padding>
+      </Label>
+      <Label alignment="CENTER" prefWidth="300.0" text="Salir del juego" textFill="WHITE">
+         <font>
+            <Font name="Monospaced Regular" size="24.0" />
+         </font>
+         <padding>
+            <Insets bottom="5.0" top="5.0" />
+         </padding>
+      </Label>
+   </children>
+</VBox>
