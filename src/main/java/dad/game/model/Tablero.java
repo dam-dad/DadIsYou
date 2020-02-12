@@ -254,7 +254,6 @@ public class Tablero {
 					// Comprobar hacia abajo si se forma una frase
 					if (i + 2 < cantidadFilas) { // Comprobar si la posible frase está dentro del escenario
 						if (objetos[i + 1][j] != null && objetos[i + 1][j].getTipo() == TipoEnum.VERBO) {
-
 							if (objetos[i + 2][j] != null && (objetos[i + 2][j].getTipo() == TipoEnum.ACCION
 									|| objetos[i + 2][j].getTipo() == TipoEnum.SUJETO)) {
 								Objeto<?>[] frase = { objetos[i][j], objetos[i + 1][j], objetos[i + 2][j] };
@@ -281,7 +280,13 @@ public class Tablero {
 		for (Objeto<?>[] frase : frases) {
 			for (Objeto<?> elemento : elementos) {
 				if (elemento.getNombre() == frase[0].getNombre()) {
-					elemento.setEstado((AccionEnum) frase[2].getNombre());
+					if(frase[2].getNombre() instanceof AccionEnum) {
+						elemento.setEstado((AccionEnum) frase[2].getNombre());
+					} else {
+						Objeto<SujetoEnum> conversor = (Objeto<SujetoEnum>) frase[2];
+						elemento.setNombre((SujetoEnum) conversor.getNombre());
+					}
+					
 				}
 			}
 		}

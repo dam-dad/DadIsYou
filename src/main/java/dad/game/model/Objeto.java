@@ -44,6 +44,13 @@ public class Objeto<T> {
 		this.setImagen(nombre.toString().toLowerCase());
 	}
 
+	public void setNombre(SujetoEnum nombre) {
+		if (this.nombre instanceof SujetoEnum) {
+			this.nombre = (T) nombre;
+			this.setImagen(nombre.toString().toLowerCase());
+		}
+	}
+
 	public String getImagen() {
 		return imagen;
 	}
