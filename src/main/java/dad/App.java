@@ -10,7 +10,7 @@ public class App extends Application {
 	private static String ruta = "/imagenes/objetos/";
 	private static String imagenExtension = ".gif";
 	
-	GameController controller;
+	private static GameController controller;
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
@@ -36,6 +36,10 @@ public class App extends Application {
 	
 	public static String getImagenExtension() {
 		return imagenExtension;
+	}
+	
+	public static GameController getController () {
+		return controller;
 	}
 	
 }

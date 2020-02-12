@@ -2,6 +2,8 @@ package dad.game.model;
 
 import java.util.ArrayList;
 
+import dad.App;
+
 public class Tablero {
 	private int cantidadColumnas;
 	private int cantidadFilas;
@@ -52,7 +54,6 @@ public class Tablero {
 		this.objetos = nivel;
 		comprobarFrases();
 		asignarEstados();
-		System.out.println("TO DO : arreglar empujar varios objetos");
 	}
 
 	public void mover(DireccionEnum direccion) {
@@ -177,6 +178,7 @@ public class Tablero {
 		}
 		if (defeat) {
 			System.out.println("¡¡¡¡ HAS PERDIDO !!!!");
+			App.getController().perder();
 		}
 	}
 
@@ -187,6 +189,7 @@ public class Tablero {
 						&& elemento.getPosicion().getX() == you.getPosicion().getX()
 						&& elemento.getPosicion().getY() == you.getPosicion().getY()) {
 					System.out.println("¡¡¡¡ HAS GANADO !!!!");
+					App.getController().ganar();
 				}
 			}
 		}

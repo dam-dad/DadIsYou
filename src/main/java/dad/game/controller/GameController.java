@@ -16,6 +16,7 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
@@ -27,15 +28,15 @@ import javafx.scene.layout.VBox;
 public class GameController implements Initializable {
 
 	@FXML
-	private VBox root;
+	private AnchorPane root;
 	@FXML
-	private VBox gamePane;
+	private VBox gamePane, winPane, defeatPane;
 	@FXML
 	private GridPane gameGrid;
 
 	Tablero tablero;
-
 	Scene scene;
+	boolean jugando = true;
 
 	public GameController() throws IOException {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/GameView.fxml"));
@@ -63,16 +64,18 @@ public class GameController implements Initializable {
 	}
 	
 	private void pulsarTecla(String key) {
-		if(key.equals("UP")) {
-			tablero.mover(DireccionEnum.ARRIBA);
-		} else if(key.equals("DOWN")) {
-			tablero.mover(DireccionEnum.ABAJO);
-		} else if(key.equals("RIGHT")) {
-			tablero.mover(DireccionEnum.DERECHA);
-		} else if(key.equals("LEFT")) {
-			tablero.mover(DireccionEnum.IZQUIERDA);
+		if(jugando) {
+			if(key.equals("UP")) {
+				tablero.mover(DireccionEnum.ARRIBA);
+			} else if(key.equals("DOWN")) {
+				tablero.mover(DireccionEnum.ABAJO);
+			} else if(key.equals("RIGHT")) {
+				tablero.mover(DireccionEnum.DERECHA);
+			} else if(key.equals("LEFT")) {
+				tablero.mover(DireccionEnum.IZQUIERDA);
+			}
+			refrescarTablero();
 		}
-		refrescarTablero();
 	}
 	
 	private void refrescarTablero() {
@@ -87,8 +90,18 @@ public class GameController implements Initializable {
 		}
 	}
 
-	public VBox getView() {
+	public AnchorPane getView() {
 		return root;
+	}
+	
+	public void ganar() {
+		winPane.setVisible(true);
+		jugando = false;
+	}
+	
+	public void perder() {
+		defeatPane.setVisible(true);
+		jugando = false;
 	}
 
 }
