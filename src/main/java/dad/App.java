@@ -3,35 +3,34 @@ package dad;
 import java.io.IOException;
 
 import dad.game.controller.GameController;
+import dad.game.controller.MenuNivelController;
 import dad.game.controller.MenuPrincipalController;
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyCombination;
 import javafx.stage.Stage;
 
 public class App extends Application {
 	
 	private static String ruta = "/imagenes/objetos/";
 	private static String imagenExtension = ".gif";
-	
+
+	private static MenuPrincipalController menuPrincipalController;
+	private static MenuNivelController menuNivelController;
 	private static GameController gameController;
-	MenuPrincipalController menuPrincipalController;
 	
 	private static Stage primaryStage;
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		this.primaryStage = primaryStage;
 		
 		menuPrincipalController = new MenuPrincipalController();
 
-		Scene scene = new Scene(menuPrincipalController.getView());
-
 		primaryStage.setTitle("DAD IS YOU");
+		primaryStage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
 		primaryStage.setFullScreen(true);
-		primaryStage.setScene(scene);
+		primaryStage.setScene(menuPrincipalController.getScene());
 		primaryStage.show();
-		
-		menuPrincipalController.setScene(scene);
 	}
 	
 	public static void main(String[] args) {
@@ -50,12 +49,16 @@ public class App extends Application {
 		return imagenExtension;
 	}
 	
+	public static void startMenuNivelController () throws IOException {
+		menuNivelController = new MenuNivelController();
+		primaryStage.setScene(menuNivelController.getScene());
+		primaryStage.setFullScreen(true);
+	}
+	
 	public static void startGameController () throws IOException {
 		gameController = new GameController();
-		Scene scene = new Scene(gameController.getView());
-		primaryStage.setScene(scene);
+		primaryStage.setScene(gameController.getScene());
 		primaryStage.setFullScreen(true);
-		gameController.setScene(scene);
 	}
 	
 	public static GameController getGameController () {

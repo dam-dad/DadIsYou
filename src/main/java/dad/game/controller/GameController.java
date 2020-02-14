@@ -53,15 +53,6 @@ public class GameController implements Initializable {
 		tablero = new Tablero(nivel);
 		refrescarTablero();
 	}
-
-	public void setScene(Scene scene) {
-		scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
-			public void handle(KeyEvent e) {
-				String code = e.getCode().toString();
-				pulsarTecla(code);
-			}
-		});
-	}
 	
 	private void pulsarTecla(String key) {
 		if(jugando) {
@@ -90,8 +81,8 @@ public class GameController implements Initializable {
 		}
 	}
 
-	public AnchorPane getView() {
-		return root;
+	public Scene getScene() {
+		return new Scene(root);
 	}
 	
 	public void ganar() {
