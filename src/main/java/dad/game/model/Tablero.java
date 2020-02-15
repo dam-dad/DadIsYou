@@ -184,7 +184,6 @@ public class Tablero {
 			defeat = true;
 		}
 		if (defeat) {
-			System.out.println("¡¡¡¡ HAS PERDIDO !!!!");
 			App.getGameController().perder();
 		}
 	}
@@ -195,7 +194,6 @@ public class Tablero {
 				if (elemento.getEstados().get(i) == AccionEnum.WIN
 						&& elemento.getPosicion().getX() == you.getPosicion().getX()
 						&& elemento.getPosicion().getY() == you.getPosicion().getY()) {
-					System.out.println("¡¡¡¡ HAS GANADO !!!!");
 					App.getGameController().ganar();
 				}
 			}
@@ -283,6 +281,7 @@ public class Tablero {
 					if(frase[2].getNombre() instanceof AccionEnum) {
 						elemento.setEstado((AccionEnum) frase[2].getNombre());
 					} else {
+						@SuppressWarnings("unchecked")
 						Objeto<SujetoEnum> conversor = (Objeto<SujetoEnum>) frase[2];
 						elemento.setNombre((SujetoEnum) conversor.getNombre());
 					}
@@ -292,6 +291,7 @@ public class Tablero {
 		}
 	}
 
+	@SuppressWarnings("unused")
 	private void mostrarFrases() {
 		System.out.println("Frases: ");
 		for (int i = 0; i < frases.size(); i++) {
@@ -300,11 +300,12 @@ public class Tablero {
 		}
 	}
 
+	@SuppressWarnings("unused")
 	private void mostrarEstados() {
 		System.out.println("Estados: ");
 		for (int i = 0; i < objetos.length; i++) {
 			for (int j = 0; j < objetos[i].length; j++) {
-				Objeto elemento = objetos[i][j];
+				Objeto<?> elemento = objetos[i][j];
 				if (elemento != null && elemento.getTipo() == TipoEnum.ELEMENTO) {
 					System.out.println(elemento.getNombre() + " => " + elemento.getEstados());
 				}
@@ -312,6 +313,7 @@ public class Tablero {
 		}
 	}
 
+	@SuppressWarnings("unused")
 	private void mostrarTablero() {
 		System.out.println("Tablero: ");
 		for (int i = 0; i < objetos.length; i++) {

@@ -1,21 +1,15 @@
 package dad.game.controller;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import dad.game.model.DireccionEnum;
 import dad.game.model.Nivel;
 import dad.game.model.Objeto;
 import dad.game.model.Tablero;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
@@ -25,7 +19,7 @@ import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 
-public class GameController implements Initializable {
+public class GameController extends Controller implements Initializable {
 
 	@FXML
 	private AnchorPane root;
@@ -35,14 +29,7 @@ public class GameController implements Initializable {
 	private GridPane gameGrid;
 
 	Tablero tablero;
-	Scene scene;
 	boolean jugando = true;
-
-	public GameController() throws IOException {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/GameView.fxml"));
-		loader.setController(this);
-		loader.load();
-	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -54,7 +41,8 @@ public class GameController implements Initializable {
 		refrescarTablero();
 	}
 	
-	private void pulsarTecla(String key) {
+	@Override
+	public void evento(String key) {
 		if(jugando) {
 			if(key.equals("UP")) {
 				tablero.mover(DireccionEnum.ARRIBA);
@@ -79,10 +67,6 @@ public class GameController implements Initializable {
 				}
 			}
 		}
-	}
-
-	public Scene getScene() {
-		return new Scene(root);
 	}
 	
 	public void ganar() {

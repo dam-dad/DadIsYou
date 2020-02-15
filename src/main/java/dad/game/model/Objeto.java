@@ -44,6 +44,8 @@ public class Objeto<T> {
 		this.setImagen(nombre.toString().toLowerCase());
 	}
 
+	
+	@SuppressWarnings("unchecked")
 	public void setNombre(SujetoEnum nombre) {
 		if (this.nombre instanceof SujetoEnum) {
 			this.nombre = (T) nombre;
