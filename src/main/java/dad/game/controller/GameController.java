@@ -10,7 +10,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
@@ -22,9 +21,7 @@ import javafx.scene.layout.VBox;
 public class GameController extends Controller implements Initializable {
 
 	@FXML
-	private AnchorPane root;
-	@FXML
-	private VBox gamePane, winPane, defeatPane;
+	private VBox root, gamePane, winPane, defeatPane;
 	@FXML
 	private GridPane gameGrid;
 

@@ -1,6 +1,5 @@
 package dad.game.controller;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import dad.App;
@@ -44,8 +43,8 @@ public class MenuPrincipalController extends Controller implements Initializable
 	}
 
 	@FXML
-	void onIniciarPartidaAction(ActionEvent event) throws IOException {
-		App.getScreenController().activate("game");
+	void onIniciarPartidaAction(ActionEvent event) {
+		App.getScreenController().activate("menuNivel");
 	}
 
 	@FXML

@@ -2,6 +2,9 @@ package dad.game.controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import dad.App;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.image.Image;
@@ -32,6 +35,11 @@ public class MenuNivelController extends Controller implements Initializable {
 		} else if (key.equals("DOWN") || key.equals("LEFT")) {
 			
 		}
+	}
+	
+	@FXML
+	private void onIniciarPartidaAction(ActionEvent event) {
+		App.getScreenController().activate("game");
 	}
 
 }
