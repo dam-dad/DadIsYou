@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -8,7 +11,6 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-
 
 <VBox fx:id="root" alignment="CENTER" style="-fx-background-color: #14171e;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
@@ -20,52 +22,52 @@
                      <children>
                         <GridPane fx:id="gameGrid" prefHeight="510.0" prefWidth="816.0" VBox.vgrow="ALWAYS">
                           <columnConstraints>
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="34.0" prefWidth="34.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="34.0" prefWidth="34.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="34.0" prefWidth="34.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="34.0" prefWidth="34.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="34.0" prefWidth="34.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="34.0" prefWidth="34.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="34.0" prefWidth="34.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="34.0" prefWidth="34.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="34.0" prefWidth="34.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="34.0" prefWidth="34.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="34.0" prefWidth="34.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="34.0" prefWidth="34.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="34.0" prefWidth="34.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="34.0" prefWidth="34.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="34.0" prefWidth="34.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="34.0" prefWidth="34.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="34.0" prefWidth="34.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="34.0" prefWidth="34.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="34.0" prefWidth="34.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="34.0" prefWidth="34.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="34.0" prefWidth="34.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="34.0" prefWidth="34.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="34.0" prefWidth="34.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="34.0" prefWidth="34.0" />
                           </columnConstraints>
                           <rowConstraints>
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="34.0" prefHeight="34.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="34.0" prefHeight="34.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="34.0" prefHeight="34.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="34.0" prefHeight="34.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="34.0" prefHeight="34.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="34.0" prefHeight="34.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="34.0" prefHeight="34.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="34.0" prefHeight="34.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="34.0" prefHeight="34.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="34.0" prefHeight="34.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="34.0" prefHeight="34.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="34.0" prefHeight="34.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="34.0" prefHeight="34.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="34.0" prefHeight="34.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="34.0" prefHeight="34.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                         </GridPane>
                      </children>
                   </VBox>
-                  <VBox fx:id="defeatPane" alignment="CENTER" prefHeight="510.0" prefWidth="816.0" style="-fx-background-color: rgba(0,0,0,0.6);" visible="false" AnchorPane.leftAnchor="0.0">
+                  <VBox fx:id="defeatPane" alignment="CENTER" prefHeight="510.0" prefWidth="816.0" style="-fx-background-color: rgba(0,0,0,0.6);" visible="false" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <Label text="¡Has perdido!" textFill="RED">
                            <font>
@@ -80,6 +82,79 @@
                            <font>
                               <Font name="Monospaced Regular" size="64.0" />
                            </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox fx:id="pausePane" alignment="CENTER" prefHeight="510.0" prefWidth="816.0" style="-fx-background-color: rgba(0,0,0,0.6);" visible="false" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Label fx:id="nivelLabel">
+                           <VBox.margin>
+                              <Insets bottom="40.0" />
+                           </VBox.margin>
+                        </Label>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0" styleClass="menuPrincipal" stylesheets="@../estilos/estilos.css">
+                           <children>
+                              <Button alignment="CENTER" mnemonicParsing="false" onAction="#onContinuarAction" prefWidth="300.0" text="Continuar" textFill="WHITE">
+                                 <font>
+                                    <Font name="Monospaced Regular" size="24.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets bottom="5.0" top="5.0" />
+                                 </padding>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <Button alignment="CENTER" mnemonicParsing="false" onAction="#onReiniciarAction" prefWidth="300.0" text="Reiniciar" textFill="WHITE">
+                                 <font>
+                                    <Font name="Monospaced Regular" size="24.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets bottom="5.0" top="5.0" />
+                                 </padding>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <Button alignment="CENTER" mnemonicParsing="false" onAction="#onAjustesAction" prefWidth="300.0" text="Ajustes" textFill="WHITE">
+                                 <font>
+                                    <Font name="Monospaced Regular" size="24.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets bottom="5.0" top="5.0" />
+                                 </padding>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <Button alignment="CENTER" mnemonicParsing="false" onAction="#onSalirMapaAction" prefWidth="300.0" text="Salir al mapa" textFill="WHITE">
+                                 <font>
+                                    <Font name="Monospaced Regular" size="24.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets bottom="5.0" top="5.0" />
+                                 </padding>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <Button alignment="CENTER" mnemonicParsing="false" onAction="#onSalirMenuAction" prefWidth="300.0" text="Salir al menú" textFill="WHITE">
+                                 <font>
+                                    <Font name="Monospaced Regular" size="24.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets bottom="5.0" top="5.0" />
+                                 </padding>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                           </children>
+                        </VBox>
+                        <Label fx:id="estadosLabel">
+                           <VBox.margin>
+                              <Insets top="40.0" />
+                           </VBox.margin>
                         </Label>
                      </children>
                   </VBox>
