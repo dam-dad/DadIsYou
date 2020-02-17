@@ -6,7 +6,6 @@ import dad.App;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
@@ -50,10 +49,6 @@ public class MenuPrincipalController extends Controller implements Initializable
 	@FXML
 	void onSalirJuegoAction(ActionEvent event) {
 		System.exit(0);
-	}
-
-	public Scene getScene() {
-		return new Scene(root);
 	}
 
 }
