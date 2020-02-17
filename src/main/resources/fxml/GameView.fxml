@@ -22,47 +22,47 @@
                      <children>
                         <GridPane fx:id="gameGrid" prefHeight="510.0" prefWidth="816.0" VBox.vgrow="ALWAYS">
                           <columnConstraints>
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="34.0" prefWidth="34.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="34.0" prefWidth="34.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="34.0" prefWidth="34.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="34.0" prefWidth="34.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="34.0" prefWidth="34.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="34.0" prefWidth="34.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="34.0" prefWidth="34.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="34.0" prefWidth="34.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="34.0" prefWidth="34.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="34.0" prefWidth="34.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="34.0" prefWidth="34.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="34.0" prefWidth="34.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="34.0" prefWidth="34.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="34.0" prefWidth="34.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="34.0" prefWidth="34.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="34.0" prefWidth="34.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="34.0" prefWidth="34.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="34.0" prefWidth="34.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="34.0" prefWidth="34.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="34.0" prefWidth="34.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="34.0" prefWidth="34.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="34.0" prefWidth="34.0" />
-                            <ColumnConstraints hgrow="SOMETIMES" minWidth="34.0" prefWidth="34.0" />
-                            <ColumnConstraints hgrow="SOMETIMES" minWidth="34.0" prefWidth="34.0" />
+                              <ColumnConstraints hgrow="NEVER" minWidth="34.0" prefWidth="34.0" />
+                              <ColumnConstraints hgrow="NEVER" minWidth="34.0" prefWidth="34.0" />
+                              <ColumnConstraints hgrow="NEVER" minWidth="34.0" prefWidth="34.0" />
+                              <ColumnConstraints hgrow="NEVER" minWidth="34.0" prefWidth="34.0" />
+                              <ColumnConstraints hgrow="NEVER" minWidth="34.0" prefWidth="34.0" />
+                              <ColumnConstraints hgrow="NEVER" minWidth="34.0" prefWidth="34.0" />
+                              <ColumnConstraints hgrow="NEVER" minWidth="34.0" prefWidth="34.0" />
+                              <ColumnConstraints hgrow="NEVER" minWidth="34.0" prefWidth="34.0" />
+                              <ColumnConstraints hgrow="NEVER" minWidth="34.0" prefWidth="34.0" />
+                              <ColumnConstraints hgrow="NEVER" minWidth="34.0" prefWidth="34.0" />
+                              <ColumnConstraints hgrow="NEVER" minWidth="34.0" prefWidth="34.0" />
+                              <ColumnConstraints hgrow="NEVER" minWidth="34.0" prefWidth="34.0" />
+                              <ColumnConstraints hgrow="NEVER" minWidth="34.0" prefWidth="34.0" />
+                              <ColumnConstraints hgrow="NEVER" minWidth="34.0" prefWidth="34.0" />
+                              <ColumnConstraints hgrow="NEVER" minWidth="34.0" prefWidth="34.0" />
+                              <ColumnConstraints hgrow="NEVER" minWidth="34.0" prefWidth="34.0" />
+                              <ColumnConstraints hgrow="NEVER" minWidth="34.0" prefWidth="34.0" />
+                              <ColumnConstraints hgrow="NEVER" minWidth="34.0" prefWidth="34.0" />
+                              <ColumnConstraints hgrow="NEVER" minWidth="34.0" prefWidth="34.0" />
+                              <ColumnConstraints hgrow="NEVER" minWidth="34.0" prefWidth="34.0" />
+                              <ColumnConstraints hgrow="NEVER" minWidth="34.0" prefWidth="34.0" />
+                              <ColumnConstraints hgrow="NEVER" minWidth="34.0" prefWidth="34.0" />
+                            <ColumnConstraints hgrow="NEVER" minWidth="34.0" prefWidth="34.0" />
+                            <ColumnConstraints hgrow="NEVER" minWidth="34.0" prefWidth="34.0" />
                           </columnConstraints>
                           <rowConstraints>
-                              <RowConstraints minHeight="34.0" prefHeight="34.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="34.0" prefHeight="34.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="34.0" prefHeight="34.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="34.0" prefHeight="34.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="34.0" prefHeight="34.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="34.0" prefHeight="34.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="34.0" prefHeight="34.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="34.0" prefHeight="34.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="34.0" prefHeight="34.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="34.0" prefHeight="34.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="34.0" prefHeight="34.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="34.0" prefHeight="34.0" vgrow="SOMETIMES" />
-                            <RowConstraints minHeight="34.0" prefHeight="34.0" vgrow="SOMETIMES" />
-                            <RowConstraints minHeight="34.0" prefHeight="34.0" vgrow="SOMETIMES" />
-                            <RowConstraints minHeight="34.0" prefHeight="34.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="34.0" prefHeight="34.0" vgrow="NEVER" />
+                              <RowConstraints minHeight="34.0" prefHeight="34.0" vgrow="NEVER" />
+                              <RowConstraints minHeight="34.0" prefHeight="34.0" vgrow="NEVER" />
+                              <RowConstraints minHeight="34.0" prefHeight="34.0" vgrow="NEVER" />
+                              <RowConstraints minHeight="34.0" prefHeight="34.0" vgrow="NEVER" />
+                              <RowConstraints minHeight="34.0" prefHeight="34.0" vgrow="NEVER" />
+                              <RowConstraints minHeight="34.0" prefHeight="34.0" vgrow="NEVER" />
+                              <RowConstraints minHeight="34.0" prefHeight="34.0" vgrow="NEVER" />
+                              <RowConstraints minHeight="34.0" prefHeight="34.0" vgrow="NEVER" />
+                              <RowConstraints minHeight="34.0" prefHeight="34.0" vgrow="NEVER" />
+                              <RowConstraints minHeight="34.0" prefHeight="34.0" vgrow="NEVER" />
+                              <RowConstraints minHeight="34.0" prefHeight="34.0" vgrow="NEVER" />
+                            <RowConstraints minHeight="34.0" prefHeight="34.0" vgrow="NEVER" />
+                            <RowConstraints minHeight="34.0" prefHeight="34.0" vgrow="NEVER" />
+                            <RowConstraints minHeight="34.0" prefHeight="34.0" vgrow="NEVER" />
                           </rowConstraints>
                         </GridPane>
                      </children>
