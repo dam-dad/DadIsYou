@@ -99,6 +99,7 @@ public class GameController extends Controller implements Initializable {
 
 	}
 
+	
 	@FXML
 	void onSalirMapaAction(ActionEvent event) {
 
