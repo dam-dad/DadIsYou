@@ -181,6 +181,7 @@ public class GameController extends Controller implements Initializable {
 		defeatPane.setVisible(false);
 	}
 
+	
 	@FXML
 	void onSalirMapaAction(ActionEvent event) {
 		App.getScreenController().activate("menuNivel");
