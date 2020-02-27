@@ -3,7 +3,6 @@ package dad.game.controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 import dad.game.model.DireccionEnum;
-import dad.game.model.Nivel;
 import dad.game.model.Objeto;
 import dad.game.model.Tablero;
 import javafx.event.ActionEvent;
@@ -37,7 +36,9 @@ public class GameController extends Controller implements Initializable {
 		gameGrid.setBackground(
 				new Background(new BackgroundImage(new Image("/imagenes/niveles/uno.png"), BackgroundRepeat.NO_REPEAT,
 						BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT)));
-		Objeto<?>[][] nivel = Nivel.uno();
+	}
+	
+	public void cargarNivel(Objeto<?>[][] nivel) {
 		tablero = new Tablero(nivel);
 		refrescarTablero();
 	}
@@ -67,7 +68,10 @@ public class GameController extends Controller implements Initializable {
 		for (int i = 0; i < posicionObjetos.length; i++) {
 			for (int j = 0; j < posicionObjetos[i].length; j++) {
 				if (posicionObjetos[i][j] != null) {
-					gameGrid.add(new ImageView(posicionObjetos[i][j].getImagen()), j, i);
+					ImageView imagen = new ImageView(posicionObjetos[i][j].getImagen());
+					imagen.setFitWidth(34);
+					imagen.setFitHeight(34);
+					gameGrid.add(imagen, j, i);
 				}
 			}
 		}

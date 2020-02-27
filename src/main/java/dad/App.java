@@ -50,10 +50,6 @@ public class App extends Application {
 		launch(args);
 	}
 
-	/*public static Stage getStage() {
-		return primaryStage;
-	}*/
-
 	public static String getRuta() {
 		return ruta;
 	}
