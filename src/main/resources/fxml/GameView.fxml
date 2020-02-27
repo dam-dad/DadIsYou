@@ -16,7 +16,7 @@
    <children>
       <HBox alignment="CENTER">
          <children>
-            <AnchorPane prefHeight="510.0" prefWidth="816.0">
+            <AnchorPane fx:id="gameAnchorPane" prefHeight="510.0" prefWidth="816.0">
                <children>
                   <VBox fx:id="gamePane" alignment="CENTER" fillWidth="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
@@ -67,6 +67,7 @@
                         </GridPane>
                      </children>
                   </VBox>
+                  <AnchorPane fx:id="tutorialPane" prefHeight="510.0" prefWidth="816.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                   <VBox fx:id="defeatPane" alignment="CENTER" prefHeight="510.0" prefWidth="816.0" style="-fx-background-color: rgba(0,0,0,0.6);" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <Label text="¡Has perdido!" textFill="RED">

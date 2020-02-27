@@ -3,13 +3,14 @@
 	-fx-border-radius: 10px;
 	-fx-border-color: #469;
 	-fx-background-color: #246;
-	-fx-background-radius: 10px;
+	-fx-background-radius: 12px;
+	-fx-cursor: hand;
 }
 
 .menuNivel > * > * {
 	-fx-border-width: 3px;
 	-fx-border-radius: 10px;
-	-fx-border-color: #469;
 	-fx-background-color: #246;
-	-fx-background-radius: 10px;
+	-fx-background-radius: 12px;
+	-fx-cursor: hand;
 }

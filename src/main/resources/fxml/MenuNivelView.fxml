@@ -5,88 +5,87 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-
-<VBox fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="menuNivel" stylesheets="@../estilos/estilos.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="90.0" minWidth="160.0" styleClass="menuNivel" stylesheets="@../estilos/estilos.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <GridPane fx:id="gameGrid">
+      <GridPane fx:id="nivelGrid" minHeight="90.0" minWidth="160.0">
          <columnConstraints>
-            <ColumnConstraints hgrow="NEVER" />
-            <ColumnConstraints hgrow="NEVER" />
-            <ColumnConstraints hgrow="NEVER" />
-            <ColumnConstraints hgrow="NEVER" />
-            <ColumnConstraints hgrow="NEVER" />
-            <ColumnConstraints hgrow="NEVER" />
-            <ColumnConstraints hgrow="NEVER" />
-            <ColumnConstraints hgrow="NEVER" />
-            <ColumnConstraints hgrow="NEVER" />
-            <ColumnConstraints hgrow="NEVER" />
-            <ColumnConstraints hgrow="NEVER" />
-            <ColumnConstraints hgrow="NEVER" />
-            <ColumnConstraints hgrow="NEVER" />
-            <ColumnConstraints hgrow="NEVER" />
-            <ColumnConstraints hgrow="NEVER" />
-            <ColumnConstraints hgrow="NEVER" />
-            <ColumnConstraints hgrow="NEVER" />
-            <ColumnConstraints hgrow="NEVER" />
-            <ColumnConstraints hgrow="NEVER" />
-            <ColumnConstraints hgrow="NEVER" />
-            <ColumnConstraints hgrow="NEVER" />
-            <ColumnConstraints hgrow="NEVER" />
-            <ColumnConstraints hgrow="NEVER" />
-            <ColumnConstraints hgrow="NEVER" />
-            <ColumnConstraints hgrow="NEVER" />
-            <ColumnConstraints hgrow="NEVER" />
-            <ColumnConstraints hgrow="NEVER" />
-            <ColumnConstraints hgrow="NEVER" />
-            <ColumnConstraints hgrow="NEVER" />
-            <ColumnConstraints hgrow="NEVER" />
-            <ColumnConstraints hgrow="NEVER" />
-            <ColumnConstraints hgrow="NEVER" />
-            <ColumnConstraints hgrow="NEVER" />
-            <ColumnConstraints hgrow="NEVER" />
-            <ColumnConstraints hgrow="NEVER" />
-            <ColumnConstraints hgrow="NEVER" />
-            <ColumnConstraints hgrow="NEVER" />
-            <ColumnConstraints hgrow="NEVER" />
-            <ColumnConstraints hgrow="NEVER" />
-            <ColumnConstraints hgrow="NEVER" />
-            <ColumnConstraints hgrow="NEVER" />
-            <ColumnConstraints hgrow="NEVER" />
-            <ColumnConstraints hgrow="NEVER" />
-            <ColumnConstraints hgrow="NEVER" />
-            <ColumnConstraints hgrow="NEVER" />
-            <ColumnConstraints hgrow="NEVER" />
-            <ColumnConstraints hgrow="NEVER" />
-            <ColumnConstraints hgrow="NEVER" />
+            <ColumnConstraints hgrow="NEVER" percentWidth="2.083" />
+            <ColumnConstraints hgrow="NEVER" percentWidth="2.083" />
+            <ColumnConstraints hgrow="NEVER" percentWidth="2.083" />
+            <ColumnConstraints hgrow="NEVER" percentWidth="2.083" />
+            <ColumnConstraints hgrow="NEVER" percentWidth="2.083" />
+            <ColumnConstraints hgrow="NEVER" percentWidth="2.083" />
+            <ColumnConstraints hgrow="NEVER" percentWidth="2.083" />
+            <ColumnConstraints hgrow="NEVER" percentWidth="2.083" />
+            <ColumnConstraints hgrow="NEVER" percentWidth="2.083" />
+            <ColumnConstraints hgrow="NEVER" percentWidth="2.083" />
+            <ColumnConstraints hgrow="NEVER" percentWidth="2.083" />
+            <ColumnConstraints hgrow="NEVER" percentWidth="2.083" />
+            <ColumnConstraints hgrow="NEVER" percentWidth="2.083" />
+            <ColumnConstraints hgrow="NEVER" percentWidth="2.083" />
+            <ColumnConstraints hgrow="NEVER" percentWidth="2.083" />
+            <ColumnConstraints hgrow="NEVER" percentWidth="2.083" />
+            <ColumnConstraints hgrow="NEVER" percentWidth="2.083" />
+            <ColumnConstraints hgrow="NEVER" percentWidth="2.083" />
+            <ColumnConstraints hgrow="NEVER" percentWidth="2.083" />
+            <ColumnConstraints hgrow="NEVER" percentWidth="2.083" />
+            <ColumnConstraints hgrow="NEVER" percentWidth="2.083" />
+            <ColumnConstraints hgrow="NEVER" percentWidth="2.083" />
+            <ColumnConstraints hgrow="NEVER" percentWidth="2.083" />
+            <ColumnConstraints hgrow="NEVER" percentWidth="2.083" />
+            <ColumnConstraints hgrow="NEVER" percentWidth="2.083" />
+            <ColumnConstraints hgrow="NEVER" percentWidth="2.083" />
+            <ColumnConstraints hgrow="NEVER" percentWidth="2.083" />
+            <ColumnConstraints hgrow="NEVER" percentWidth="2.083" />
+            <ColumnConstraints hgrow="NEVER" percentWidth="2.083" />
+            <ColumnConstraints hgrow="NEVER" percentWidth="2.083" />
+            <ColumnConstraints hgrow="NEVER" percentWidth="2.083" />
+            <ColumnConstraints hgrow="NEVER" percentWidth="2.083" />
+            <ColumnConstraints hgrow="NEVER" percentWidth="2.083" />
+            <ColumnConstraints hgrow="NEVER" percentWidth="2.083" />
+            <ColumnConstraints hgrow="NEVER" percentWidth="2.083" />
+            <ColumnConstraints hgrow="NEVER" percentWidth="2.083" />
+            <ColumnConstraints hgrow="NEVER" percentWidth="2.083" />
+            <ColumnConstraints hgrow="NEVER" percentWidth="2.083" />
+            <ColumnConstraints hgrow="NEVER" percentWidth="2.083" />
+            <ColumnConstraints hgrow="NEVER" percentWidth="2.083" />
+            <ColumnConstraints hgrow="NEVER" percentWidth="2.083" />
+            <ColumnConstraints hgrow="NEVER" percentWidth="2.083" />
+            <ColumnConstraints hgrow="NEVER" percentWidth="2.083" />
+            <ColumnConstraints hgrow="NEVER" percentWidth="2.083" />
+            <ColumnConstraints hgrow="NEVER" percentWidth="2.083" />
+            <ColumnConstraints hgrow="NEVER" percentWidth="2.083" />
+            <ColumnConstraints hgrow="NEVER" percentWidth="2.083" />
+            <ColumnConstraints hgrow="NEVER" percentWidth="2.083" />
          </columnConstraints>
          <rowConstraints>
-            <RowConstraints vgrow="NEVER" />
-            <RowConstraints vgrow="NEVER" />
-            <RowConstraints vgrow="NEVER" />
-            <RowConstraints vgrow="NEVER" />
-            <RowConstraints vgrow="NEVER" />
-            <RowConstraints vgrow="NEVER" />
-            <RowConstraints vgrow="NEVER" />
-            <RowConstraints vgrow="NEVER" />
-            <RowConstraints vgrow="NEVER" />
-            <RowConstraints vgrow="NEVER" />
-            <RowConstraints vgrow="NEVER" />
-            <RowConstraints vgrow="NEVER" />
-            <RowConstraints vgrow="NEVER" />
-            <RowConstraints vgrow="NEVER" />
-            <RowConstraints vgrow="NEVER" />
-            <RowConstraints vgrow="NEVER" />
-            <RowConstraints vgrow="NEVER" />
-            <RowConstraints vgrow="NEVER" />
-            <RowConstraints vgrow="NEVER" />
-            <RowConstraints vgrow="NEVER" />
-            <RowConstraints vgrow="NEVER" />
-            <RowConstraints vgrow="NEVER" />
-            <RowConstraints vgrow="NEVER" />
-            <RowConstraints vgrow="NEVER" />
-            <RowConstraints vgrow="NEVER" />
-            <RowConstraints vgrow="NEVER" />
-            <RowConstraints vgrow="NEVER" />
+            <RowConstraints percentHeight="3.703" vgrow="NEVER" />
+            <RowConstraints percentHeight="3.703" vgrow="NEVER" />
+            <RowConstraints percentHeight="3.703" vgrow="NEVER" />
+            <RowConstraints percentHeight="3.703" vgrow="NEVER" />
+            <RowConstraints percentHeight="3.703" vgrow="NEVER" />
+            <RowConstraints percentHeight="3.703" vgrow="NEVER" />
+            <RowConstraints percentHeight="3.703" vgrow="NEVER" />
+            <RowConstraints percentHeight="3.703" vgrow="NEVER" />
+            <RowConstraints percentHeight="3.703" vgrow="NEVER" />
+            <RowConstraints percentHeight="3.703" vgrow="NEVER" />
+            <RowConstraints percentHeight="3.703" vgrow="NEVER" />
+            <RowConstraints percentHeight="3.703" vgrow="NEVER" />
+            <RowConstraints percentHeight="3.703" vgrow="NEVER" />
+            <RowConstraints percentHeight="3.703" vgrow="NEVER" />
+            <RowConstraints percentHeight="3.703" vgrow="NEVER" />
+            <RowConstraints percentHeight="3.703" vgrow="NEVER" />
+            <RowConstraints percentHeight="3.703" vgrow="NEVER" />
+            <RowConstraints percentHeight="3.703" vgrow="NEVER" />
+            <RowConstraints percentHeight="3.703" vgrow="NEVER" />
+            <RowConstraints percentHeight="3.703" vgrow="NEVER" />
+            <RowConstraints percentHeight="3.703" vgrow="NEVER" />
+            <RowConstraints percentHeight="3.703" vgrow="NEVER" />
+            <RowConstraints percentHeight="3.703" vgrow="NEVER" />
+            <RowConstraints percentHeight="3.703" vgrow="NEVER" />
+            <RowConstraints percentHeight="3.703" vgrow="NEVER" />
+            <RowConstraints percentHeight="3.703" vgrow="NEVER" />
+            <RowConstraints percentHeight="3.703" vgrow="NEVER" />
          </rowConstraints>
       </GridPane>
    </children>

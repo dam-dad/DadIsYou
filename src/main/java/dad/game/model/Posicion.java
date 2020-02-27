@@ -38,4 +38,8 @@ public class Posicion {
 			x -= paso;
 		}
 	}
+	
+	public boolean compararPosicion(Posicion posicion2) {
+		return x == posicion2.getX() && y == posicion2.getY();
+	}
 }

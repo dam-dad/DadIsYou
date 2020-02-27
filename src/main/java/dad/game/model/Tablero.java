@@ -43,9 +43,9 @@ public class Tablero {
 	public Objeto<?>[][] getPosicionObjetos() {
 		return objetos;
 	}
-
-	public void setPosicionObjetos(Objeto<?>[][] posicionObjetos) {
-		this.objetos = posicionObjetos;
+	
+	public ArrayList<Objeto<?>> getObjetosSegundoPlano() {
+		return objetosSegundoPlano;
 	}
 
 	public void cargarNivel(Objeto<?>[][] nivel) {
@@ -79,8 +79,7 @@ public class Tablero {
 							objetos[posObjetoYouY][posObjetoYouX] = null;
 							// Colocar el objeto que está en segundo plano (si lo hubiese)
 							for (Objeto<?> objetoSegundoPlano : objetosSegundoPlano) {
-								if (objetoSegundoPlano.getPosicion().getX() == you.getPosicion().getX()
-										&& objetoSegundoPlano.getPosicion().getY() == you.getPosicion().getY()) {
+								if (objetoSegundoPlano.getPosicion().compararPosicion(you.getPosicion())) {
 									objetos[posObjetoYouY][posObjetoYouX] = objetoSegundoPlano;
 								}
 							}
@@ -100,6 +99,7 @@ public class Tablero {
 		asignarEstados();
 		// mostrarEstados();
 		comprobarDefeat(null);
+		comprobarWin(null);
 	}
 
 	private void moverColindantes(DireccionEnum direccion, Objeto<?> objetoEmpujado, boolean mover) {
@@ -172,8 +172,7 @@ public class Tablero {
 			for (Objeto<?> elemento : objetosSegundoPlano) {
 				for (int i = 0; i < elemento.getEstados().size(); i++) {
 					if (elemento.getEstados().get(i) == AccionEnum.DEFEAT
-							&& elemento.getPosicion().getX() == you.getPosicion().getX()
-							&& elemento.getPosicion().getY() == you.getPosicion().getY()) {
+							&& elemento.getPosicion().compararPosicion(you.getPosicion())) {
 						defeat = true;
 					}
 				}
@@ -189,11 +188,18 @@ public class Tablero {
 	}
 
 	private void comprobarWin(Objeto<?> you) {
+		ArrayList<Objeto<?>> elementosYou = buscarElemento(AccionEnum.YOU);
+		if (elementosYou.size() > 0) {
+			for (AccionEnum estado : elementosYou.get(0).getEstados()) {
+				if (estado == AccionEnum.WIN) {
+					App.getGameController().ganar();
+				}
+			}
+		}
 		for (Objeto<?> elemento : objetosSegundoPlano) {
 			for (int i = 0; i < elemento.getEstados().size(); i++) {
 				if (elemento.getEstados().get(i) == AccionEnum.WIN
-						&& elemento.getPosicion().getX() == you.getPosicion().getX()
-						&& elemento.getPosicion().getY() == you.getPosicion().getY()) {
+						&& elemento.getPosicion().compararPosicion(you.getPosicion())) {
 					App.getGameController().ganar();
 				}
 			}

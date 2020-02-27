@@ -1,5 +1,5 @@
 package dad.game.model;
 
 public enum AccionEnum {
-	YOU, WIN, STOP, PUSH, DEFEAT, FLOAT
+	YOU, WIN, STOP, PUSH, DEFEAT, FLOAT, SINK
 }
