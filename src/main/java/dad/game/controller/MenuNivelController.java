@@ -4,9 +4,12 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import dad.App;
+import dad.game.model.Nivel;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
@@ -26,6 +29,15 @@ public class MenuNivelController extends Controller implements Initializable {
 				new Background(new BackgroundImage(new Image("/imagenes/niveles/menuSeleccionarNivel.jpg"),
 						BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,
 						new BackgroundSize(100, 100, true, true, true, true))));
+		Button nivel1 = new Button("1");
+		nivel1.setStyle("-fx-color: #f55; -fx-border-color: #f55;");
+		nivel1.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				App.getScreenController().activate("game");
+				App.getGameController().cargarNivel(Nivel.uno());
+			}
+		});
 	}
 
 	@Override
@@ -37,9 +49,9 @@ public class MenuNivelController extends Controller implements Initializable {
 		}
 	}
 	
-	@FXML
+	/*@FXML
 	private void onIniciarPartidaAction(ActionEvent event) {
 		App.getScreenController().activate("game");
-	}
+	}*/
 
 }
