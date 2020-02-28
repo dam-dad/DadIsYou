@@ -163,7 +163,8 @@ public class GameController extends Controller implements Initializable {
 
 	@FXML
 	void onAjustesAction(ActionEvent event) {
-
+		App.getScreenController().activate("ajustes");
+		onContinuarAction(null);
 	}
 
 	@FXML
