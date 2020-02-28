@@ -6,17 +6,23 @@ import java.util.ResourceBundle;
 import dad.App;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ComboBox;
 import javafx.scene.layout.VBox;
 
 public class AjustesController extends Controller implements Initializable {
 	
 	@FXML
 	private VBox root;
+	
+	@FXML
+	private ComboBox<String> idiomaCombo;
+	
 	private String anteriorController;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		
+		idiomaCombo.getItems().addAll("Español", "Inglés");
+		idiomaCombo.getSelectionModel().selectFirst();
 	}
 	
 	public void setAnteriorController(String controller) {
