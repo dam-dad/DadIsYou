@@ -1,68 +1,93 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <VBox fx:id="root" alignment="CENTER" spacing="10.0" style="-fx-background-color: #001;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <GridPane hgap="50.0" styleClass="menuPrincipal" stylesheets="@../estilos/estilos.css" vgap="20.0">
-        <columnConstraints>
-          <ColumnConstraints />
-          <ColumnConstraints />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints />
-            <RowConstraints />
-          <RowConstraints />
-        </rowConstraints>
+      <HBox alignment="CENTER">
          <children>
-            <Label alignment="CENTER" prefWidth="250.0" text="Volumen música" textFill="WHITE">
-               <font>
-                  <Font name="Monospaced Regular" size="24.0" />
-               </font>
-               <padding>
-                  <Insets bottom="5.0" top="5.0" />
-               </padding>
-            </Label>
-            <Slider prefHeight="14.0" prefWidth="250.0" GridPane.columnIndex="1">
-               <padding>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </padding>
-            </Slider>
-            <Label alignment="CENTER" prefWidth="250.0" text="Idioma" textFill="WHITE" GridPane.rowIndex="2">
-               <font>
-                  <Font name="Monospaced Regular" size="24.0" />
-               </font>
-               <padding>
-                  <Insets bottom="5.0" top="5.0" />
-               </padding>
-            </Label>
-            <ComboBox prefWidth="250.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
-               <padding>
-                  <Insets bottom="7.0" left="7.0" right="7.0" top="7.0" />
-               </padding>
-            </ComboBox>
-            <Label alignment="CENTER" prefWidth="250.0" text="Volumen efectos" textFill="WHITE" GridPane.rowIndex="1">
-               <font>
-                  <Font name="Monospaced Regular" size="24.0" />
-               </font>
-               <padding>
-                  <Insets bottom="5.0" top="5.0" />
-               </padding>
-            </Label>
-            <Slider prefHeight="14.0" prefWidth="250.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
-               <padding>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </padding>
-            </Slider>
+            <GridPane hgap="50.0" styleClass="menuAjustes" stylesheets="@../estilos/estilos.css" vgap="20.0">
+              <columnConstraints>
+                <ColumnConstraints />
+                <ColumnConstraints />
+              </columnConstraints>
+              <rowConstraints>
+                  <RowConstraints />
+                  <RowConstraints minHeight="10.0" prefHeight="50.0" />
+                <RowConstraints />
+                  <RowConstraints />
+                <RowConstraints />
+                  <RowConstraints minHeight="10.0" prefHeight="50.0" />
+                  <RowConstraints />
+              </rowConstraints>
+               <children>
+                  <Label alignment="CENTER_RIGHT" prefWidth="250.0" text="Volumen música" textFill="WHITE" GridPane.rowIndex="2">
+                     <font>
+                        <Font name="Monospaced Regular" size="24.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="5.0" top="5.0" />
+                     </padding>
+                  </Label>
+                  <Slider prefHeight="14.0" prefWidth="250.0" styleClass="btn" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </Slider>
+                  <Label alignment="CENTER_RIGHT" prefWidth="250.0" text="Idioma" textFill="WHITE" GridPane.rowIndex="4">
+                     <font>
+                        <Font name="Monospaced Regular" size="24.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="5.0" top="5.0" />
+                     </padding>
+                  </Label>
+                  <ComboBox prefWidth="250.0" styleClass="btn" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                     <padding>
+                        <Insets bottom="7.0" left="7.0" right="7.0" top="7.0" />
+                     </padding>
+                  </ComboBox>
+                  <Label alignment="CENTER_RIGHT" prefWidth="250.0" text="Volumen efectos" textFill="WHITE" GridPane.rowIndex="3">
+                     <font>
+                        <Font name="Monospaced Regular" size="24.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="5.0" top="5.0" />
+                     </padding>
+                  </Label>
+                  <Slider prefHeight="14.0" prefWidth="250.0" styleClass="btn" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </Slider>
+                  <Button mnemonicParsing="false" onAction="#onCancelarAction" prefWidth="175.0" styleClass="btn" text="Cancelar" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.rowIndex="6">
+                     <font>
+                        <Font name="Monospaced Regular" size="24.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#onGuardarAction" prefWidth="175.0" styleClass="btn" text="Guardar" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="6">
+                     <font>
+                        <Font name="Monospaced Regular" size="24.0" />
+                     </font>
+                  </Button>
+                  <Label alignment="CENTER" prefHeight="43.0" prefWidth="550.0" text="Ajustes" textFill="WHITE" GridPane.columnSpan="2">
+                     <font>
+                        <Font name="Monospaced Regular" size="36.0" />
+                     </font>
+                  </Label>
+               </children>
+            </GridPane>
          </children>
-      </GridPane>
+      </HBox>
    </children>
 </VBox>
