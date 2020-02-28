@@ -27,18 +27,10 @@ public class MenuPrincipalController extends Controller implements Initializable
 						new BackgroundSize(100, 100, true, true, true, true))));
 	}
 
-	@Override
-	public void evento(String key) {
-		if (key.equals("UP") || key.equals("RIGHT")) {
-			
-		} else if (key.equals("DOWN") || key.equals("LEFT")) {
-			
-		}
-	}
-
 	@FXML
 	void onAjustesAction(ActionEvent event) {
-
+		App.getScreenController().activate("ajustes");
+		App.getAjustesController().setAnteriorController("menuPrincipal");
 	}
 
 	@FXML

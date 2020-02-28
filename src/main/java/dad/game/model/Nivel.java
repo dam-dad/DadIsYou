@@ -181,6 +181,8 @@ public class Nivel {
 					mapa[i][j] = new Objeto<AccionEnum>(AccionEnum.FLOAT, TipoEnum.ACCION, letra, posicion);
 				} else if (letra == 'k') {
 					mapa[i][j] = new Objeto<AccionEnum>(AccionEnum.SINK, TipoEnum.ACCION, letra, posicion);
+				} else if (letra == 'c') {
+					mapa[i][j] = new Objeto<AccionEnum>(AccionEnum.MOVE, TipoEnum.ACCION, letra, posicion);
 				}
 				//Añadir posición cuando no sea aire
 				if(mapa[i][j] != null) {

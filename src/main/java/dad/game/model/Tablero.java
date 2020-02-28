@@ -178,7 +178,6 @@ public class Tablero {
 				}
 			}
 		}
-
 		if (elementosYou.size() == 0) {
 			defeat = true;
 		}
@@ -188,6 +187,7 @@ public class Tablero {
 	}
 
 	private void comprobarWin(Objeto<?> you) {
+		// Si los estados YOU y WIN coinciden en el mismo elemento:
 		ArrayList<Objeto<?>> elementosYou = buscarElemento(AccionEnum.YOU);
 		if (elementosYou.size() > 0) {
 			for (AccionEnum estado : elementosYou.get(0).getEstados()) {
@@ -196,14 +196,18 @@ public class Tablero {
 				}
 			}
 		}
-		for (Objeto<?> elemento : objetosSegundoPlano) {
-			for (int i = 0; i < elemento.getEstados().size(); i++) {
-				if (elemento.getEstados().get(i) == AccionEnum.WIN
-						&& elemento.getPosicion().compararPosicion(you.getPosicion())) {
-					App.getGameController().ganar();
+		// Si YOU está sobre el elemento WIN:
+		if (you != null) {
+			for (Objeto<?> elemento : objetosSegundoPlano) {
+				for (int i = 0; i < elemento.getEstados().size(); i++) {
+					if (elemento.getEstados().get(i) == AccionEnum.WIN
+							&& elemento.getPosicion().compararPosicion(you.getPosicion())) {
+						App.getGameController().ganar();
+					}
 				}
 			}
 		}
+		
 	}
 
 	private ArrayList<Objeto<?>> buscarElemento(Object tipo) {

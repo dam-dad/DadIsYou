@@ -154,17 +154,19 @@ public class GameController extends Controller implements Initializable {
 	public void ganar() {
 		winPane.setVisible(true);
 		jugando = false;
+		App.playSound("ganar");
 	}
 
 	public void perder() {
 		defeatPane.setVisible(true);
 		jugando = false;
+		App.playSound("perder");
 	}
 
 	@FXML
 	void onAjustesAction(ActionEvent event) {
 		App.getScreenController().activate("ajustes");
-		onContinuarAction(null);
+		App.getAjustesController().setAnteriorController("game");
 	}
 
 	@FXML

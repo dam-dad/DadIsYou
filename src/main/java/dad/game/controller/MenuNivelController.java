@@ -97,11 +97,7 @@ public class MenuNivelController extends Controller implements Initializable {
 
 	@Override
 	public void evento(String key) {
-		if (key.equals("UP") || key.equals("RIGHT")) {
-			
-		} else if (key.equals("DOWN") || key.equals("LEFT")) {
-			
-		} else if (key.equals("ESCAPE")) {
+		if (key.equals("ESCAPE")) {
 			App.getScreenController().activate("menuPrincipal");
 		}
 	}
