@@ -1,6 +1,12 @@
 package dad.game.model;
 
+import dad.game.model.enums.DireccionEnum;
+
+/**
+ * Posición de los objetos del juego
+ */
 public class Posicion {
+	
 	private int x;
 	private int y;
 
@@ -27,6 +33,11 @@ public class Posicion {
 		this.y = y;
 	}
 
+	/**
+	 * Cambia las coordenas
+	 * @param direccion Dirección del movimiento
+	 * @param paso Cantidad de posiciones a avanzar
+	 */
 	public void mover(DireccionEnum direccion, int paso) {
 		if (direccion == DireccionEnum.ARRIBA) {
 			y -= paso;
@@ -39,6 +50,11 @@ public class Posicion {
 		}
 	}
 	
+	/**
+	 * Compara la posición con otra
+	 * @param posicion2 Posición a comparar
+	 * @return True si la posición es igual; False si la posición es distinta
+	 */
 	public boolean compararPosicion(Posicion posicion2) {
 		return x == posicion2.getX() && y == posicion2.getY();
 	}

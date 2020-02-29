@@ -7,13 +7,21 @@
 	-fx-cursor: hand;
 }
 
-.menuAjustes > .btn{
+.menuPrincipal > *:hover {
+	-fx-background-color: #469;
+}
+
+.menuAjustes > .btn {
 	-fx-border-width: 3px;
 	-fx-border-radius: 10px;
 	-fx-border-color: #469;
 	-fx-background-color: #246;
 	-fx-background-radius: 12px;
 	-fx-cursor: hand;
+}
+
+.menuAjustes > .btn:hover {
+	-fx-background-color: #469;
 }
 
 .menuNivel > * > * {
@@ -31,74 +39,59 @@
 
 /* Styling the slider track */
 .jfx-slider > .track {
-     -fx-background-color: #469;
-     -fx-pref-height: 10px;
+    -fx-background-color: #469;
+    -fx-pref-height: 10px;
+	-fx-cursor: hand;
 }
 
 /* Styling the slider thumb */
 .jfx-slider > .thumb {
-     -fx-background-color: #246;
-     -fx-pref-height: 20px;
-     -fx-pref-width: 20px;
+    -fx-background-color: #246;
+    -fx-pref-height: 20px;
+    -fx-pref-width: 20px;
+	-fx-cursor: hand;
 }
 
 /* Styling the filled track */
 .jfx-slider > .colored-track {
-     -fx-background-color: #246;
+    -fx-background-color: #246;
+	-fx-cursor: hand;
 }
 
 /* Styling the animated thumb */
 .jfx-slider > .animated-thumb {
-     -fx-background-color: #246;
+    -fx-background-color: #246;
 }
 
 /* Styling the slider value text inside animated thumb */
 .jfx-slider .slider-value {
-     -fx-fill: white;
-     -fx-stroke: white;
+    -fx-fill: white;
+    -fx-stroke: white;
 }
 
 /******************************
 * JFX Combo Box              **
 *******************************/
 
-/* .jfx-list-cell .label,
-.jfx-list-cell:filled:hover .label {
-    -fx-text-fill: BLACK;
-}
-
-.jfx-list-cell .custom-jfx-list-view-icon,
-.jfx-list-cell:filled:hover .custom-jfx-list-view-icon,
-.jfx-list-cell:selected .custom-jfx-list-view-icon {
-    -fx-fill: #5264AE;
-}
-
-.jfx-list-cell:odd:selected > .jfx-rippler > StackPane,
-.jfx-list-cell:even:selected > .jfx-rippler > StackPane {
-    -fx-background-color: rgba(0.0, 0.0, 255.0, 0.2);
-}
-
-.jfx-list-cell {
-    -fx-background-insets: 0.0;
-}
-
-.jfx-list-cell .jfx-rippler {
-    -jfx-rippler-fill: red;
-}*/
-
 .combo-box {
     -fx-font-size: 18px;
     -fx-prompt-text-fill: white;
     -fx-text-fill: white;
     -fx-background-color: #469;
-    -fx-border-width: 0 0 4 0;
+    -fx-border-width: 0 0 5 0;
     -fx-border-color: #246;
-    -fx-padding: 0 0 -5 0;
-    -fx-background-radius: 10 10 0 0;
+    -fx-padding: 0 0 -4 0;
+    -fx-background-radius: 5 5 0 0;
+	-fx-cursor: hand;
 }
 
 .combo-box .list-cell .text {
     -fx-fill: white;
+}
+
+.combo-box .list-cell:filled {
+    -fx-background-color: #469;
+	-fx-cursor: hand;
 }
 
 .combo-box .list-cell:filled:selected {
@@ -108,21 +101,5 @@
 .combo-box .arrow {
     -fx-background-color: #246;   
 }
-
-.combo-box .list-cell {
-    -fx-background-color: #469;
-}
-
-.combo-box * {
-    -fx-background-color: #469;
-}
-
-
-
-
-
-
-
-
 
 

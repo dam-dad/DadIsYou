@@ -3,7 +3,14 @@ package dad.game.model;
 import java.util.ArrayList;
 
 import dad.App;
+import dad.game.model.enums.AccionEnum;
+import dad.game.model.enums.SujetoEnum;
+import dad.game.model.enums.TipoEnum;
 
+/**
+ * Objeto del juego
+ * @param <T> Tipo de objeto
+ */
 public class Objeto<T> {
 
 	private T nombre;
@@ -39,25 +46,32 @@ public class Objeto<T> {
 		return nombre;
 	}
 
+	/**
+	 * @param nombre Nombre del objeto
+	 */
 	public void setNombre(T nombre) {
 		this.nombre = nombre;
 		this.setImagen(nombre.toString().toLowerCase());
 	}
 
-	
+	/**
+	 * @param nombre Nombre (SujetoEnum) del objeto
+	 */
 	@SuppressWarnings("unchecked")
 	public void setNombre(SujetoEnum nombre) {
-		if (this.nombre instanceof SujetoEnum) {
-			this.nombre = (T) nombre;
-			this.setImagen(nombre.toString().toLowerCase());
-		}
+		this.nombre = (T) nombre;
+		this.setImagen(nombre.toString().toLowerCase());
 	}
 
 	public String getImagen() {
 		return imagen;
 	}
 
-	public void setImagen(String nombre) {
+	/**
+	 * Crea la ruta de la imagen del objeto
+	 * @param nombre Nombre del objeto
+	 */
+	private void setImagen(String nombre) {
 		this.imagen = App.getRuta() + tipo.toString().toLowerCase() + "_" + nombre + App.getImagenExtension();
 	}
 

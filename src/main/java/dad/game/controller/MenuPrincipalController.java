@@ -14,7 +14,10 @@ import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.VBox;
 
-public class MenuPrincipalController extends Controller implements Initializable {
+/**
+ * Controlador del menú principal
+ */
+public class MenuPrincipalController implements Initializable, Controller {
 
 	@FXML
 	private VBox root;
@@ -27,19 +30,33 @@ public class MenuPrincipalController extends Controller implements Initializable
 						new BackgroundSize(100, 100, true, true, true, true))));
 	}
 
+	/**
+	 * Se ejecuta la vista y el controlador de Ajustes
+	 * @param event
+	 */
 	@FXML
 	void onAjustesAction(ActionEvent event) {
 		App.getScreenController().activate("ajustes");
 		App.getAjustesController().setAnteriorController("menuPrincipal");
 	}
 
+	/**
+	 * Se inicia el juego y se ejecuta la vista y el controlador de Game
+	 * @param event
+	 */
 	@FXML
 	void onIniciarPartidaAction(ActionEvent event) {
+		App.playSound("boton");
 		App.getScreenController().activate("menuNivel");
 	}
 
+	/**
+	 * Salir del juego
+	 * @param event
+	 */
 	@FXML
 	void onSalirJuegoAction(ActionEvent event) {
+		App.playSound("boton");
 		System.exit(0);
 	}
 

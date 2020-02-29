@@ -4,34 +4,45 @@ import dad.game.controller.AjustesController;
 import dad.game.controller.GameController;
 import dad.game.controller.MenuNivelController;
 import dad.game.controller.MenuPrincipalController;
+import javafx.animation.FadeTransition;
+import javafx.animation.Interpolator;
 import javafx.animation.Transition;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+
 import java.io.File;
 
 public class App extends Application {
 
+	// Atributos de configuración
 	private static String ruta = "/imagenes/objetos/";
 	private static String imagenExtension = ".gif";
 	private static double volumenMusic = 0.3, volumenSound = 1;
-	private static HiloMusic hiloMusic;
-	private static HiloSound hiloSound;
 
 	private static ScreenController screenController;
 	private static MenuPrincipalController menuPrincipalController;
 	private static MenuNivelController menuNivelController;
 	private static GameController gameController;
 	private static AjustesController ajustesController;
+	
+	private static HiloMusic hiloMusic;
+	private static HiloSound hiloSound;
 
+	/**
+	 * Carga todos los controladores y los guarda en ScreenController para gestionar las vistas e inicia la aplicación
+	 */
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		screenController = new ScreenController(new Scene(FXMLLoader.load(getClass().getResource("/fxml/ScreenView.fxml"))));
-		
+	
 		FXMLLoader menuPrincipalView = new FXMLLoader(getClass().getResource("/fxml/MenuPrincipalView.fxml"));
 		menuPrincipalController = new MenuPrincipalController();
 		menuPrincipalView.setController(menuPrincipalController);
@@ -57,8 +68,10 @@ public class App extends Application {
 		primaryStage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
 		primaryStage.setFullScreen(true);
 		primaryStage.setScene(screenController.getScene());
+		primaryStage.getIcons().add(new Image("/imagenes/otros/favicon.png"));
 		primaryStage.show();
 		
+		// Música de fondo
 		playMusic("melodia_4");
 	}
 
@@ -102,35 +115,80 @@ public class App extends Application {
 		App.volumenSound = volumenSound;
 	}
 
+	/**
+	 * Ejecuta un hilo reproduciendo la canción
+	 * @param file Nombre del archivo de sonido MP3 sin la extensión
+	 */
 	public static void playMusic(String file) {
 		hiloMusic = new HiloMusic(file);
 		hiloMusic.run();
 	}
 
+	/**
+	 * Detiene el hilo de la canción
+	 */
 	public static void stopMusic() {
 		hiloMusic.parar();
 	}
 
+
+	/**
+	 * Ejecuta un hilo reproduciendo el sonido
+	 * @param file Nombre del archivo de sonido MP3 sin la extensión
+	 */
 	public static void playSound(String file) {
 		hiloSound = new HiloSound(file);
 		hiloSound.run();
 	}
 
+	/**
+	 * Detiene el hilo del sonido
+	 */
 	public static void stopSound() {
 		hiloSound.parar();
+	}
+	
+	/**
+	 * Ejecuta una transición de tipo "fade"
+	 * @param node Nodo de JavaFX al que se le aplica la transición
+	 * @param from Valor inicial
+	 * @param to Valor final
+	 * @param cycle Número de repeticiones
+	 * @param time Duración en milisegundos
+	 */
+	public static void transitionFade(Node node, double from, double to, int cycle, int time) {
+		FadeTransition transicionFade = new FadeTransition();
+		transicionFade.setAutoReverse(true);
+		transicionFade.setCycleCount(cycle);
+		transicionFade.setDuration(Duration.millis(time));
+		transicionFade.setFromValue(from);
+		transicionFade.setToValue(to);
+		transicionFade.setNode(node);
+		transicionFade.setInterpolator(Interpolator.LINEAR);
+		transicionFade.play();
 	}
 
 }
 
+/**
+ * Clase que reproduce un sonido en JavaFX
+ */
 class HiloSound extends Thread {
 
 	String file;
 	MediaPlayer mediaPlayer;
 	
+	/**
+	 * Constructor
+	 * @param file Nombre del archivo de sonido MP3 sin la extensión
+	 */
 	public HiloSound(String file) {
 		this.file = file;
 	}
 
+	/**
+	 * Método que inicia un hilo que reproduce el sonido
+	 */
 	@Override
 	public void run() {
 		String path = "src/main/resources/sonidos/" + file + ".mp3";
@@ -140,6 +198,9 @@ class HiloSound extends Thread {
 		mediaPlayer.play();
 	}
 	
+	/**
+	 * Método que para la reproducción del sonido
+	 */
 	public void parar() {
 		try {
 			mediaPlayer.stop();
@@ -147,15 +208,25 @@ class HiloSound extends Thread {
 	}
 }
 
+/**
+ * Clase que reproduce una canción en JavaFX
+ */
 class HiloMusic extends Thread {
 
 	String file;
 	MediaPlayer mediaPlayer;
 
+	/**
+	 * Constructor
+	 * @param file Nombre del archivo de sonido MP3 sin la extensión
+	 */
 	public HiloMusic(String file) {
 		this.file = file;
 	}
 
+	/**
+	 * Método que inicia un hilo que reproduce la canción
+	 */
 	@Override
 	public void run() {
 		String path = "src/main/resources/sonidos/" + file + ".mp3";
@@ -165,7 +236,10 @@ class HiloMusic extends Thread {
 		mediaPlayer.setVolume(App.getVolumenMusic());
 		mediaPlayer.play();
 	}
-	
+
+	/**
+	 * Método que para la reproducción de la canción
+	 */
 	public void parar() {
 		try {
 			mediaPlayer.stop();

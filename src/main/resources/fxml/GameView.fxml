@@ -68,21 +68,37 @@
                      </children>
                   </VBox>
                   <AnchorPane fx:id="tutorialPane" prefHeight="510.0" prefWidth="816.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                  <VBox fx:id="defeatPane" alignment="CENTER" prefHeight="510.0" prefWidth="816.0" style="-fx-background-color: rgba(0,0,0,0.6);" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <VBox fx:id="defeatPane" alignment="CENTER" prefHeight="510.0" prefWidth="816.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <Label text="¡Has perdido!" textFill="RED">
                            <font>
                               <Font name="Monospaced Regular" size="64.0" />
                            </font>
                         </Label>
+                        <Label text="Pulsa ENTER para reintentarlo" textFill="WHITE">
+                           <font>
+                              <Font name="Monospaced Regular" size="20.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
+                        </Label>
                      </children>
                   </VBox>
-                  <VBox fx:id="winPane" alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="510.0" prefWidth="816.0" style="-fx-background-color: rgba(0,0,0,0.6);" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <VBox fx:id="winPane" alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="510.0" prefWidth="816.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <Label text="¡Has ganado!" textFill="#47b900">
                            <font>
                               <Font name="Monospaced Regular" size="64.0" />
                            </font>
+                        </Label>
+                        <Label text="Pulsa ENTER para salir al mapa" textFill="WHITE">
+                           <font>
+                              <Font name="Monospaced Regular" size="20.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
                         </Label>
                      </children>
                   </VBox>

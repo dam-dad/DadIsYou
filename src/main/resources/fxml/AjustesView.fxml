@@ -55,12 +55,12 @@
                         <Insets bottom="5.0" top="5.0" />
                      </padding>
                   </Label>
-                  <Button mnemonicParsing="false" onAction="#onCancelarAction" prefWidth="175.0" styleClass="btn" text="Cancelar" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.rowIndex="6">
+                  <Button mnemonicParsing="false" onAction="#onCancelarAction" prefWidth="175.0" styleClass="btn" text="Cancelar" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="6">
                      <font>
                         <Font name="Monospaced Regular" size="24.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#onGuardarAction" prefWidth="175.0" styleClass="btn" text="Guardar" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="6">
+                  <Button mnemonicParsing="false" onAction="#onGuardarAction" prefWidth="175.0" styleClass="btn" text="Guardar" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="6">
                      <font>
                         <Font name="Monospaced Regular" size="24.0" />
                      </font>
