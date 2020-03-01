@@ -11,28 +11,28 @@ import dad.game.model.enums.VerboEnum;
 public class Nivel {
 	
 	public static Objeto<?>[][] test() {
-		String[] nivel= {
+		String[] nivel = {
 				"························",
-				"··················f·····",
-				"··········AAAA··········",
-				"··AAAA····AAAA····diy···",
-				"··········AAAA··········",
-				"····WWWWWWWWWWWWWWWW····",
-				"············L···········",
-				"·····D······L·····F·····",
-				"············L···········",
-				"····WWWWWWWWWWWWWWWW····",
-				"··········fiw···········",
-				"····R···················",
-				"·····R····pis···········",
-				"······R···lim···········",
-				"··········rie···········"
+				"···R·······rie··········",
+				"···W····················",
+				"·······R··p·ie··i···s···",
+				"···W····················",
+				"·······R·····t··i···e···",
+				"···W····················",
+				"·······T·····t··i···s···",
+				"···W····················",
+				"·······T·····p··i···s···",
+				"························",
+				"················RRAAAAA·",
+				"···················AAAA·",
+				"····D········diy···AAAA·",
+				"························"
 		};
 		return parsear(nivel);
 	}
 	
 	public static Objeto<?>[][] uno() {
-		String[] nivel= {
+		String[] nivel = {
 				"························",
 				"························",
 				"························",
@@ -53,7 +53,7 @@ public class Nivel {
 	}
 	
 	public static Objeto<?>[][] dos() {
-		String[] nivel= {
+		String[] nivel = {
 				"························",
 				"···········WWWWWWWWW····",
 				"···········W·······W····",
@@ -74,7 +74,7 @@ public class Nivel {
 	}
 	
 	public static Objeto<?>[][] tres() {
-		String[] nivel= {
+		String[] nivel = {
 				"fiw·····················",
 				"diy·····················",
 				"························",
@@ -95,7 +95,7 @@ public class Nivel {
 	}
 	
 	public static Objeto<?>[][] cuatro() {
-		String[] nivel= {
+		String[] nivel = {
 				"························",
 				"························",
 				"····WWWWWWWWWWWWWWWW····",
@@ -116,7 +116,7 @@ public class Nivel {
 	}
 	
 	public static Objeto<?>[][] cinco() {
-		String[] nivel= {
+		String[] nivel = {
 				"························",
 				"························",
 				"························",
@@ -137,7 +137,7 @@ public class Nivel {
 	}
 	
 	public static Objeto<?>[][] seis() {
-		String[] nivel= {
+		String[] nivel = {
 				"pisLL··W·····W·········L",
 				"LLLL···W··D··W········LL",
 				"LL·····W·····W·······LLL",
@@ -159,7 +159,7 @@ public class Nivel {
 
 	
 	public static Objeto<?>[][] siete() {
-		String[] nivel= {
+		String[] nivel = {
 				"d·p·a···················",
 				"i·i·i····WWWWWWWW·······",
 				"y·s·k····W······W·······",
@@ -180,20 +180,20 @@ public class Nivel {
 	}
 	
 	public static Objeto<?>[][] ocho() {
-		String[] nivel= {
-				"ris·R···················",
-				"····R···················",
-				"uid·R···················",
-				"····R···················",
-				"biw·R···················",
-				"····R···················",
-				"RRRRR···················",
-				"························",
-				"························",
-				"·d······················",
-				"·i······················",
-				"·y······················",
-				"························",
+		String[] nivel = {
+				"ris·R·········R·········",
+				"····R·········R·········",
+				"biw·R····WWWWWRWWWWWW···",
+				"····R····W····R·····W···",
+				"RRRRR····W····R··B··W···",
+				"·········W····R·····W···",
+				"·········W····RRRRRRRRRR",
+				"·········W··········W···",
+				"·········W····D·····W···",
+				"·d·······W··········W···",
+				"·i·······W···pis····W···",
+				"·y·······W··········W···",
+				"·········WWWWWWWWWWWW···",
 				"························",
 				"························"
 		};
@@ -201,7 +201,7 @@ public class Nivel {
 	}
 	
 	public static Objeto<?>[][] nueve() {
-		String[] nivel= {
+		String[] nivel = {
 				"························",
 				"····uimWWWWWWWWWWW······",
 				"···WWWWW·········W······",
@@ -223,7 +223,7 @@ public class Nivel {
 	
 	@SuppressWarnings("unused")
 	private static Objeto<?>[][] empty() {
-		String[] nivel= {
+		String[] nivel = {
 				"························",
 				"························",
 				"························",

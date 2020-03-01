@@ -25,7 +25,7 @@ public class App extends Application {
 	// Atributos de configuración
 	private static String ruta = "/imagenes/objetos/";
 	private static String imagenExtension = ".gif";
-	private static double volumenMusic = 0.3, volumenSound = 1;
+	private static double volumenMusic = 0.05, volumenSound = 1;
 
 	private static ScreenController screenController;
 	private static MenuPrincipalController menuPrincipalController;

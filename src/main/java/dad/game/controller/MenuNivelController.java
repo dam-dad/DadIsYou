@@ -45,7 +45,7 @@ public class MenuNivelController implements Initializable, Controller {
 		// Lista del contenido de los botones de los niveles
 		String[] numerosBotones = {
 				"<",
-				"1",
+				"0",
 				"2",
 				"3",
 				"4",

@@ -244,6 +244,13 @@ public class GameController implements Initializable, Controller {
 		perder = true;
 		App.playSound("perder");
 	}
+	
+	/**
+	 * Ejecuta un sonido al desintegrarse un objeto
+	 */
+	public void desintegrar() {
+		App.playSound("desintegrar");
+	}
 
 	/**
 	 * Se ejecuta la vista y el controlador de Ajustes
