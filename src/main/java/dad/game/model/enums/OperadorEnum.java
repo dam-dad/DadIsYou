@@ -3,6 +3,6 @@ package dad.game.model.enums;
 /**
  * Enumerado de verbos/operadores
  */
-public enum VerboEnum {
+public enum OperadorEnum {
 	IS, AND
 }

@@ -3,7 +3,7 @@ package dad.game.model;
 import java.util.ArrayList;
 
 import dad.App;
-import dad.game.model.enums.AccionEnum;
+import dad.game.model.enums.PropiedadEnum;
 import dad.game.model.enums.SujetoEnum;
 import dad.game.model.enums.TipoEnum;
 
@@ -17,7 +17,7 @@ public class Objeto<T> {
 	private String imagen;
 	private Posicion posicion;
 	private char codigo;
-	private ArrayList<AccionEnum> estados;
+	private ArrayList<PropiedadEnum> estados;
 	private TipoEnum tipo;
 
 	public Objeto() {}
@@ -39,7 +39,7 @@ public class Objeto<T> {
 		setNombre(nombre);
 		this.codigo = codigo;
 		this.posicion = posicion;
-		this.estados = new ArrayList<AccionEnum>();
+		this.estados = new ArrayList<PropiedadEnum>();
 	}
 
 	public T getNombre() {
@@ -83,15 +83,15 @@ public class Objeto<T> {
 		this.posicion = posicion;
 	}
 	
-	public ArrayList<AccionEnum> getEstados() {
+	public ArrayList<PropiedadEnum> getEstados() {
 		return estados;
 	}
 
-	public void setEstados(ArrayList<AccionEnum> estados) {
+	public void setEstados(ArrayList<PropiedadEnum> estados) {
 		this.estados = estados;
 	}
 
-	public void setEstado(AccionEnum estado) {
+	public void setEstado(PropiedadEnum estado) {
 		this.estados.add(estado);
 	}
 	

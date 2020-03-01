@@ -1,9 +1,9 @@
 package dad.game.model;
 
-import dad.game.model.enums.AccionEnum;
+import dad.game.model.enums.PropiedadEnum;
 import dad.game.model.enums.SujetoEnum;
 import dad.game.model.enums.TipoEnum;
-import dad.game.model.enums.VerboEnum;
+import dad.game.model.enums.OperadorEnum;
 
 /**
  * Almacén de niveles
@@ -75,6 +75,27 @@ public class Nivel {
 	
 	public static Objeto<?>[][] tres() {
 		String[] nivel = {
+				"························",
+				"···········FFFFFFFFF····",
+				"···········F·······F····",
+				"···········F··i····F····",
+				"···········F·······F····",
+				"·····FFFFFFF·····w·F····",
+				"·····F·············F····",
+				"·····F·d·····F·····F····",
+				"·····F·············F····",
+				"·····FFFFFFFFFFFFFFF····",
+				"···········F·f·····F····",
+				"····w······F·i··W··F····",
+				"····i······F·s·····F····",
+				"····y······FFFFFFFFF····",
+				"························"
+		};
+		return parsear(nivel);
+	}
+	
+	public static Objeto<?>[][] cuatro() {
+		String[] nivel = {
 				"fiw·····················",
 				"diy·····················",
 				"························",
@@ -93,44 +114,24 @@ public class Nivel {
 		};
 		return parsear(nivel);
 	}
-	
-	public static Objeto<?>[][] cuatro() {
-		String[] nivel = {
-				"························",
-				"························",
-				"····WWWWWWWWWWWWWWWW····",
-				"····W····B·········W····",
-				"····W·diy········F·W····",
-				"····WB·············W····",
-				"····W····D····B····W···b",
-				"····W··········B·B·W···i",
-				"····W········B··B·BW···s",
-				"····WB·······B·f·w·W····",
-				"····W·B······B··B··W····",
-				"····W·····B···B····W····",
-				"····WWWWWWWWWWWWWWWW····",
-				"························",
-				"························"
-		};
-		return parsear(nivel);
-	}
+
 	
 	public static Objeto<?>[][] cinco() {
 		String[] nivel = {
-				"························",
-				"························",
-				"························",
-				"························",
-				"························",
-				"··········diy·····WWWWWW",
-				"··················W···Wp",
-				"····D·············W·F·Wi",
-				"··················W···Ws",
-				"··········fiw·····WWWWWW",
-				"························",
-				"························",
-				"························",
-				"························",
+				"d·p·a···················",
+				"i·i·i····WWWWWWWW·······",
+				"y·s·k····W······W·······",
+				"·········W·D··R·W·······",
+				"·········W····R·W·······",
+				"·········W······W·······",
+				"····WWWWWWAAAWWWWWWW····",
+				"····W········W·····W····",
+				"····W········W·rie·W····",
+				"····W········W·····W····",
+				"····WAAA···W·······W····",
+				"····WAAA·····W·fiw·W····",
+				"····WFAA·····W·····W····",
+				"····WWWWWWWWWWWWWWWW····",
 				"························"
 		};
 		return parsear(nivel);
@@ -156,30 +157,8 @@ public class Nivel {
 		};
 		return parsear(nivel);
 	}
-
 	
 	public static Objeto<?>[][] siete() {
-		String[] nivel = {
-				"d·p·a···················",
-				"i·i·i····WWWWWWWW·······",
-				"y·s·k····W······W·······",
-				"·········W·D··R·W·······",
-				"·········W····R·W·······",
-				"·········W······W·······",
-				"····WWWWWWAAAWWWWWWW····",
-				"····W········W·····W····",
-				"····W········W·rie·W····",
-				"····W········W·····W····",
-				"····WAAA···W·······W····",
-				"····WAAA·····W·fiw·W····",
-				"····WFAA·····W·····W····",
-				"····WWWWWWWWWWWWWWWW····",
-				"························"
-		};
-		return parsear(nivel);
-	}
-	
-	public static Objeto<?>[][] ocho() {
 		String[] nivel = {
 				"ris·R·········R·········",
 				"····R·········R·········",
@@ -200,7 +179,49 @@ public class Nivel {
 		return parsear(nivel);
 	}
 	
-	public static Objeto<?>[][] nueve() {
+	public static Objeto<?>[][] ocho() {
+		String[] nivel = {
+				"························",
+				"························",
+				"····WWWWWWWWWWWWWWWW····",
+				"····W····B·········W····",
+				"····W·diy········F·W····",
+				"····WB·············W····",
+				"····W····D····B····W···b",
+				"····W··········B·B·W···i",
+				"····W········B··B·BW···s",
+				"····WB·······B·f·w·W····",
+				"····W·B······B··B··W····",
+				"····W·····B···B····W····",
+				"····WWWWWWWWWWWWWWWW····",
+				"························",
+				"························"
+		};
+		return parsear(nivel);
+	}
+	
+	private static Objeto<?>[][] nueve() {
+		String[] nivel = {
+				"fiw········AAAA······tik",
+				"···········AAAA·········",
+				"···WWWWW····AAAA···TTT··",
+				"···W···W····AAAAA·TT·TT·",
+				"···W·D·W····AAAAA·T·F·T·",
+				"···W···W····AAAAAATT·TT·",
+				"···WW·WW····AAA·AA·TTT··",
+				"············AA·q·AA·····",
+				"·············AA·AAAA····",
+				"··············AAAAAAA···",
+				"······WWWW······AAAAA···",
+				"···W··diy&kW······AAAA··",
+				"···WWWWWWW·········AAAA·",
+				"···················AAAAA",
+				"··················AAApis"
+		};
+		return parsear(nivel);
+	}
+	
+	public static Objeto<?>[][] diez() {
 		String[] nivel = {
 				"························",
 				"····uimWWWWWWWWWWW······",
@@ -217,6 +238,90 @@ public class Nivel {
 				"························",
 				"·fiw····················",
 				"························"
+		};
+		return parsear(nivel);
+	}
+	
+	public static Objeto<?>[][] once() {
+		String[] nivel = {
+				"························",
+				"························",
+				"························",
+				"························",
+				"························",
+				"··········diy·····WWWWWW",
+				"··················W···Wp",
+				"····D·············W·F·Wi",
+				"··················W···Ws",
+				"··········fiw·····WWWWWW",
+				"························",
+				"························",
+				"························",
+				"························",
+				"························"
+		};
+		return parsear(nivel);
+	}
+	
+	private static Objeto<?>[][] doce() {
+		String[] nivel = {
+				"························",
+				"························",
+				"························",
+				"······WWWWWWWWWWWW······",
+				"······WD·········W······",
+				"······W··T·····p·W······",
+				"·fiw··WTTT·····i·W······",
+				"······W········s·W······",
+				"·diy··W··········W······",
+				"······W·tis······W······",
+				"······W··········W······",
+				"······WWWWWWWWWWWW······",
+				"························",
+				"························",
+				"pim·····················"
+		};
+		return parsear(nivel);
+	}
+	
+	private static Objeto<?>[][] trece() {
+		String[] nivel = {
+				"························",
+				"··········rir···········",
+				"························",
+				"························",
+				"········D·····F·········",
+				"························",
+				"························",
+				"··········fir···········",
+				"························",
+				"························",
+				"························",
+				"························",
+				"························",
+				"WWWW·····WWWWW······WWWW",
+				"diyW·····WpisW······Wfiw"
+		};
+		return parsear(nivel);
+	}
+	
+	private static Objeto<?>[][] catorce() {
+		String[] nivel = {
+				"························",
+				"·····fif········pis·····",
+				"························",
+				"WWWWWWWWWWWWWWWWWWWWWWWW",
+				"··············W·········",
+				"·····fie······W·········",
+				"··············W·········",
+				"·····t········F·W·······",
+				"··············W·········",
+				"·········D····W···fis···",
+				"··············W·········",
+				"··············W····T····",
+				"··············W·········",
+				"··W···········W···tiw···",
+				"diy···········W·········"
 		};
 		return parsear(nivel);
 	}
@@ -281,6 +386,21 @@ public class Nivel {
 		case 9:
 			nivel = nueve();
 			break;
+		case 10:
+			nivel = diez();
+			break;
+		case 11:
+			nivel = once();
+			break;
+		case 12:
+			nivel = doce();
+			break;
+		case 13:
+			nivel = trece();
+			break;
+		case 14:
+			nivel = catorce();
+			break;
 		}
 		return nivel;
 	}
@@ -323,6 +443,24 @@ public class Nivel {
 		case 9:
 			bg = "uno";
 			break;
+		case 10:
+			bg = "uno";
+			break;
+		case 11:
+			bg = "uno";
+			break;
+		case 12:
+			bg = "uno";
+			break;
+		case 13:
+			bg = "uno";
+			break;
+		case 14:
+			bg = "uno";
+			break;
+		case 15:
+			bg = "uno";
+			break;
 		}
 		return bg;
 	}
@@ -342,9 +480,9 @@ public class Nivel {
 				if(letra == '-') { // Aire ·
 					mapa[i][j] = null;
 				} else if (letra == 'i') {
-					mapa[i][j] = new Objeto<VerboEnum>(VerboEnum.IS, TipoEnum.VERBO, letra, posicion);
+					mapa[i][j] = new Objeto<OperadorEnum>(OperadorEnum.IS, TipoEnum.OPERADOR, letra, posicion);
 				} else if (letra == '&') {
-					mapa[i][j] = new Objeto<VerboEnum>(VerboEnum.AND, TipoEnum.VERBO, letra, posicion);
+					mapa[i][j] = new Objeto<OperadorEnum>(OperadorEnum.AND, TipoEnum.OPERADOR, letra, posicion);
 				} else if (letra == 'W') {
 					mapa[i][j] = new Objeto<SujetoEnum>(SujetoEnum.WALL, TipoEnum.ELEMENTO, letra, posicion);
 				} else if (letra == 'F') {
@@ -386,21 +524,21 @@ public class Nivel {
 				} else if (letra == 't') {
 					mapa[i][j] = new Objeto<SujetoEnum>(SujetoEnum.STAR, TipoEnum.SUJETO, letra, posicion);
 				} else if (letra == 'y') {
-					mapa[i][j] = new Objeto<AccionEnum>(AccionEnum.YOU, TipoEnum.ACCION, letra, posicion);
+					mapa[i][j] = new Objeto<PropiedadEnum>(PropiedadEnum.YOU, TipoEnum.PROPIEDAD, letra, posicion);
 				} else if (letra == 'w') {
-					mapa[i][j] = new Objeto<AccionEnum>(AccionEnum.WIN, TipoEnum.ACCION, letra, posicion);
+					mapa[i][j] = new Objeto<PropiedadEnum>(PropiedadEnum.WIN, TipoEnum.PROPIEDAD, letra, posicion);
 				} else if (letra == 's') {
-					mapa[i][j] = new Objeto<AccionEnum>(AccionEnum.STOP, TipoEnum.ACCION, letra, posicion);
+					mapa[i][j] = new Objeto<PropiedadEnum>(PropiedadEnum.STOP, TipoEnum.PROPIEDAD, letra, posicion);
 				} else if (letra == 'm') {
-					mapa[i][j] = new Objeto<AccionEnum>(AccionEnum.DEFEAT, TipoEnum.ACCION, letra, posicion);
+					mapa[i][j] = new Objeto<PropiedadEnum>(PropiedadEnum.DEFEAT, TipoEnum.PROPIEDAD, letra, posicion);
 				} else if (letra == 'e') {
-					mapa[i][j] = new Objeto<AccionEnum>(AccionEnum.PUSH, TipoEnum.ACCION, letra, posicion);
+					mapa[i][j] = new Objeto<PropiedadEnum>(PropiedadEnum.PUSH, TipoEnum.PROPIEDAD, letra, posicion);
 				} else if (letra == 'v') {
-					mapa[i][j] = new Objeto<AccionEnum>(AccionEnum.FLOAT, TipoEnum.ACCION, letra, posicion);
+					mapa[i][j] = new Objeto<PropiedadEnum>(PropiedadEnum.FLOAT, TipoEnum.PROPIEDAD, letra, posicion);
 				} else if (letra == 'k') {
-					mapa[i][j] = new Objeto<AccionEnum>(AccionEnum.SINK, TipoEnum.ACCION, letra, posicion);
+					mapa[i][j] = new Objeto<PropiedadEnum>(PropiedadEnum.SINK, TipoEnum.PROPIEDAD, letra, posicion);
 				} else if (letra == 'c') {
-					mapa[i][j] = new Objeto<AccionEnum>(AccionEnum.MOVE, TipoEnum.ACCION, letra, posicion);
+					mapa[i][j] = new Objeto<PropiedadEnum>(PropiedadEnum.MOVE, TipoEnum.PROPIEDAD, letra, posicion);
 				}
 				// Añadir posición inicial cuando no sea aire
 				if(mapa[i][j] != null) {

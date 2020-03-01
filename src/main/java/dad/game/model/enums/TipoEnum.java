@@ -6,5 +6,5 @@ package dad.game.model.enums;
  *
  */
 public enum TipoEnum {
-	SUJETO, VERBO, ACCION, ELEMENTO
+	SUJETO, OPERADOR, PROPIEDAD, ELEMENTO
 }

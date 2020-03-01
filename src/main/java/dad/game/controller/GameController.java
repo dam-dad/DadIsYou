@@ -9,7 +9,7 @@ import dad.game.model.Nivel;
 import dad.game.model.Objeto;
 import dad.game.model.Posicion;
 import dad.game.model.Tablero;
-import dad.game.model.enums.AccionEnum;
+import dad.game.model.enums.PropiedadEnum;
 import dad.game.model.enums.DireccionEnum;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -196,8 +196,8 @@ public class GameController implements Initializable, Controller {
 						gameGrid.add(imagen, j, i);
 					}
 					// Sonido DAD se mueve:
-					for (AccionEnum estado : objetos[i][j].getEstados()) {
-						if (estado == AccionEnum.YOU) {
+					for (PropiedadEnum estado : objetos[i][j].getEstados()) {
+						if (estado == PropiedadEnum.YOU) {
 							if (posicionDADAnterior != null ) {
 								if (!posicionDADAnterior.compararPosicion(objetos[i][j].getPosicion())) {
 									App.playSound("movimiento");

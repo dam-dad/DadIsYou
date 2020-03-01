@@ -45,7 +45,7 @@ public class MenuNivelController implements Initializable, Controller {
 		// Lista del contenido de los botones de los niveles
 		String[] numerosBotones = {
 				"<",
-				"0",
+				"1",
 				"2",
 				"3",
 				"4",
@@ -53,7 +53,12 @@ public class MenuNivelController implements Initializable, Controller {
 				"6",
 				"7",
 				"8",
-				"9"
+				"9",
+				"10",
+				"11",
+				"12",
+				"13",
+				"14"
 				};
 		// Lista del diseño de los botones de los niveles
 		String[] disenoBotones = {
@@ -66,7 +71,12 @@ public class MenuNivelController implements Initializable, Controller {
 				"-fx-text-fill: #33c; -fx-border-color: #33c; -fx-background-color: #559;",
 				"-fx-text-fill: #f33; -fx-border-color: #f33; -fx-background-color: #733;",
 				"-fx-text-fill: #3f3; -fx-border-color: #3f3; -fx-background-color: #373;",
-				"-fx-text-fill: #33c; -fx-border-color: #33c; -fx-background-color: #559;"
+				"-fx-text-fill: #33c; -fx-border-color: #33c; -fx-background-color: #559;",
+				"-fx-text-fill: #f33; -fx-border-color: #f33; -fx-background-color: #733;",
+				"-fx-text-fill: #3f3; -fx-border-color: #3f3; -fx-background-color: #373;",
+				"-fx-text-fill: #33c; -fx-border-color: #33c; -fx-background-color: #559;",
+				"-fx-text-fill: #f33; -fx-border-color: #f33; -fx-background-color: #733;",
+				"-fx-text-fill: #3f3; -fx-border-color: #3f3; -fx-background-color: #373;"
 				};
 		// Lista de botones JavaFX
 		ArrayList<Button> botones = new ArrayList<Button>();
@@ -75,7 +85,7 @@ public class MenuNivelController implements Initializable, Controller {
 			// Se crean los botones
 			for (int i = 0; i < numerosBotones.length; i++) {
 				Button btn = new Button(numerosBotones[i]);
-				btn.setFont(Font.font(null, FontWeight.EXTRA_BOLD, 14.0));
+				btn.setFont(Font.font(null, FontWeight.EXTRA_BOLD, 10.0));
 				btn.setStyle(disenoBotones[i]);
 				// Se añade su evento "OnAction"
 				btn.setOnAction(new EventHandler<ActionEvent>() {
@@ -106,12 +116,17 @@ public class MenuNivelController implements Initializable, Controller {
 			nivelGrid.add(botones.get(1), 14, 21);
 			nivelGrid.add(botones.get(2), 16, 18);
 			nivelGrid.add(botones.get(3), 21, 19);
-			nivelGrid.add(botones.get(4), 29, 17);
-			nivelGrid.add(botones.get(5), 33, 14);
-			nivelGrid.add(botones.get(6), 26, 8);
-			nivelGrid.add(botones.get(7), 22, 4);
-			nivelGrid.add(botones.get(8), 16, 7);
-			nivelGrid.add(botones.get(9), 18, 11);
+			nivelGrid.add(botones.get(4), 25, 18);
+			nivelGrid.add(botones.get(5), 29, 17);
+			nivelGrid.add(botones.get(6), 33, 14);
+			nivelGrid.add(botones.get(7), 30, 10);
+			nivelGrid.add(botones.get(8), 26, 8);
+			nivelGrid.add(botones.get(9), 21, 8);
+			nivelGrid.add(botones.get(10), 22, 4);
+			nivelGrid.add(botones.get(11), 16, 7);
+			nivelGrid.add(botones.get(12), 18, 11);
+			nivelGrid.add(botones.get(13), 25, 12);
+			nivelGrid.add(botones.get(14), 37, 22);
 		} else {
 			System.out.println("Error: Los niveles están incompletos");
 			System.exit(0);

@@ -1,8 +1,9 @@
 package dad.game.model;
 
 import dad.App;
-import dad.game.model.enums.AccionEnum;
+import dad.game.model.enums.PropiedadEnum;
 import dad.game.model.enums.DireccionEnum;
+import dad.game.model.enums.OperadorEnum;
 import dad.game.model.enums.SujetoEnum;
 import dad.game.model.enums.TipoEnum;
 import java.util.ArrayList;
@@ -75,7 +76,7 @@ public class Tablero {
 	 * @param direccion Dirección de movimiento
 	 */
 	public void mover(DireccionEnum direccion) {
-		ArrayList<Objeto<?>> elementosYou = buscarElemento(AccionEnum.YOU, direccion); // Personajes (elementos con el estado YOU)
+		ArrayList<Objeto<?>> elementosYou = buscarElemento(PropiedadEnum.YOU, direccion); // Personajes (elementos con el estado YOU)
 
 		if (elementosYou.size() > 0) {
 			int[] direccionXY = direccionXY(direccion);
@@ -106,7 +107,7 @@ public class Tablero {
 							you.getPosicion().mover(direccion, 1); // Actualiza la posición en el atributo del objeto
 							comprobaciones(you, direccion);
 						} else {
-							if (buscarEstado(objetos[posNuevaPosicionY][posNuevaPosicionX], AccionEnum.YOU)) {
+							if (buscarEstado(objetos[posNuevaPosicionY][posNuevaPosicionX], PropiedadEnum.YOU)) {
 								you.getPosicion().mover(direccion, 1); // Actualiza la posición en el atributo del objeto
 							}
 						}
@@ -146,8 +147,8 @@ public class Tablero {
 		int posObjetoEmpujadoY = objetoEmpujado.getPosicion().getY();
 		int posNuevaPosicionX = posObjetoEmpujadoX + direccionXY[0];
 		int posNuevaPosicionY = posObjetoEmpujadoY + direccionXY[1];
-		// Comprobar límite del mapa
 		comprobarSink(objetos[posObjetoEmpujadoY][posObjetoEmpujadoX], direccion);
+		// Comprobar límite del mapa
 		if (comprobarBordeMapa(posNuevaPosicionX, posNuevaPosicionY)) { 
 			Objeto<?> elementoPrimerPlanoNuevaPosicon = objetos[posNuevaPosicionY][posNuevaPosicionX];
 			if (elementoPrimerPlanoNuevaPosicon == null) { // En la siguiente posición hay aire
@@ -155,7 +156,7 @@ public class Tablero {
 				objetos[posObjetoEmpujadoY][posObjetoEmpujadoX] = null;
 				objetoEmpujado.getPosicion().mover(direccion, 1);
 			} else { // En la siguiente posición no hay aire
-				boolean isElementoYou = buscarEstado(objetos[posNuevaPosicionY][posNuevaPosicionX], AccionEnum.YOU);
+				boolean isElementoYou = buscarEstado(objetos[posNuevaPosicionY][posNuevaPosicionX], PropiedadEnum.YOU);
 				if (!isElementoYou) { // Si el objeto siguiente no es YOU
 					// Comprobar si la nueva posicion es STOP
 					if (comprobarStop(objetos[posObjetoEmpujadoY][posObjetoEmpujadoX], direccionXY[0], direccionXY[1])) { // True no es STOP
@@ -165,10 +166,10 @@ public class Tablero {
 						for (int i = 0; i < elementosNuevaPosicion.size(); i++) {
 							Objeto<?> elementoNuevaPosicion = elementosNuevaPosicion.get(i);
 							// TRUE si la siguiente posición puede ser empujado (tiene el estado PUSH):
-							boolean isPush = buscarEstado(elementoNuevaPosicion, AccionEnum.PUSH);
+							boolean isPush = buscarEstado(elementoNuevaPosicion, PropiedadEnum.PUSH);
 							// La nueva posicion puede ser empujada (tiene el estado PUSH o es una palabra)
-							if (elementoNuevaPosicion.getTipo() == TipoEnum.SUJETO || elementoNuevaPosicion.getTipo() == TipoEnum.VERBO
-									|| elementoNuevaPosicion.getTipo() == TipoEnum.ACCION || isPush) {
+							if (elementoNuevaPosicion.getTipo() == TipoEnum.SUJETO || elementoNuevaPosicion.getTipo() == TipoEnum.OPERADOR
+									|| elementoNuevaPosicion.getTipo() == TipoEnum.PROPIEDAD || isPush) {
 								if (mover) { // Si se desea mover:
 									// Llama de nuevo a este método para empujar el siguiente objeto
 									if (i == 0) {
@@ -239,7 +240,7 @@ public class Tablero {
 				elementoAMover.getPosicion().getY() + direccionY))); // Elementos siguientes en el segundo plano del que se quiere mover
 		for (Objeto<?> elementoColision : elementos) {
 			if (elementoColision != null) { // Si no es aire:
-				stop = !buscarEstado(elementoColision, AccionEnum.STOP);
+				stop = !buscarEstado(elementoColision, PropiedadEnum.STOP);
 			}
 		}
 		return stop;
@@ -252,15 +253,15 @@ public class Tablero {
 	private void comprobarDefeat(Objeto<?> you) {
 		boolean defeat = false;
 		// Si los estados YOU y DEFEAT coinciden en el mismo elemento se pierde la partida
-		ArrayList<Objeto<?>> elementosYou = buscarElemento(AccionEnum.YOU, null);
+		ArrayList<Objeto<?>> elementosYou = buscarElemento(PropiedadEnum.YOU, null);
 		if (elementosYou.size() > 0) {
-			defeat = buscarEstado(elementosYou.get(0), AccionEnum.DEFEAT);
+			defeat = buscarEstado(elementosYou.get(0), PropiedadEnum.DEFEAT);
 		}
 		// Si YOU está sobre el elemento DEFEAT se pierde la partida
 		if (you != null) {
 			for (Objeto<?> elemento : elementosSegundoPlano) {
 				for (int i = 0; i < elemento.getEstados().size(); i++) {
-					if (buscarEstado(elemento, AccionEnum.DEFEAT) && elemento.getPosicion().compararPosicion(you.getPosicion())) {
+					if (buscarEstado(elemento, PropiedadEnum.DEFEAT) && elemento.getPosicion().compararPosicion(you.getPosicion())) {
 						defeat = true;
 					}
 				}
@@ -281,7 +282,7 @@ public class Tablero {
 	 */
 	private void comprobarSink(Objeto<?> objeto, DireccionEnum direccion) {
 		boolean isSink = false;
-		ArrayList<Objeto<?>> elementos = buscarElemento(AccionEnum.SINK, null);
+		ArrayList<Objeto<?>> elementos = buscarElemento(PropiedadEnum.SINK, null);
 		for (Objeto<?> elemento : elementos) {
 			ArrayList<Objeto<?>> elementosToSink = buscarElementoSegundoPlano(elemento.getPosicion());
 			for (Objeto<?> elementoToSink : elementosToSink) {
@@ -296,11 +297,14 @@ public class Tablero {
 			int posObjetoEmpujadoY = objeto.getPosicion().getY();
 			int posNuevaPosicionX = posObjetoEmpujadoX + direccionXY[0];
 			int posNuevaPosicionY = posObjetoEmpujadoY + direccionXY[1];
-			if (objetos[posNuevaPosicionY][posNuevaPosicionX] != null) {
-				if (buscarEstado(objeto, AccionEnum.SINK)) {
-					objetos[posObjetoEmpujadoY][posObjetoEmpujadoX] = null;
-					objetos[posNuevaPosicionY][posNuevaPosicionX] = null;
-					isSink = true;
+			if (comprobarBordeMapa(posNuevaPosicionX, posNuevaPosicionY)) { 
+				if (objetos[posNuevaPosicionY][posNuevaPosicionX] != null
+						&& objetos[posNuevaPosicionY][posNuevaPosicionX].getTipo() == TipoEnum.ELEMENTO) {
+					if (buscarEstado(objeto, PropiedadEnum.SINK)) {
+						objetos[posObjetoEmpujadoY][posObjetoEmpujadoX] = null;
+						objetos[posNuevaPosicionY][posNuevaPosicionX] = null;
+						isSink = true;
+					}
 				}
 			}
 		}
@@ -316,15 +320,15 @@ public class Tablero {
 	private void comprobarWin(Objeto<?> you) {
 		boolean win = false;
 		// Si los estados YOU y WIN coinciden en el mismo elemento se gana la partida
-		ArrayList<Objeto<?>> elementosYou = buscarElemento(AccionEnum.YOU, null);
+		ArrayList<Objeto<?>> elementosYou = buscarElemento(PropiedadEnum.YOU, null);
 		if (elementosYou.size() > 0) {
-			win = buscarEstado(elementosYou.get(0), AccionEnum.WIN);
+			win = buscarEstado(elementosYou.get(0), PropiedadEnum.WIN);
 		}
 		// Si YOU está sobre el elemento WIN se gana la partida
 		if (you != null) {
 			for (Objeto<?> elemento : elementosSegundoPlano) {
 				for (int i = 0; i < elemento.getEstados().size(); i++) {
-					if (buscarEstado(elemento, AccionEnum.WIN) && elemento.getPosicion().compararPosicion(you.getPosicion())) {
+					if (buscarEstado(elemento, PropiedadEnum.WIN) && elemento.getPosicion().compararPosicion(you.getPosicion())) {
 						win = true;
 					}
 				}
@@ -394,9 +398,9 @@ public class Tablero {
 	 * @param estado Estado que se desea encontrar
 	 * @return True si lo encuentra; False si no lo encuentra
 	 */
-	private boolean buscarEstado(Objeto<?> objeto, AccionEnum estadoDeseado) {
+	private boolean buscarEstado(Objeto<?> objeto, PropiedadEnum estadoDeseado) {
 		boolean encontrado = false;
-		for (AccionEnum estado : objeto.getEstados()) {
+		for (PropiedadEnum estado : objeto.getEstados()) {
 			if (estado == estadoDeseado) {
 				encontrado = true;
 			}
@@ -442,23 +446,65 @@ public class Tablero {
 		for (int i = 0; i < objetos.length; i++) {
 			for (int j = 0; j < objetos[i].length; j++) {
 				if (objetos[i][j] != null && objetos[i][j].getTipo() == TipoEnum.SUJETO) { // Si es un sujeto:
-					// Comprobar hacia la derecha si se forma una frase
-					if (j + 2 < cantidadColumnas) { // Comprobar si la posible frase está dentro del escenario
-						if (objetos[i][j + 1] != null && objetos[i][j + 1].getTipo() == TipoEnum.VERBO) { // Si la siguiente posición es un verbo:
-							if (objetos[i][j + 2] != null && (objetos[i][j + 2].getTipo() == TipoEnum.ACCION
-									|| objetos[i][j + 2].getTipo() == TipoEnum.SUJETO)) { // Si la siguiente posición es una acción o un sujeto:
-								Objeto<?>[] frase = { objetos[i][j], objetos[i][j + 1], objetos[i][j + 2] };
-								frases.add(frase); // Se guarda la frase
-							}
-						}
-					}
-					// Comprobar hacia abajo si se forma una frase
-					if (i + 2 < cantidadFilas) { // Comprobar si la posible frase está dentro del escenario
-						if (objetos[i + 1][j] != null && objetos[i + 1][j].getTipo() == TipoEnum.VERBO) { // Si la siguiente posición es un verbo:
-							if (objetos[i + 2][j] != null && (objetos[i + 2][j].getTipo() == TipoEnum.ACCION
-									|| objetos[i + 2][j].getTipo() == TipoEnum.SUJETO)) { // Si la siguiente posición es una acción o un sujeto:
-								Objeto<?>[] frase = { objetos[i][j], objetos[i + 1][j], objetos[i + 2][j] };
-								frases.add(frase); // Se guarda la frase
+					// Comprobar hacia la derecha y abajo si se forma una frase
+					int[] direccion = {i, j};
+					int[][] posiciones = {{1, 0}, {0, 1}};
+					for (int k = 0; k < 2; k++) {
+						if (direccion[k] + 2 < ((k == 0)?cantidadFilas:cantidadColumnas)) { // Comprobar si la posible frase está dentro del escenario
+							// Si la siguiente posición es un verbo:
+							if (objetos[i + posiciones[k][0]][j + posiciones[k][1]] != null 
+									&& objetos[i + posiciones[k][0]][j + posiciones[k][1]].getTipo() == TipoEnum.OPERADOR) {
+								// Si la siguiente posición es una acción o un sujeto:
+								if (objetos[i + posiciones[k][0] * 2][j + posiciones[k][1] * 2] != null 
+										&& (objetos[i + posiciones[k][0] * 2][j + posiciones[k][1] * 2].getTipo() == TipoEnum.PROPIEDAD
+										|| objetos[i + posiciones[k][0] * 2][j + posiciones[k][1] * 2].getTipo() == TipoEnum.SUJETO)) {
+									boolean frase5palabras = false;
+									if (direccion[k] + 4 < ((k == 0)?cantidadFilas:cantidadColumnas)) {
+										// Si la siguiente posición es un verbo:
+										if (objetos[i + posiciones[k][0] * 3][j + posiciones[k][1] * 3] != null 
+												&& objetos[i + posiciones[k][0] * 3][j + posiciones[k][1] * 3].getTipo() == TipoEnum.OPERADOR) {
+											// Si la siguiente posición es una acción o un sujeto:
+											if (objetos[i + posiciones[k][0] * 4][j + posiciones[k][1] * 4] != null 
+													&& (objetos[i + posiciones[k][0] * 4][j + posiciones[k][1] * 4].getTipo() == TipoEnum.PROPIEDAD
+													|| objetos[i + posiciones[k][0] * 4][j + posiciones[k][1] * 4].getTipo() == TipoEnum.SUJETO)) {
+												frase5palabras = true;
+											}
+										}
+									}
+									if (frase5palabras) {
+										if (objetos[i + posiciones[k][0]][j + posiciones[k][1]].getNombre() == OperadorEnum.AND
+												&& objetos[i + posiciones[k][0] * 3][j + posiciones[k][1] * 3].getNombre() == OperadorEnum.IS) {
+											Objeto<?>[] frase = { 
+													objetos[i][j],
+													objetos[i + posiciones[k][0] * 3][j + posiciones[k][1] * 3], 
+													objetos[i + posiciones[k][0] * 4][j + posiciones[k][1] * 4] };
+											frases.add(frase); // Se guarda la frase
+										} else if (objetos[i + posiciones[k][0]][j + posiciones[k][1]].getNombre() == OperadorEnum.IS
+												&& objetos[i + posiciones[k][0] * 3][j + posiciones[k][1] * 3].getNombre() == OperadorEnum.AND) {
+											if (!(objetos[i][j].getTipo() == TipoEnum.SUJETO
+													&& objetos[i + posiciones[k][0] * 2][j + posiciones[k][1] * 2].getTipo() == TipoEnum.SUJETO
+													&& objetos[i + posiciones[k][0] * 4][j + posiciones[k][1] * 4].getTipo() == TipoEnum.SUJETO)) {
+												Objeto<?>[] frase = { 
+														objetos[i][j],
+														objetos[i + posiciones[k][0] * 1][j + posiciones[k][1] * 1], 
+														objetos[i + posiciones[k][0] * 4][j + posiciones[k][1] * 4] };
+												frases.add(frase); // Se guarda la frase
+											}
+										}
+									}
+									if (objetos[i + posiciones[k][0]][j + posiciones[k][1]].getNombre() == OperadorEnum.IS) {
+										if (!(frase5palabras
+												&& objetos[i][j].getTipo() == TipoEnum.SUJETO
+												&& objetos[i + posiciones[k][0] * 2][j + posiciones[k][1] * 2].getTipo() == TipoEnum.SUJETO
+												&& objetos[i + posiciones[k][0] * 4][j + posiciones[k][1] * 4].getTipo() == TipoEnum.SUJETO)) {
+											Objeto<?>[] frase = { 
+													objetos[i][j], 
+													objetos[i + posiciones[k][0]][j + posiciones[k][1]], 
+													objetos[i + posiciones[k][0] * 2][j + posiciones[k][1] * 2] };
+											frases.add(frase); // Se guarda la frase
+										}
+									}
+								}
 							}
 						}
 					}
@@ -493,12 +539,22 @@ public class Tablero {
 			for (Objeto<?> elemento : elementos) {
 				// frase[0] = sujeto; frase[1] = verbo; frase[2] = accion/sujeto a convertir
 				if (elemento.getNombre() == frase[0].getNombre()) {
-					if(frase[2].getNombre() instanceof AccionEnum) { // Si es una acción, se agrega el estado
-						elemento.setEstado((AccionEnum) frase[2].getNombre());
+					if(frase[2].getNombre() instanceof PropiedadEnum) { // Si es una acción, se agrega el estado
+						elemento.setEstado((PropiedadEnum) frase[2].getNombre());
 					} else { // Si es un sujeto, se convierte a ese sujeto
-						@SuppressWarnings("unchecked")
-						Objeto<SujetoEnum> conversor = (Objeto<SujetoEnum>) frase[2];
-						elemento.setNombre((SujetoEnum) conversor.getNombre());
+						boolean hayContradiccion = false;
+						for (Objeto<?>[] fraseContradiccion : frases) {
+							if (elemento.getNombre() == fraseContradiccion[0].getNombre()
+									&& elemento.getNombre() == fraseContradiccion[2].getNombre()) {
+								hayContradiccion = true;
+							}
+						}
+						if (!hayContradiccion) {
+							@SuppressWarnings("unchecked")
+							Objeto<SujetoEnum> conversor = (Objeto<SujetoEnum>) frase[2];
+							elemento.setNombre((SujetoEnum) conversor.getNombre());
+						}
+						
 					}
 					
 				}
@@ -513,8 +569,10 @@ public class Tablero {
 	private void mostrarFrases() {
 		System.out.println("Frases: ");
 		for (int i = 0; i < frases.size(); i++) {
-			System.out.println(frases.get(i)[0].getNombre() + " " + frases.get(i)[1].getNombre() + " "
-					+ frases.get(i)[2].getNombre());
+			for (Objeto<?> palabra : frases.get(i)) {
+				System.out.print(palabra.getNombre() + " ");
+			}
+			System.out.println();
 		}
 	}
 
