@@ -34,6 +34,11 @@
 			<artifactId>jfoenix</artifactId>
 			<version>9.0.8</version>
 		</dependency>
+		<dependency>
+			<groupId>net.sf.jasperreports</groupId>
+			<artifactId>jasperreports</artifactId>
+			<version>6.11.0</version>
+		</dependency>
 	</dependencies>
 	<pluginRepositories>
 		<pluginRepository>
