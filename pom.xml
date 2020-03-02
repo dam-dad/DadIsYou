@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>dad</groupId>
 	<artifactId>DadIsYou</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>DadIsYou</name>
 	<properties>
 		<maven.compiler.target>11</maven.compiler.target>
@@ -30,9 +30,37 @@
 			<version>11.0.1</version>
 		</dependency>
 		<dependency>
-		    <groupId>com.jfoenix</groupId>
-		    <artifactId>jfoenix</artifactId>
-		    <version>9.0.8</version>
+			<groupId>com.jfoenix</groupId>
+			<artifactId>jfoenix</artifactId>
+			<version>9.0.8</version>
 		</dependency>
 	</dependencies>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>javapackager</id>
+			<url>https://github.com/fvarrui/JavaPackager/raw/master/releases</url>
+		</pluginRepository>
+	</pluginRepositories>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>fvarrui.maven</groupId>
+				<artifactId>javapackager</artifactId>
+				<version>0.8.9</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>package</goal>
+						</goals>
+						<configuration>
+							<bundleJre>true</bundleJre>
+							<iconFile>/assets/windows/DadIsYou.ico</iconFile>
+							<organizationName>Cristian Trujillo y Beatriz García</organizationName>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 </project>

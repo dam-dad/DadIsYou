@@ -17,15 +17,15 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-
-import java.io.File;
+import java.net.URISyntaxException;
+import java.net.URL;
 
 public class App extends Application {
 
 	// Atributos de configuración
 	private static String ruta = "/imagenes/objetos/";
 	private static String imagenExtension = ".gif";
-	private static double volumenMusic = 0.05, volumenSound = 1;
+	private static double volumenMusic = 0.3, volumenSound = 1;
 
 	private static ScreenController screenController;
 	private static MenuPrincipalController menuPrincipalController;
@@ -191,11 +191,17 @@ class HiloSound extends Thread {
 	 */
 	@Override
 	public void run() {
-		String path = "src/main/resources/sonidos/" + file + ".mp3";
-		Media sound = new Media(new File(path).toURI().toString());
-		mediaPlayer = new MediaPlayer(sound);
-		mediaPlayer.setVolume(App.getVolumenSound());
-		mediaPlayer.play();
+		URL path = getClass().getResource("/sonidos/" + file + ".mp3");
+		Media sound;
+		try {
+			sound = new Media(path.toURI().toString());
+			mediaPlayer = new MediaPlayer(sound);
+			mediaPlayer.setVolume(App.getVolumenSound());
+			mediaPlayer.play();
+		} catch (URISyntaxException e) {
+			e.printStackTrace();
+		}
+
 	}
 	
 	/**
@@ -229,12 +235,17 @@ class HiloMusic extends Thread {
 	 */
 	@Override
 	public void run() {
-		String path = "src/main/resources/sonidos/" + file + ".mp3";
-		Media sound = new Media(new File(path).toURI().toString());
-		mediaPlayer = new MediaPlayer(sound);
-		mediaPlayer.setCycleCount(Transition.INDEFINITE);
-		mediaPlayer.setVolume(App.getVolumenMusic());
-		mediaPlayer.play();
+		URL path = getClass().getResource("/sonidos/" + file + ".mp3");
+		Media sound;
+		try {
+			sound = new Media(path.toURI().toString());
+			mediaPlayer = new MediaPlayer(sound);
+			mediaPlayer.setVolume(App.getVolumenMusic());
+			mediaPlayer.setCycleCount(Transition.INDEFINITE);
+			mediaPlayer.play();
+		} catch (URISyntaxException e) {
+			e.printStackTrace();
+		}
 	}
 
 	/**
