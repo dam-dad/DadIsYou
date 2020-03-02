@@ -229,6 +229,8 @@ public class GameController implements Initializable, Controller {
 		jugando = false;
 		ganar = true;
 		App.playSound("ganar");
+		App.nivelCompletado("" + idNivel);
+		App.agregarVictoria();
 	}
 
 	/**
@@ -243,6 +245,7 @@ public class GameController implements Initializable, Controller {
 		jugando = false;
 		perder = true;
 		App.playSound("perder");
+		App.agregarDerrota();
 	}
 	
 	/**

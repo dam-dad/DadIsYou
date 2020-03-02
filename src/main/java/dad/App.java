@@ -19,6 +19,9 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 public class App extends Application {
 
@@ -35,6 +38,10 @@ public class App extends Application {
 	
 	private static HiloMusic hiloMusic;
 	private static HiloSound hiloSound;
+	
+	private static List<String> nivelesCompletados = new ArrayList<String>();
+	private static Date horaInicioDelJuego = new Date();
+	private static int numeroDeVictorias = 0, numeroDeDerrotas = 0;
 
 	/**
 	 * Carga todos los controladores y los guarda en ScreenController para gestionar las vistas e inicia la aplicación
@@ -166,6 +173,42 @@ public class App extends Application {
 		transicionFade.setNode(node);
 		transicionFade.setInterpolator(Interpolator.LINEAR);
 		transicionFade.play();
+	}
+	
+	public static void nivelCompletado(String nivel) {
+		boolean yaGuardado = false;
+		for (String nivelGuardado : nivelesCompletados) {
+			if (nivelGuardado.equals(nivel)) {
+				yaGuardado = true;
+			}
+		}
+		if (!yaGuardado) {
+			nivelesCompletados.add(nivel);
+		}
+	}
+
+	public static List<String> getNivelesCompletados() {
+		return nivelesCompletados;
+	}
+
+	public static Date getHoraInicioDelJuego() {
+		return horaInicioDelJuego;
+	}
+
+	public static int getNumeroDeVictorias() {
+		return numeroDeVictorias;
+	}
+
+	public static void agregarVictoria() {
+		numeroDeVictorias++;
+	}
+
+	public static int getNumeroDeDerrotas() {
+		return numeroDeDerrotas;
+	}
+
+	public static void agregarDerrota() {
+		numeroDeDerrotas++;
 	}
 
 }
