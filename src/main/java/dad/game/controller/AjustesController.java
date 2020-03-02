@@ -4,6 +4,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import dad.App;
+import dad.game.utils.EstadisticasJasperReport;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
@@ -53,7 +55,7 @@ public class AjustesController implements Initializable, Controller {
 	 * Se cancelan los cambios hechos y se regresa a la vista anterior
 	 */
 	@FXML
-	public void onCancelarAction() {
+	void onCancelarAction() {
 		App.playSound("boton");
 		App.getScreenController().activate(anteriorController);
 	}
@@ -62,9 +64,18 @@ public class AjustesController implements Initializable, Controller {
 	 * Método sin implementar
 	 */
 	@FXML
-	public void onGuardarAction() {
+	void onGuardarAction() {
 		App.playSound("boton");
-		
 	}
+	
+    @FXML
+    void onDescargarEstadisticasAction(ActionEvent event) {
+    	EstadisticasJasperReport.generarPdf();
+    }
+
+    @FXML
+    void onVerEstadisticasAction(ActionEvent event) {
+    	EstadisticasJasperReport.generarVistaPrevia();
+    }
 
 }

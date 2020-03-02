@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.11.0.final using JasperReports Library version 6.11.0-0c4056ccaa4d25a5a8c45672d2f764ea3498bebb  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="informe" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a28d340c-466a-4a70-9594-3335f14e49b8">
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="numeroDeDerrotas" class="java.lang.Integer">
+		<fieldDescription><![CDATA[numeroDeDerrotas]]></fieldDescription>
+	</field>
+	<field name="tiempoJugado" class="java.lang.String">
+		<fieldDescription><![CDATA[tiempoJugado]]></fieldDescription>
+	</field>
+	<field name="numeroDeVictorias" class="java.lang.Integer">
+		<fieldDescription><![CDATA[numeroDeVictorias]]></fieldDescription>
+	</field>
+	<field name="nivelesCompletados" class="java.util.List">
+		<fieldDescription><![CDATA[nivelesCompletados]]></fieldDescription>
+	</field>
+	<field name="numeroDeNiveles" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="70" splitType="Stretch">
+			<staticText>
+				<reportElement x="138" y="15" width="279" height="40" uuid="c0b0b299-b45b-4135-a0fe-b41427b49733"/>
+				<textElement>
+					<font size="26"/>
+				</textElement>
+				<text><![CDATA[Estadísticas Dad Is You]]></text>
+			</staticText>
+			<image>
+				<reportElement x="25" y="10" width="50" height="50" uuid="006d6c6d-4c4d-4005-91b9-b05eac136b3c"/>
+				<imageExpression><![CDATA["imagenes/otros/favicon.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="169" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="10" width="100" height="30" uuid="9e11c5b8-72ca-4765-93c6-b902774a55a4"/>
+				<text><![CDATA[Cantidad de niveles:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="100" y="10" width="38" height="30" uuid="0601fe5d-07eb-4210-b39c-152e4ffc47bb"/>
+				<textFieldExpression><![CDATA[$F{numeroDeNiveles}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="180" y="10" width="100" height="30" uuid="7d8ee0e8-1356-43b8-b737-bd2af74283ea"/>
+				<text><![CDATA[Cantidad  de victorias:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="380" y="10" width="100" height="30" uuid="8f5dbd3d-6e8a-400e-a4df-eecdbc6d9bfa"/>
+				<text><![CDATA[Cantidad de derrotas:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="50" width="100" height="31" uuid="90c48950-6453-4791-b5c8-586d2b21f73c"/>
+				<text><![CDATA[Niveles completados:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="90" width="100" height="30" uuid="1c9368c6-78b5-49c2-aa29-6ab083dba002"/>
+				<text><![CDATA[Tiempo jugado:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="280" y="10" width="38" height="30" uuid="f7826065-7d35-48a7-940c-31165cc5b3b6"/>
+				<textFieldExpression><![CDATA[$F{numeroDeVictorias}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="480" y="10" width="38" height="30" uuid="c8cfaab9-6b35-40f0-bb71-74f3ba8d2058"/>
+				<textFieldExpression><![CDATA[$F{numeroDeDerrotas}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="50" width="218" height="30" uuid="96f352f9-84c8-44e6-a009-e3160c856717"/>
+				<textFieldExpression><![CDATA[$F{nivelesCompletados}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="90" width="80" height="30" uuid="49b0a7d9-9284-45cd-8839-c05b150c9624"/>
+				<textFieldExpression><![CDATA[$F{tiempoJugado}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="79" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="55" splitType="Stretch">
+			<textField>
+				<reportElement x="360" y="12" width="100" height="30" uuid="bd1854b3-6961-4532-86e3-f8fd0635d627"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="460" y="12" width="100" height="30" uuid="d10f3a77-efc3-4b23-a17d-d6f09814f084"/>
+				<textElement textAlignment="Left"/>
+				<textFieldExpression><![CDATA[" of " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="0" y="12" width="100" height="30" uuid="92cbfb9c-92d5-44f5-8832-74aa32bc073c"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

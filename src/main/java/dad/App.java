@@ -4,6 +4,7 @@ import dad.game.controller.AjustesController;
 import dad.game.controller.GameController;
 import dad.game.controller.MenuNivelController;
 import dad.game.controller.MenuPrincipalController;
+import dad.game.model.Estadistica;
 import javafx.animation.FadeTransition;
 import javafx.animation.Interpolator;
 import javafx.animation.Transition;
@@ -19,9 +20,6 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 public class App extends Application {
 
@@ -39,9 +37,8 @@ public class App extends Application {
 	private static HiloMusic hiloMusic;
 	private static HiloSound hiloSound;
 	
-	private static List<String> nivelesCompletados = new ArrayList<String>();
-	private static Date horaInicioDelJuego = new Date();
-	private static int numeroDeVictorias = 0, numeroDeDerrotas = 0;
+	private static Estadistica estadisticas;
+
 
 	/**
 	 * Carga todos los controladores y los guarda en ScreenController para gestionar las vistas e inicia la aplicación
@@ -77,6 +74,8 @@ public class App extends Application {
 		primaryStage.setScene(screenController.getScene());
 		primaryStage.getIcons().add(new Image("/imagenes/otros/favicon.png"));
 		primaryStage.show();
+		
+		estadisticas = new Estadistica();
 		
 		// Música de fondo
 		playMusic("melodia_4");
@@ -174,43 +173,15 @@ public class App extends Application {
 		transicionFade.setInterpolator(Interpolator.LINEAR);
 		transicionFade.play();
 	}
-	
-	public static void nivelCompletado(String nivel) {
-		boolean yaGuardado = false;
-		for (String nivelGuardado : nivelesCompletados) {
-			if (nivelGuardado.equals(nivel)) {
-				yaGuardado = true;
-			}
-		}
-		if (!yaGuardado) {
-			nivelesCompletados.add(nivel);
-		}
+
+	public static Estadistica getEstadisticas() {
+		return estadisticas;
 	}
 
-	public static List<String> getNivelesCompletados() {
-		return nivelesCompletados;
+	public static Estadistica[] getEstadisticasProvider() {
+		Estadistica[] estadisticas = {App.estadisticas};
+		return estadisticas;
 	}
-
-	public static Date getHoraInicioDelJuego() {
-		return horaInicioDelJuego;
-	}
-
-	public static int getNumeroDeVictorias() {
-		return numeroDeVictorias;
-	}
-
-	public static void agregarVictoria() {
-		numeroDeVictorias++;
-	}
-
-	public static int getNumeroDeDerrotas() {
-		return numeroDeDerrotas;
-	}
-
-	public static void agregarDerrota() {
-		numeroDeDerrotas++;
-	}
-
 }
 
 /**

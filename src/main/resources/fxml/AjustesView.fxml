@@ -29,6 +29,9 @@
                 <RowConstraints />
                   <RowConstraints minHeight="10.0" prefHeight="50.0" />
                   <RowConstraints />
+                  <RowConstraints minHeight="10.0" prefHeight="50.0" />
+                  <RowConstraints />
+                  <RowConstraints minHeight="10.0" prefHeight="50.0" />
               </rowConstraints>
                <children>
                   <Label alignment="CENTER_RIGHT" prefWidth="250.0" text="Volumen música" textFill="WHITE" GridPane.rowIndex="2">
@@ -73,6 +76,16 @@
                   <JFXSlider GridPane.columnIndex="1" GridPane.rowIndex="2" />
                   <JFXSlider GridPane.columnIndex="1" GridPane.rowIndex="3" />
                   <JFXComboBox fx:id="idiomaCombo" focusColor="#45679900" prefWidth="250.0" unFocusColor="#23456600" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#onVerEstadisticasAction" prefWidth="275.0" styleClass="btn" text="Ver Estadísticas" textFill="WHITE" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="8">
+                     <font>
+                        <Font name="Monospaced Regular" size="24.0" />
+                     </font>
+                  </Button>
+                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#onDescargarEstadisticasAction" prefWidth="375.0" styleClass="btn" text="Descargar Estadísticas" textFill="WHITE" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="9">
+                     <font>
+                        <Font name="Monospaced Regular" size="24.0" />
+                     </font>
+                  </Button>
                </children>
             </GridPane>
          </children>
