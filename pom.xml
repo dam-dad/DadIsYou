@@ -60,7 +60,6 @@
 						</goals>
 						<configuration>
 							<bundleJre>true</bundleJre>
-							<iconFile>/assets/windows/DadIsYou.ico</iconFile>
 							<organizationName>Cristian Trujillo y Beatriz García</organizationName>
 						</configuration>
 					</execution>
