@@ -1,7 +1,5 @@
 #  ![alt text](https://github.com/dam-dad/DadIsYou/blob/master/src/main/resources/imagenes/otros/favicon.png "Logo Dad Is You") Dad Is You - Guía de Usuario
 
----
-
 El juego consta de un menú principal con los siguientes apartados:
 
 + Iniciar partida
