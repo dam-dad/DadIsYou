@@ -85,7 +85,7 @@ public class MenuNivelController implements Initializable, Controller {
 			// Se crean los botones
 			for (int i = 0; i < numerosBotones.length; i++) {
 				Button btn = new Button(numerosBotones[i]);
-				btn.setFont(Font.font(null, FontWeight.EXTRA_BOLD, 10.0));
+				btn.setFont(Font.font(null, FontWeight.EXTRA_BOLD, 9.0));
 				btn.setStyle(disenoBotones[i]);
 				// Se añade su evento "OnAction"
 				btn.setOnAction(new EventHandler<ActionEvent>() {
