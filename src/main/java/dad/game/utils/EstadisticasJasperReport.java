@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import dad.App;
+import javafx.stage.DirectoryChooser;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperExportManager;
@@ -17,7 +18,7 @@ import net.sf.jasperreports.engine.data.JRBeanArrayDataSource;
 import net.sf.jasperreports.view.JasperViewer;
 
 public class EstadisticasJasperReport {
-	
+
 	private static final String JRXML_FILE = "/informes/estadisticas.jrxml";
 	private static final String PDF_FILE = "src/main/resources/informes/estadisticas.pdf";
 
@@ -54,12 +55,21 @@ public class EstadisticasJasperReport {
 			JasperPrint jasperPrint = JasperFillManager.fillReport(report, parameters,
 					new JRBeanArrayDataSource(App.getEstadisticasProvider()));
 
+			DirectoryChooser chooser = new DirectoryChooser();
+
+			chooser.setTitle("Elige el direcctorio donde deseas guardar el informe");
+
+			try {
+				JasperExportManager.exportReportToPdfFile(jasperPrint,
+						chooser.showDialog(App.getStage()).toString() + "\\estadisticasDadIsYou.pdf");
+			} catch (Exception e) {}
+
 			// Exporta el informe a un fichero PDF
-			JasperExportManager.exportReportToPdfFile(jasperPrint, PDF_FILE);
+			//JasperExportManager.exportReportToPdfFile(jasperPrint, PDF_FILE);
 
 			// Abre el archivo PDF generado con el programa predeterminado del sistema
-			Desktop.getDesktop().open(new File(PDF_FILE));
-		} catch (JRException | IOException e) {
+			//Desktop.getDesktop().open(new File(PDF_FILE));
+		} catch (JRException /*| IOException*/ e) {
 			e.printStackTrace();
 		}
 	}

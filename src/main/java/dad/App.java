@@ -28,6 +28,7 @@ public class App extends Application {
 	private static String imagenExtension = ".gif";
 	private static double volumenMusic = 0.3, volumenSound = 1;
 
+	private static Stage primaryStage;
 	private static ScreenController screenController;
 	private static MenuPrincipalController menuPrincipalController;
 	private static MenuNivelController menuNivelController;
@@ -75,6 +76,8 @@ public class App extends Application {
 		primaryStage.getIcons().add(new Image("/imagenes/otros/favicon.png"));
 		primaryStage.show();
 		
+		this.primaryStage = primaryStage;
+		
 		estadisticas = new Estadistica();
 		
 		// Música de fondo
@@ -83,6 +86,10 @@ public class App extends Application {
 
 	public static void main(String[] args) {
 		launch(args);
+	}
+	
+	public static Stage getStage() {
+		return primaryStage;
 	}
 
 	public static String getRuta() {
