@@ -5,7 +5,6 @@ Cristian Trujillo Trujillo <br>
 Beatriz García Hernández
 
 
-
 ### Instalación
 El juego está disponible para **Windows** en versión *instalable* y *portable*.
 
@@ -13,7 +12,14 @@ Descarga y ejecuta alguna de las siguientes versiones:
 
 * [Dad Is You v1.0.0](https://github.com/dam-dad/DadIsYou/releases/tag/1.0.0)
 
-  
+
+### Capturas de pantalla
+
+![alt text](https://raw.githubusercontent.com/dam-dad/DadIsYou/master/screenshots/1.png)
+![alt text](https://raw.githubusercontent.com/dam-dad/DadIsYou/master/screenshots/2.png)
+![alt text](https://raw.githubusercontent.com/dam-dad/DadIsYou/master/screenshots/3.png)
+![alt text](https://raw.githubusercontent.com/dam-dad/DadIsYou/master/screenshots/4.png)
+
 
 ### Documentación
 
